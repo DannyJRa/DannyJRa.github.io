@@ -4,13 +4,13 @@ output: html_document
 ---
 
 
+## Load credential helper
 
-# Push
-
-```{bash,eval=FALSE}
-#git pull -u origin master
-git push -u origin master
+```{bash}
+git config --global credential.helper cache
 ```
+### Commit first by terminal to save credentials
+
 
 # Commit all changes
 

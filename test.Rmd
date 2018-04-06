@@ -16,3 +16,4 @@ htmltools::img(src = knitr::image_uri(file.path(R.home("doc"), "html", "logo.jpg
 # 1. Header
 
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+fdsafddfasb fdadfasd
