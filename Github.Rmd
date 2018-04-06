@@ -1,0 +1,33 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+
+
+# Push
+
+```{bash,eval=FALSE}
+#git pull -u origin master
+git push -u origin master
+```
+
+# Commit all changes
+
+```{bash}
+git add -A
+git commit -m "commit DR"
+git push
+```
+
+```{bash}
+pwd
+```
+
+```{r}
+source("~/Dropbox/01_EC2/05_Secrets/telegram_botDJR.R")
+library(telegram)
+## Send some messages..
+bot$sendMessage('This is a commit')
+```
+
