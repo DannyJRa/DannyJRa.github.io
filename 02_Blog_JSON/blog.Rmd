@@ -74,6 +74,7 @@ library(tidyverse)
 library(jsonlite)
 yelp <- fromJSON("data/yelp_academic_dataset_business.json")
 ```
+
 However, when we run the above command we would actully get an error like below.
 
 This is because this JSON file turned out to be something called ‘NDJSON (Newline delimited JSON)’, which means there are multiple JSON values inside this file and each of the JSON values is considered as an independent object. In this particular case, each business information makes up one single JSON value therefore there are many JSON values inside of this JSON file. This could be used often in data streaming situations where each JSON data can be separated from other parts of the file so that each JSON data can be processed without waiting for the whole document to load.
@@ -81,6 +82,7 @@ This is because this JSON file turned out to be something called ‘NDJSON (Newl
 
 
 ```{r,message=FALSE, warning=FALSE, r,output.lines=10}
+
 yelp <- stream_in(file("data/yelp_academic_dataset_business.json"))
 ```
 
