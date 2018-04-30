@@ -1,0 +1,33 @@
+---
+title: "Run RStudio Server in the Cloud"
+output: html_document
+---
+
+I recently got an SurfacePro 4 with which I’m very happy, but it did make me realise that if a Tablet was to replace my normal desktop as my primary workstation, my RStudio Server setup would need to be more cloud native than was available up until now.
+
+A how-to on making RStudio Server run on a Laptop/Tablet that automatically backs up data and configuration settings to Azure Storage.
+
+Broken promises of the cloud?
+Whilst there are lots of other solutions around for hosting RStudio Server in the cloud, including some of my own, I don’t believe they are a serious replacement for a desktop station running RStudio.
+
+To date I’ve treated RStudio Server as a temporary UI whilst setting up scheduled scripts and so forth, and for running workshops for students with pre-installed packages. Yes, the convenience of running RStudio in a browser and being able to launch different configurations is great, but it wasn’t a total desktop replacement for the following reasons:
+
+More expensive - running RStudio Server permanently in the cloud can be done for as little as 5 dollars a month, but for that you get a machine about as powerful as a Raspberry Pi. For a proper workstation with decent RAM etc, you are looking at more like 30 dollars a month, which if you’re running for 2 years is around $700 that you could have spent on a laptop that can do more things.
+More risky - keeping the only copy of your data on a cloud server is not a good idea, as I learnt to my cost when a VM’s hard disk filled up. Unable to log in, a convoluted panic to increase the disk size occurred. A physical laptop is a lot easier to troubleshoot if something goes awry.
+Not flexible enough - if you run out of RAM or want things to compute quicker, you are going to need to transfer your data and boot up another VM with stronger specs.
+But isn’t the allure of cheaper, safer, more flexible computing the reason we are using the cloud in the first place?
+
+# Going Cloud Native
+I believe the reason for the dichotomy between expectation and reality is due to not being “Cloud Native” enough, something I realised whilst attending this year’s Google NEXT event. There they described three phases of business cloud evolution:
+
+Lift and Shift - moving your existing infrastructure into equivalent cloud versions
+Separation of compute and data - abstracting out the computing away from the data the computing is running on. Essentially letting the cloud take on the roles of your hard disk vs your CPU.
+Platform-as-a-service (PaaS) - abstracting away the servers the computing and data are running on, so as to run on purely managed services such as BigQuery, Kubernetes and AppEngine
+From the above, existing RStudio Server solutions are in the Lift and Shift vein, whilst what we may imagine to be The Cloud are in the more evolved options.
+
+# A Persistent RStudio Server
+
+XXX
+
+
+
