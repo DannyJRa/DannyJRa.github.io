@@ -1,14 +1,8 @@
 ---
+title: "Blah blah"
 output:
   html_document:
-    highlight: tango
-    toc: yes
-    toc_float: no
-  pdf_document:
-    number_sections: yes
-geometry: margin = 1.2in
-fontsize: 10pt
-always_allow_html: yes
+    css: style2.css
 ---
 
 ```{r setup, include=FALSE}
@@ -47,6 +41,22 @@ pre {
 </style>
 
 
+#Use fontawsome
+https://www.w3schools.com/icons/fontawesome_icons_intro.asp
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<i class="fa fa-car"></i>
+<i class="fa fa-car" style="font-size:48px;"></i>
+<i class="fa fa-car" style="font-size:60px;color:red;"></i>
+
+</body>
+</html>
 I recently got an SurfacePro 4 with which I’m very happy, but it did make me realise that if a Tablet was to replace my normal desktop as my primary workstation, my RStudio Server setup would need to be more cloud native than was available up until now.
 
 A how-to on making RStudio Server run on a Laptop/Tablet that automatically backs up data and configuration settings to Azure Storage.

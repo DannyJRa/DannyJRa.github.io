@@ -1,14 +1,8 @@
 ---
+title: "Blah blah"
 output:
   html_document:
-    highlight: tango
-    toc: yes
-    toc_float: no
-  pdf_document:
-    number_sections: yes
-geometry: margin = 1.2in
-fontsize: 10pt
-always_allow_html: yes
+    css: style.css
 ---
 
 ```{r setup, include=FALSE}
@@ -33,19 +27,6 @@ knitr::knit_hooks$set(
    }
 )
 ```
-<style type="text/css">
-
-body, td {
-   font-size: 20px;
-}
-code.r{
-  font-size: 20px;
-}
-pre {
-  font-size: 20px
-}
-</style>
-
 
 I recently got an SurfacePro 4 with which I’m very happy, but it did make me realise that if a Tablet was to replace my normal desktop as my primary workstation, my RStudio Server setup would need to be more cloud native than was available up until now.
 

@@ -220,7 +220,5 @@ b<-system(cmd, intern=TRUE)
 Now you can run Rstudio: under ip:8787
 
 
-```{r}
-plot(1)
-```
+
 
