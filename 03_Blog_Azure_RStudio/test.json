@@ -1,0 +1,22 @@
+[
+  {
+    "virtualMachine": {
+      "name": "DataScience",
+      "network": {
+        "privateIpAddresses": [
+          "10.0.0.4"
+        ],
+        "publicIpAddresses": [
+          {
+            "id": "/subscriptions/4042f432-12df-489f-82cd-b13cc6213e00/resourceGroups/DataScience/providers/Microsoft.Network/publicIPAddresses/DataScience-ip",
+            "ipAddress": "52.173.145.168",
+            "ipAllocationMethod": "Dynamic",
+            "name": "DataScience-ip",
+            "resourceGroup": "DataScience"
+          }
+        ]
+      },
+      "resourceGroup": "DataScience"
+    }
+  }
+]

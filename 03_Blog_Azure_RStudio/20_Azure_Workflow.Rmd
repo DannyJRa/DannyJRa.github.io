@@ -1,0 +1,369 @@
+---
+output:
+  html_document:
+    theme: cerulean
+    highlight: tango
+    code_folding: show
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    number_sections: yes
+geometry: margin = 1.2in
+fontsize: 10pt
+always_allow_html: yes
+---
+
+```{r setup, include=FALSE}
+# Time of computation below each chunk
+knitr::knit_hooks$set(timeit = local({
+  now = NULL
+  function(before, options) {
+    if (before) {
+      now <<- Sys.time()
+    } else {
+      res = difftime(Sys.time(), now)
+      now <<- NULL
+      # use options$label if you want the chunk label as well
+      paste('Chunk execution [min]:', as.character(res))
+    }
+  }})
+)
+```
+
+```{r cache, include=FALSE}
+#Caching of all chunks
+knitr::opts_chunk$set(cache=TRUE)
+```
+
+
+
+
+```{r}
+library(jsonlite)
+
+azR<-function(code){
+a<-fromJSON(system(code,intern = TRUE))
+return(a)
+}
+
+```
+
+# Use Case
+
+In this case a Ubuntu DSVM is deployed. The
+virtual machine is created within its own resource group so that all
+created resources (the VM, networking, disk, etc) can be deleted
+easily. Code is also included, and run, to then delete the
+resource group if the resource group was created within this
+vignette. Once deleted consumption (cost) will cease.
+
+# Preparation
+
+I assume the user already has an Azure subscription and has obtained
+their credentials as explained in the
+[Introduction](https://github.com/Azure/AzureDSVM/blob/master/vignettes/00Introduction.Rmd)
+vignette. We ensure a resource group exists and within that resource
+group deploy the Linux DSVM. 
+
+# Setup
+
+To get started we need to load our Azure credentials as well as the
+user's ssh public key. Public keys on Linux are typically created on
+the users desktop/laptop machine and will be found within
+~/.ssh/id_rsa.pub. It will be convenient to create a credentials file
+to contain this information. 
+
+#Authorization
+
+We can simply source the credentials file in R.
+Connect to the Azure subscription and use this as the context for
+our activities.
+
+```{r}
+# Load the required subscription resources: TID, CID, and KEY.
+# Also includes the ssh PUBKEY for the user.
+
+USER <- Sys.info()[['user']]
+#or set manually
+USER<-"insider"
+
+source("~/02_CloudComputing/10_Secrets/Azure_Authentication_AR.R")
+```
+
+If the required pacakges are not yet installed the following will do
+so. You may need to install them into your own local library rather
+than the system library if you are not a system user.
+
+
+
+We can then load the required pacakges from the libraries.
+
+```{r}
+# Load the required packages.
+
+library(AzureSMR)    # Support for managing Azure resources.
+library(AzureDSVM)   # Further support for the Data Scientist.
+library(magrittr)    
+library(dplyr)
+```
+
+Parameters for this script: the name for the new resource group and
+its location across the Azure cloud. The resource name is used to
+name the resource group that we will create transiently for the
+purposes of this script.
+
+Create a random name which will be used for the hostname and
+resource group to reduce likelihood of conflict with other users.
+
+```{r}
+runif(4, 1, 26) %>%
+  round() %>%
+  letters[.] %>%
+  paste(collapse="") %T>%
+  {sprintf("Base name:\t\t%s", .) %>% cat("\n")} ->
+BASE
+
+# Choose a data centre location. The abbreviation is used for the
+# resource group name.
+
+"centralus"  %T>%
+  {sprintf("Data centre location:\t%s", .) %>% cat("\n")} ->
+LOC
+
+ABR <- "DR"
+
+# Create a random resource group to reduce likelihood of conflict with
+# other users.
+
+BASE %>%
+  paste0("my_dsvm_", .,"_rg_", ABR) %T>%
+  {sprintf("Resource group:\t\t%s", .) %>% cat("\n")} ->
+RG
+
+RG<-"DataScience"
+
+# Include the random BASE in the hostname to reducely likelihood of
+# conflict.
+
+BASE %>%
+  paste0("my", .) %T>%
+  {sprintf("Hostname:\t\t%s", .) %>% cat("\n")} ->
+HOST
+
+#HOST="dsvm"
+
+cat("\n")
+```
+
+
+Check if the resource group already exists. Take note this script
+will not remove the resource group if it pre-existed.
+
+```{r}
+rg_pre_exists <- existsRG(context, RG, LOC)
+
+# Check that it now exists.
+
+cat("Resource group", RG, "at", LOC,
+    ifelse(!existsRG(context, RG, LOC), "does not exist.\n", "exists.\n"), "\n")
+```
+
+# Create a Resource Group
+
+Create the resource group within which all resources we create will be
+grouped.
+
+Note that to create a new
+resource group one needs to add access control of Active Directory
+application at subscription level.
+
+Option 1: DSVM Package
+
+```{r}
+azureCreateResourceGroup(context, resourceGroup = "R_Control", location = "centralus")
+```
+
+Option 2: Azure CLI 2.0
+
+```{r}
+a<-azR("az group create --name DataScience --location 'Central US'")
+a
+```
+
+### Create DSVM
+
+```{r}
+b<-azR(paste("az group deployment create", 
+       "--name DataScience",
+       "--resource-group DataScience",
+       "--template-file template.json", 
+       "--parameters parameters.json"))
+b
+
+```
+
+### Find & attach a managed disk
+
+```{bash}
+diskId=$(az disk show -g DataScienceVM -n DiskDJR --query 'id' -o tsv)
+az vm disk attach -g DataScience --vm-name DataScience --disk $diskId
+```
+
+
+## Create SSH
+
+#Install on host if not installed
+``{bash}
+sudo apt-get install sshpass
+``
+
+Use 
+$ sshpass -p your_password ssh user@hostname
+to pass password with SSH
+
+
+## Get ip adress
+
+
+```{r}
+code="az vm list-ip-addresses"
+a<-fromJSON(system(code,intern = TRUE))
+
+a<-write(system(code,intern = TRUE),"test.json")
+yelp <- fromJSON(file("test.json"))
+
+
+yelp_flat <- jsonlite::flatten(yelp)
+str(yelp_flat)
+
+
+```
+
+```{r}
+library(tibble)
+yelp_tbl <- as_data_frame(yelp_flat)
+yelp_tbl$virtualMachine.network.publicIpAddresses[[1]]$ipAddress
+```
+
+```{r}
+library(purrr)
+yelp_flat1 <- purrr::flatten(yelp)
+yelp_flat2 <- purrr::flatten(yelp_flat1)
+yelp_flat3 <- purrr::flatten(yelp_flat2)
+yelp_flat4 <- purrr::flatten(yelp_flat3)
+ip<-yelp_flat4$ipAddress
+```
+
+
+```{r}
+#ip="52.173.255.5"
+ssh <- paste0("sshpass -p .oberstdorf123 ",
+  "ssh -q",
+             " -o StrictHostKeyChecking=no",
+             " -o UserKnownHostsFile=/dev/null",
+             " insider@",
+             ip)
+```
+
+
+
+### Start R server
+
+```{r}
+cmd <- paste(ssh, "sudo rstudio-server start")
+cmd
+
+b<-system(cmd, intern=TRUE)
+```
+
+Remove folder if create already
+
+```{r}
+cmd <- paste(ssh, "sudo rm -r /home/insider/R")
+cmd
+
+b<-system(cmd, intern=TRUE)
+```
+
+Create folder
+
+```{r}
+cmd <- paste(ssh, "sudo mkdir /home/insider/R")
+cmd
+
+b<-system(cmd, intern=TRUE)
+```
+
+Mount drive
+
+```{r}
+cmd <- paste(ssh, "sudo mount /dev/sdd /home/insider/R")
+cmd
+
+b<-system(cmd, intern=TRUE)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Delete DSVM
+
+## Option1: Stop VM
+It is always a good practice to stop DSVMs after using them to avoid
+any unnecessary cost.
+
+```{r,eval=FALSE}
+operateDSVM(context, RG, HOST, operation="Start")
+```
+
+## Option 2: Delete complete Ressource Group:
+
+Once we have finished with the server we can delete it and all of its
+related resources.
+  
+```{r}
+# Delete the resource group now that we have proved existence. There
+# is probably no need to wait. Only delete if it did not pre-exist
+# this script. Deletion takes 10 minutes or more.
+
+a<-if (! rg_pre_exists)
+  azureDeleteResourceGroup(context, RG)
+a
+```
+
+### Message via Telegram of deleted resurce group
+```{r}
+source("~/02_CloudComputing/10_Secrets/telegram_botDJR.R")
+text<-(paste(a,"Resource Group",RG," will be deleted"))
+bot$sendMessage(text)
+```
+
+Once deleted we are consuming no more.
+
+For both options keep the managed disk for next DSVM set-up.
+
+
+## Save complete workspace
+
+```{r}
+save.image(file='yoursession.RData')
+#load('yoursession.RData')
+```
+
+
