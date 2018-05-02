@@ -30,4 +30,23 @@ From the above, existing RStudio Server solutions are in the Lift and Shift vein
 XXX
 
 
+## Install Azure CLI 2.0 on Linux
+
+In Terminal
+>azure login
+
+
+## Use of R packages
+
+Create Authenification 
+
+Follow
+http://htmlpreview.github.io/?https://github.com/Microsoft/AzureSMR/blob/master/inst/doc/Authentication.html
+
+
+Alternatively you can access control at Subscription Level
+
+
+
+
 
