@@ -1,0 +1,342 @@
+# Chapter2: Deploy R on Azure
+
+In this tutorial a Ubuntu DSVM is deployed whilst sample code to
+deploy a Windows Data Science Virtual Machine (DSVM) is provided. The
+virtual machine is created within its own resource group so that all
+created resources (the VM, networking, disk, etc) can be deleted
+easily. Code is also included, but not run, to then delete the
+resource group if the resource group was created within this
+vignette. Once deleted consumption (cost) will cease.
+
+This script is best run interactively to review its operation and to
+ensure that the interaction with Azure completes.
+
+An R script that can be generated from this vignette and can be run as
+a standalone script to setup a new resource group and single Ubuntu
+DSVM.
+
+# Preparation
+
+We assume the user already has an Azure subscription and has obtained
+their credentials as explained in the
+[Introduction](https://github.com/Azure/AzureDSVM/blob/master/vignettes/00Introduction.Rmd)
+vignette. We ensure a resource group exists and within that resource
+group deploy the Linux DSVM. A secure shell
+([ssh](https://en.wikipedia.org/wiki/Secure_Shell)) public key
+matching the current user's private key is used to access the server
+in this script although a username and password is also an option.
+
+# Setup
+
+To get started we need to load our Azure credentials as well as the
+user's ssh public key. Public keys on Linux are typically created on
+the users desktop/laptop machine and will be found within
+~/.ssh/id_rsa.pub. It will be convenient to create a credentials file
+to contain this information. The contents of the credentials file will
+be something like the foloowing and we assume the user creates such a
+file in the current working directory, naming the file
+<USER>_credentials.R. Replace <USER> with the user's username.
+
+#Authorization
+...
+load script
+
+Notice we include a password (a fake password in this case) for
+account creation on a Windows DSVM.
+
+We can simply source the credentials file in R.
+
+```{r, eval=TRUE}
+# Load the required subscription resources: TID, CID, and KEY.
+# Also includes the ssh PUBKEY for the user.
+
+USER <- Sys.info()[['user']]
+USER<-"insider"
+source("~/CloudComputing/10_Secrets/Azure_Authentication_datascience_AWS.R")
+```
+
+If the required pacakges are not yet installed the following will do
+so. You may need to install them into your own local library rather
+than the system library if you are not a system user.
+
+
+
+We can then load the required pacakges from the libraries.
+
+```{r message=FALSE, packages, eval=TRUE}
+# Load the required packages.
+
+library(AzureSMR)    # Support for managing Azure resources.
+library(AzureDSVM)   # Further support for the Data Scientist.
+library(magrittr)    
+library(dplyr)
+```
+
+```{r, tuning, eval=TRUE}
+# Parameters for this script: the name for the new resource group and
+# its location across the Azure cloud. The resource name is used to
+# name the resource group that we will create transiently for the
+# purposes of this script.
+
+# Create a random name which will be used for the hostname and
+# resource group to reduce likelihood of conflict with other users.
+
+runif(4, 1, 26) %>%
+  round() %>%
+  letters[.] %>%
+  paste(collapse="") %T>%
+  {sprintf("Base name:\t\t%s", .) %>% cat("\n")} ->
+BASE
+
+# Choose a data centre location. The abbreviation is used for the
+# resource group name.
+
+"westeurope"  %T>%
+  {sprintf("Data centre location:\t%s", .) %>% cat("\n")} ->
+LOC
+
+ABR <- "DR"
+
+# Create a random resource group to reduce likelihood of conflict with
+# other users.
+
+BASE %>%
+  paste0("my_dsvm_", .,"_rg_", ABR) %T>%
+  {sprintf("Resource group:\t\t%s", .) %>% cat("\n")} ->
+RG
+
+#RG<-"R_control"
+
+# Include the random BASE in the hostname to reducely likelihood of
+# conflict.
+
+BASE %>%
+  paste0("my", .) %T>%
+  {sprintf("Hostname:\t\t%s", .) %>% cat("\n")} ->
+HOST
+
+#HOST="dsvm"
+
+cat("\n")
+```
+
+```{r, connect, eval=TRUE}
+# Connect to the Azure subscription and use this as the context for
+# our activities.
+
+context <- createAzureContext(tenantID=TID, clientID=CID, authKey=KEY)
+
+# Check if the resource group already exists. Take note this script
+# will not remove the resource group if it pre-existed.
+
+rg_pre_exists <- existsRG(context, RG, LOC)
+
+# Check that it now exists.
+
+cat("Resource group", RG, "at", LOC,
+    ifelse(!existsRG(context, RG, LOC), "does not exist.\n", "exists.\n"), "\n")
+```
+
+# Create a Resource Group
+
+Create the resource group within which all resources we create will be
+grouped.
+
+```{r, create resource group, eval=TRUE}
+# Create a new resource group into which we create the VMs and related
+# resources. Resource group name is RG.  Note that to create a new
+# resource group one needs to add access control of Active Directory
+# application at subscription level.
+
+if (! rg_pre_exists)
+{
+  azureCreateResourceGroup(context, RG, LOC) %>% cat("\n\n")
+}
+
+# Check that it now exists.
+
+cat("Resource group", RG, "at", LOC,
+    ifelse(!existsRG(context, RG, LOC), "does not exist.\n", "exists.\n"), "\n")
+```
+
+# Deploy a Linux Data Science Virtual Machine
+
+## DSVM deployment
+
+Create the actual Linux DSVM with public-key based authentication
+method. Name, username, and size can also be configured.
+
+We can check the available VM sizes within the region by using
+`getVMSizes()`. Different sizes will cost differently, and the
+detailed information can be checked on [Azure
+website](https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-sizes). The
+default VM size for deployment is chosen for by enhanced computation
+performance. See the documentation for deployDSVM() for the actual
+default.
+
+```{r, eval=TRUE}
+# List the available VM sizes. May differ with location of the data centre.
+
+getVMSizes(context, LOC) %>%
+  set_names(c("Size", "Cores", "DiskGB", "RAM GB", "Disks"))
+
+# The default size.
+
+formals(deployDSVM)$size
+
+# Choose a size to suit
+
+SIZE <- "Standard_D1_v2" # 1 Core, 3.5 GB RAM,  50 GB SSD,  $80
+#SIZE <- "Standard_D3_v2" # 4 Cores, 14 GB RAM, 200 GB SSD, $318
+
+# The default operating system.
+
+formals(deployDSVM)$os
+```
+
+The following code deploys a Linux DSVM which will take a few minutes.
+
+```{r, deploy, eval=TRUE}
+# Create the required Linux DSVM - generally 4 minutes.
+
+ldsvm <- deployDSVM(context, 
+                    resource.group = RG,
+                    location       = LOC,
+                    hostname       = HOST,
+                    username       = USER,
+                    size           = SIZE,
+                    pubkey         = PUBKEY)
+ldsvm
+
+operateDSVM(context, RG, HOST, operation="Check")
+
+azureListVM(context, RG)
+```
+
+Prove that the deployed DSVM exists.
+
+```{r, prove exists, eval=TRUE}
+
+# Send a simple system() command across to the new server to test its
+# existence. Expect a single line with an indication of how long the
+# server has been up and running.
+
+# NOTE this must be done after a while since even though deployment is
+# reported there is a small delay before actually available.
+
+Sys.sleep(20)
+
+ssh <- paste("ssh -q",
+             "-o StrictHostKeyChecking=no",
+             "-o UserKnownHostsFile=/dev/null",
+             ldsvm)
+
+cmd <- paste(ssh, "uptime")
+cmd
+
+system(cmd, intern=TRUE)
+```
+
+## Some Standard Setup --- Optional
+
+We can install some useful tools on a fesh server. Note that the
+Ubuntu server will still be running some background scripts as part of
+its own setup so if there are lock error messages (could not get lock)
+from the following commands then simply try again in a short while. We
+also update the operating system here though because of a bad console
+interaction from the msodbcsql package asking about licensing we have
+to do the distupgrade through a terminal so we need to log on to the
+server through the secure shell and manually run that command.  We
+then reboot the server so that, for example, kernel updates, take
+effect.
+
+```{r, useful tools, eval=TRUE}
+system(paste(ssh, "sudo locale-gen 'en_AU.UTF-8'"))
+system(paste(ssh, "sudo apt-get -y install wajig"))
+system(paste(ssh, "wajig install -y lsb htop"))
+system(paste(ssh, "lsb_release -idrc"))
+system(paste(ssh, "wajig update"))
+system(paste(ssh, "wajig distupgrade -y"))
+system(paste(ssh, "sudo reboot"))
+Sys.sleep(20)
+system(paste(ssh, "uptime"))
+```
+
+An alternative for this post-deployment system configuration is 
+`addExtensionDSVM` function, which is detailed in vignette [11Exend.md](https://github.com/Azure/AzureDSVM/blob/master/vignettes/11Extend.Rmd).
+
+## Configuration for Microsoft R Server.
+
+Since version 9, Microsoft R Server offers methods in the package of `mrsdeploy`
+for convenient interaction with R session on a remote instance where MRS is 
+installed and properly configured. 
+
+To enable such interaction, a [one-box configuration](https://docs.microsoft.com/en-us/r-server/install/operationalize-r-server-one-box-config) is needed. One-box configuration on a Linux DSVM with
+key-based authentication methdod can be achieved via `mrsOneBoxConfiguration`
+function.
+
+```{r, eval=FALSE}
+mrsOneBoxConfiguration(context,
+                       resource.group=RG,
+                       location=LOC,
+                       hostname=HOST, 
+                       username=USER, 
+                       password=PASSWORD)
+```
+
+NOTE the passowrd here refers to password used for creating remote session with
+`mrsdeploy`. Default user name for `mrsdeploy` is "admin". More details about
+how to use `mrsdeploy` for remote interaction can be found [here](https://docs.microsoft.com/en-us/r-server/r/how-to-execute-code-remotely).
+
+# Deploy a Windows Data Science Virtual Machine - Optional
+
+deployDSVM() also supports deployment of Windows DSVM, which can be
+achieved by setting the argument of `os` to "Windows". The deployment
+will take approximately 10 minutes. One can use Remote Desktop to
+verify the success of deployment and use the virtual machine in a
+remote desktop environment.
+
+```{r, eval=FALSE}
+wdsvm <- deployDSVM(context,
+                    resource.group=RG,
+                    location=LOC,
+                    hostname="xxxx",
+                    username=USER,
+                    os="Windows",
+                    authen="Password",
+                    password=PASSWORD)
+
+wdsvm
+```
+
+# Optional Stop
+
+It is always a good practice to stop DSVMs after using them to avoid
+any unnecessary cost.
+
+```{r, eval=TRUE}
+operateDSVM(context, RG, HOST, operation="Stop")
+```
+
+# Optional Cleanup
+
+Once we have finished with the server we can delete it and all of its
+related resources.
+  
+```{r, optionally_delete_resource_group, eval=TRUE}
+# Delete the resource group now that we have proved existence. There
+# is probably no need to wait. Only delete if it did not pre-exist
+# this script. Deletion takes 10 minutes or more.
+
+a<-if (! rg_pre_exists)
+  azureDeleteResourceGroup(context, RG)
+```
+
+
+```{r}
+source("~/CloudComputing/10_Secrets/telegram_botDJR.R")
+text<-(paste(a,"Resource Group",RG,"shut down"))
+bot$sendMessage(text)
+```
+
+Once deleted we are consuming no more.
