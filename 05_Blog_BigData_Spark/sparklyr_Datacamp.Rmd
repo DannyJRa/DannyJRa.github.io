@@ -1,0 +1,247 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE)
+```
+
+## Prep
+### Add User Library
+```{r}
+.libPaths( c( .libPaths(), "/data/mlserver/9.2.1/libraries/RServer","~/R/x86_64-pc-linux-gnu-library/3.3" ))
+```
+
+
+
+##Sparklyr
+
+R lets you write data analysis code quickly. With a bit of care, you can also make your code easy to read, which means that you can easily maintain your code too. In many cases, R is also fast enough at running your code.
+
+Unfortunately, R requires that all your data be analyzed in memory (RAM), on a single machine. This limits how much data you can analyze using R. There are a few solutions to this problem, including using Spark.
+
+Spark is an open source cluster computing platform. That means that you can spread your data and your computations across multiple machines, effectively letting you analyze an unlimited amount of data. The two technologies complement each other strongly. By using R and Spark together you can write code fast and run code fast!
+
+sparklyr is an R package that lets you write R code to work with data in a Spark cluster. It has a dplyr interface, which means that you can write (more or less) the same dplyr-style R code, whether you are working with data on your machine or on a Spark cluster.
+
+## Install spark
+
+```{r}
+spark_install()
+```
+
+
+
+```{r}
+
+# Load sparklyr
+library(sparklyr)
+
+# Connect to your Spark cluster
+spark_conn <- spark_connect("local")
+
+# Print the version of Spark
+spark_version(spark_conn)
+
+# Disconnect from Spark
+#spark_disconnect(spark_conn)
+```
+ You can see a list of all the data frames stored in Spark using src_tbls(), which simply takes a Spark connection argument (x).
+```{r}
+# Load dplyr
+library(dplyr)
+
+# Explore track_metadata structure
+str(track_metadata)
+
+# Connect to your Spark cluster
+spark_conn <- spark_connect("local")
+
+# Copy track_metadata to Spark
+track_metadata_tbl <- copy_to(spark_conn, track_metadata)
+
+# List the data frames available in Spark
+src_tbls(spark_conn)
+
+```
+
+
+### Big data, tiny tibble
+In the last exercise, when you copied the data to Spark, copy_to() returned a value. This return value is a special kind of tibble() that doesn't contain any data of its own. To explain this, you need to know a bit about the way that tidyverse packages store data. Tibbles are usually just a variant of data.frames that have a nicer print method. However, dplyr also allows them to store data from a remote data source, such as databases, and – as is the case here – Spark. For remote datasets, the tibble object simply stores a connection to the remote data. This will be discussed in more detail later, but the important point for now is that even though you have a big dataset, the size of the tibble object is small.
+
+On the Spark side, the data is stored in a variable called a DataFrame. This is a more or less direct equivalent of R's data.frame variable type. (Though the column variable types are named slightly differently – for example numeric columns are called DoubleType columns.) Throughout the course, the term data frame will be used, unless clarification is needed between data.frame and DataFrame. Since these types are also analogous to database tables, sometimes the term table will also be used to describe this sort of rectangular data.
+
+Calling tbl() with a Spark connection, and a string naming the Spark data frame will return the same tibble object that was returned when you used copy_to().
+
+A useful tool that you will see in this exercise is the object_size() function from the pryr package. This shows you how much memory an object takes up.
+
+```{r}
+# Print 5 rows, all columns
+print(track_metadata_tbl, n = 5, width = Inf)
+
+# Examine structure of tibble
+str(track_metadata_tbl)
+
+# Examine structure of data
+glimpse(track_metadata_tbl)
+```
+##Dyplr
+###Select
+
+If your dataset has thousands of columns, and you want to select a lot of them, then typing the name of each column when you call select() can be very tedious. Fortunately, select() has some helper functions to make it easy to select multiple columns without typing much code.
+
+These helpers include starts_with() and ends_with(), that match columns that start or end with a certain prefix or suffix respectively.
+
+```{r}
+# track_metadata_tbl has been pre-defined
+track_metadata_tbl
+
+track_metadata_tbl %>%
+  # Select columns starting with artist
+  select(starts_with("artist"))
+
+track_metadata_tbl %>%
+  # Select columns ending with id
+  select(ends_with("id"))
+```
+
+A more general way of matching columns is to check if their names contain a value anywhere within them (rather than starting or ending with a value). As you may be able to guess, you can do this using a helper named contains().
+
+```{r}
+# track_metadata_tbl has been pre-defined
+track_metadata_tbl
+
+track_metadata_tbl %>%
+  # Select columns containing ti
+  select(contains("ti"))
+
+track_metadata_tbl %>%
+  # Select columns matching ti.?t
+  select(matches("ti.?t"))
+```
+
+Distinct
+
+```{r}
+track_metadata_tbl %>%
+  # Only return rows with distinct artist_name
+  distinct(artist_name)
+```
+
+
+### Filter
+
+ Secondly, sparklyr converts your dplyr code into SQL database code before passing it to Spark. That means that only a limited number of filtering operations are currently supported. For example, you can't filter character rows using regular expressions with code like
+
+a_tibble %>%
+  filter(grepl("a regex", x))
+The help page for translate_sql() describes the functionality that is available. #
+
+###Arrange
+
+### Mutate
+
+### Summarize()
+
+
+ The base-R function for this is table(); that isn't supported in sparklyr since it doesn't conform to the tidyverse philosophy of keeping everything in tibbles. Instead, you must use count()
+ 
+```{r}
+track_metadata_tbl %>%
+  # Count the artist_name values
+  count(artist_name, sort = TRUE) %>%
+  # Restrict to top 20
+  top_n(20)
+```
+ 
+ 
+## Collecting data back from Spark
+ 
+```{r}
+results <- track_metadata_tbl %>%
+  # Filter where artist familiarity is greater than 0.9
+  filter(artist_familiarity > 0.9)
+
+# Examine the class of the results
+class(results)
+
+# Collect your results
+collected <- results %>%
+  collect()
+
+# Examine the class of the collected results
+class(collected)
+```
+ 
+## Intermediate results
+
+
+The pipe operator is really nice for chaining together data manipulation commands, but in general, you can't do a whole analysis with everything chained together. For example, this is an awful practice, since you will never be able to debug your code.
+
+final_results <- starting_data %>%
+  # 743 steps piped together
+  # ... %>%
+  collect()
+That gives a dilemma. You need to store the results of intermediate calculations, but you don't want to collect them because it is slow. The solution is to use compute() to compute the calculation, but store the results in a temporary data frame on Spark. Compute takes two arguments: a tibble, and a variable name for the Spark data frame that will store the results.
+
+```{r}
+computed <- track_metadata_tbl %>%
+  # Filter where artist familiarity is greater than 0.8
+  filter(artist_familiarity > 0.8) %>%
+  # Compute the results
+  compute("familiar_artists")
+
+# See the available datasets
+src_tbls(spark_conn)
+
+# Examine the class of the computed results
+class(computed)
+```
+
+
+## SQL
+
+
+Advanced Selection II: The SQL
+As previously mentioned, when you use the dplyr interface, sparklyr converts your code into SQL before passing it to Spark. Most of the time, this is what you want. However, you can also write raw SQL to accomplish the same task. Most of the time, this is a silly idea since the code is harder to write and harder to debug. However, if you want your code to be portable – that is, used outside of R as well – then it may be useful. For example, a fairly common workflow is to use sparklyr to experiment with data processing, then switch to raw SQL in a production environment. By writing raw SQL to begin with, you can just copy and paste your queries when you move to production.
+
+SQL queries are written as strings, and passed to dbGetQuery() from the DBI package. The pattern is as follows.
+
+```{r}
+# Write SQL query
+query <- "SELECT * FROM track_metadata WHERE year < 1935 AND duration > 300"
+
+# Run the query
+(results <- dbGetQuery(spark_conn, query))
+```
+
+## Merges
+
+as like dyplr
+
+# Spark Feature Transformations FT_
+
+
+## Transforming continuous variables to logical
+```{r}
+# track_metadata_tbl has been pre-defined
+track_metadata_tbl
+
+hotttnesss <- track_metadata_tbl %>%
+  # Select artist_hotttnesss
+  select(artist_hotttnesss) %>%
+  # Binarize to is_hottt_or_nottt
+  ft_binarizer("artist_hotttnesss", "is_hottt_or_nottt", threshold = 0.5) %>%
+  # Collect the result
+  collect() %>%
+  # Convert is_hottt_or_nottt to logical
+  mutate(is_hottt_or_nottt = as.logical(is_hottt_or_nottt))
+
+# Draw a barplot of is_hottt_or_nottt
+ggplot(hotttnesss, aes(is_hottt_or_nottt)) +
+  geom_bar()
+```
+
+# Spark Machine Learning ML_
+

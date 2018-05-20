@@ -9,7 +9,7 @@
         "publicIpAddresses": [
           {
             "id": "/subscriptions/4042f432-12df-489f-82cd-b13cc6213e00/resourceGroups/DataScience/providers/Microsoft.Network/publicIPAddresses/DataScience-ip",
-            "ipAddress": "52.173.145.168",
+            "ipAddress": "40.113.221.55",
             "ipAllocationMethod": "Dynamic",
             "name": "DataScience-ip",
             "resourceGroup": "DataScience"

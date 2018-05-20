@@ -12,7 +12,7 @@ geometry: margin = 1.2in
 fontsize: 10pt
 always_allow_html: yes
 ---
-
+d
 ```{r setup, include=FALSE}
 # Time of computation below each chunk
 knitr::knit_hooks$set(timeit = local({
@@ -256,7 +256,7 @@ ip<-yelp_flat4$ipAddress
 
 
 ```{r}
-#ip="52.173.255.5"
+ip="23.100.82.85"
 ssh <- paste0("sshpass -p .oberstdorf123 ",
   "ssh -q",
              " -o StrictHostKeyChecking=no",
@@ -264,6 +264,15 @@ ssh <- paste0("sshpass -p .oberstdorf123 ",
              " insider@",
              ip)
 ```
+
+
+
+
+
+
+
+
+
 
 
 
@@ -303,6 +312,12 @@ cmd
 b<-system(cmd, intern=TRUE)
 ```
 
+```{r}
+cmd <- paste(ssh, "sudo umount /dev/sdd")
+cmd
+
+b<-system(cmd, intern=TRUE)
+```
 
 
 
@@ -316,13 +331,48 @@ b<-system(cmd, intern=TRUE)
 
 
 
+```{r}
+system(paste(ssh, "mkdir /home/insider/SharedDrive"))
+
+system(paste(ssh, "sudo mount -t cifs //datasciencediag874.file.core.windows.net/insidedatascience /home/insider/SharedDrive/ -o vers=3.0,username=datasciencediag874,password=jpTy7ZglJhS+Ckbk7oK+tX6AF9OM7X7QSuMi1yqM8pt1oujDznPX78HedAc16Gg+O3Rf84N61PC0qjZWnnzhDg==,dir_mode=0777,file_mode=0777,sec=ntlmssp"))
 
 
 
 
+```
 
 
+```{r}
+cmd <- paste(ssh, "curl https://rclone.org/install.sh | sudo bash")
+cmd
 
+b<-system(cmd, intern=TRUE)
+```
+
+sshpass -p 'password' scp file.tar.gz root@xxx.xxx.xxx.194:/backup
+
+# Copy files with scp
+works :-)
+scp /home/rstudio/.config/rclone/rclone.conf  insider@23.100.85.2:/home/insider/.config/rclone/
+
+```{r}
+file="/home/rstudio/.config/rclone/rclone.conf"
+folderTo=":/home/insider/.config/rclone/"
+ssh_scp <- paste0("sshpass -p .oberstdorf123 ",
+  "scp ",file," insider@",ip,folderTo)
+```
+
+ERROR: Host key verification failed:
+
+```{r}
+cmd <- ssh_scp
+
+b<-system(cmd, intern=TRUE)
+```
+
+remote
+inside-datascience.centralus.cloudapp.azure.com
+/home/insider/.config/rclone/rclone.conf
 
 ## Option1: Stop VM
 It is always a good practice to stop DSVMs after using them to avoid
@@ -336,7 +386,7 @@ operateDSVM(context, RG, HOST, operation="Start")
 
 Once we have finished with the server we can delete it and all of its
 related resources.
-  
+
 
 ```{r, optionally_delete_resource_group, eval=TRUE}
 
