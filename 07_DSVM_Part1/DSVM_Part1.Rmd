@@ -37,7 +37,7 @@ In this article, I will adopt the tutorial to needs and learn how to use Azure (
 10. Install additional tools on your virtual machine
 
 
-# 1. Explore data and develop models locally on the DSVM using RStudio or Python
+#1. Explore data and develop models locally on the DSVM using RStudio or Python
 
 ## Using RStudio Server
 
