@@ -25,7 +25,7 @@ sudo apt-get install libudunits2-dev
 
 # Introduction
 
-<<<<<<< HEAD
+<<<<<<<< HEAD
 Though not specifically designed for it, R has developed into a powerful tool for network analysis. The strength of R in comparison to stand-alone network analysis software. There is an ever growing range of packages designed to make R a complete network analysis tool. Significant network analysis packages for R include the [statnet suite](http://www.statnet.org) of packages and [`igraph`](http://igraph.org).  In addition, [Thomas Lin Pedersen](http://www.data-imaginist.com) has recently released the [`tidygraph`](https://cran.r-project.org/web/packages/tidygraph/index.html) and [`ggraph`](https://cran.r-project.org/web/packages/ggraph/index.html) packages that leverage the power of `igraph` in a manner consistent with the [tidyverse](http://www.tidyverse.org) workflow. 
 =======
 Though not specifically designed for it, R has developed into a powerful tool for network analysis. The strength of R in comparison to stand-alone network analysis software. There is an ever growing range of packages designed to make R a complete network analysis tool. Significant network analysis packages for R include the [statnet suite](http://www.statnet.org) of packages and [`igraph`](http://igraph.org). In addition, [Thomas Lin Pedersen](http://www.data-imaginist.com) has recently released the [`tidygraph`](https://cran.r-project.org/web/packages/tidygraph/index.html) and [`ggraph`](https://cran.r-project.org/web/packages/ggraph/index.html) packages that leverage the power of `igraph` in a manner consistent with the [tidyverse](http://www.tidyverse.org) workflow. 
