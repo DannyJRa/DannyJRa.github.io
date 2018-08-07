@@ -77,7 +77,7 @@ yelp_flat4 <- purrr::flatten(yelp_flat3)
 Or you can have set-up a static ip-Adress
 ```{r,eval=FALSE}
 #static ip e.g. 
-ip="23.100.82.85"
+#ip="23.100.82.85"
 ```
 
 
