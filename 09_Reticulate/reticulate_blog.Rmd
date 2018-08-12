@@ -18,7 +18,13 @@ os$getcwd()
 Source: https://stackoverflow.com/questions/50085788/qt-platform-plugin-issue-rstudio
 ```{python}
 import os
-os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/Program Files (x86)/Microsoft Visual Studio/Shared/Anaconda3_64/Library/plugins/platforms'
+
+os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/Users/danny.rasch/Anaconda/Library/plugins/platforms'
+
+
+#os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/Program Files (x86)/Microsoft Visual #Studio/Shared/Anaconda3_64/Library/plugins/platforms'
+
+
 ```
 
 

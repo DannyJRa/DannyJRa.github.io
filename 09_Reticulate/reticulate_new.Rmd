@@ -7,17 +7,24 @@ output: html_document
 ```{r}
 
 library(reticulate)
-#use_python("C:/Program Files (x86)/Microsoft Visual Studio/Shared/Anaconda3_64/python.exe")
+#Define python environment
 use_python("C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python36_64python.exe")
-#use_python("C:/Users/insid/Anaconda3/python.exe")
+
+
+#Test
 os <- import("os")
-#os$chdir("tests")
-os$getcwd()
+default_path=os$getcwd()
 ```
 Source: https://stackoverflow.com/questions/50085788/qt-platform-plugin-issue-rstudio
 ```{python}
 import os
-os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/Program Files (x86)/Microsoft Visual Studio/Shared/Anaconda3_64/Library/plugins/platforms'
+#BE
+os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/Users/danny.rasch/Anaconda/Library/plugins/platforms'
+
+
+#os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/Program Files (x86)/Microsoft Visual #Studio/Shared/Anaconda3_64/Library/plugins/platforms'
+
+
 ```
 
 
@@ -37,6 +44,37 @@ ax.set(xlabel='time (s)', ylabel='voltage (mV)',
 ax.grid()
 
 plt.show()
+```
+
+
+```{python}
+import pandas as pd
+path="C:/OneDrive/7_DataScience/21_EC2/01_Github/DannyJRa/09_Reticulate/Chapter2/"
+filename="Chapter 2\\titanic3.csv"
+fullpath=r.default_path+'\\'+filename
+data=pd.read_csv(fullpath)
+print(data.head())
+```
+
+
+
+```{python}
+import pandas as pd
+path="C:/OneDrive/7_DataScience/21_EC2/01_Github/DannyJRa/09_Reticulate/Chapter2/"
+filename="Chapter 2\\titanic3.csv"
+fullpath=os.path.join(r.default_path,filename)
+data=pd.read_csv(fullpath)
+print(data.head())
+print(data.columns.values)
+print(data.dtypes)
+
+```
+```{python,echo=TRUE}
+print(pd.isnull(data['body']).values.ravel().sum())
+```
+
+```{r}
+test<-py$data
 ```
 
 #Sourcing Python scripts
@@ -84,7 +122,6 @@ Here’s an R Markdown document that demonstrates this:
 ```{python}
 
 import os
-#os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = #'C:/Users/myusername/AppData/Local/Continuum/Anaconda3/Libra#ry/plugins/platforms'
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -113,17 +150,14 @@ You can analagously access R objects within Python chunks via the r object. For 
 
 ```{r}
 library(tidyverse)
-data<-c(1,2,3)
+flights <- read_csv("flights.csv") %>% 
+  filter(dest=="ORD") %>% 
+  select(carrier, dep_delay,arr_delay) %>% 
+  na.omit()
 ```
 
-```{python}
-print(r.data.head())
-```
 
 ```{python}
-print(r.data.head())
+print(r.flights.head())
 ```
 
-```{python}
-print(r.data.head())
-```
