@@ -321,10 +321,4 @@ bs.find_all(lambda tag: tag.get_text() == 'Or maybe he\'s only resting?')
 bs.find_all('', text='Or maybe he\'s only resting?')
 ```
 #Chapter 3
-```{python}
 
-```
-
-```{python}
-
-```
