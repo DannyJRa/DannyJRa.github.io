@@ -3,7 +3,6 @@ title: "Untitled"
 output: html_document
 ---
 
-#Testing reticulate 
 ```{r}
 
 library(reticulate)
