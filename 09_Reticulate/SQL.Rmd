@@ -1,0 +1,43 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup}
+## Loading required package: 
+library('RPostgreSQL')
+## Create db connection
+db = dbConnect(dbDriver("PostgreSQL"), user="postgres", password="datascience64",
+                host="localhost", port=5432, dbname="postgres")
+##Set as default for SQL chunks
+knitr::opts_chunk$set(connection = "db")
+```
+
+```{r}
+
+dbListTables(con)
+#dbListConnections(con)
+```
+
+```{sql}
+SELECT * FROM pg_catalog.pg_tables;
+```
+
+
+```{r}
+
+library(reticulate)
+#Define python environment
+use_python("C:/Users/danny.rasch/Anaconda/python.exe")
+
+
+#Test
+os <- import("os")
+default_path=os$getcwd()
+```
+
+Chapter 6: Storing Data
+```{python}
+import psycopg2
+conn = psycopg2.connect("host=localhost dbname=postgres user=postgres password=datascience64")
+```
