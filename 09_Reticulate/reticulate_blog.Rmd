@@ -5,7 +5,7 @@ output: html_document
 
 
 ```{r}
-
+#test
 library(reticulate)
 #Define python environment
 use_python("C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python36_64python.exe")
@@ -54,6 +54,7 @@ def read_flights(file):
 Then you can source the script and call the read_flights() function as follows:
 
 ```{r}
+library(reticulate)
 source_python("flights.py")
 flights <- read_flights("flights.csv")
 
