@@ -14,6 +14,7 @@ use_python("C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python36_64pyt
 #Test
 os <- import("os")
 os$getcwd()
+os$getcwd()
 ```
 Source: https://stackoverflow.com/questions/50085788/qt-platform-plugin-issue-rstudio
 ```{python}
