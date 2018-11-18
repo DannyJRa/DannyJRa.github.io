@@ -8,18 +8,20 @@ output: html_document
 
 library(reticulate)
 #Define python environment
-use_python("C:/Users/danny.rasch/Anaconda/python.exe")
+#py_config()
+use_python("C:/ProgramData/Anaconda3/python.exe",required=T)
 
 
 #Test
 os <- import("os")
 default_path=os$getcwd()
+print(default_path)
 ```
 Source: https://stackoverflow.com/questions/50085788/qt-platform-plugin-issue-rstudio
 ```{python}
 import os
 #BE
-os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/Users/danny.rasch/Anaconda/Library/plugins/platforms'
+os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/ProgramData/Anaconda3/Library/plugins/platforms'
 
 
 #os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/Program Files (x86)/Microsoft Visual #Studio/Shared/Anaconda3_64/Library/plugins/platforms'
@@ -49,7 +51,7 @@ plt.show()
 
 ```{python}
 import pandas as pd
-path="C:/OneDrive/7_DataScience/21_EC2/01_Github/DannyJRa/09_Reticulate/Chapter2/"
+path="R:/7_DataScience/21_EC2/01_Github/DannyJRa/09_Reticulate/Chapter2/"
 filename="Chapter 2\\titanic3.csv"
 fullpath=r.default_path+'\\'+filename
 data=pd.read_csv(fullpath)
