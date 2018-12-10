@@ -1,0 +1,29 @@
+---
+title: "timung"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::knit_hooks$set(timeit = local({
+  now = NULL
+  function(before, options) {
+    if (before) {
+      now <<- Sys.time()
+    } else {
+      res = difftime(Sys.time(), now)
+      now <<- NULL
+      # use options$label if you want the chunk label as well
+      paste('Time for this code chunk:', as.character(res))
+    }
+  }})
+)
+```
+
+Test it:
+
+```{r, timeit = TRUE}
+Sys.sleep(2)
+```
+
+
+

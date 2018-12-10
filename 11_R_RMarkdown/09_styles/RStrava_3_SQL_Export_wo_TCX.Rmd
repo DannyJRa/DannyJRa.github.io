@@ -1,0 +1,302 @@
+---
+title: "Untitled"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#STRAVA
+
+#Load token
+
+```{r}
+library(rStrava)
+load("Strava_stoken.Rdata")
+```
+
+#Load data
+## Load stream from Strava
+
+```{r}
+i=4
+```
+
+
+#Summary of run
+
+##Extract all activities
+
+```{r}
+# get activities, get activities by location, plot
+my_acts <- get_activity_list(stoken)
+```
+
+
+```{r}
+
+
+library(tidyverse)
+library(tibble)
+library(lubridate)
+my_acts_df<-my_acts %>% {
+  tibble(
+       id = map_int(., "id")
+  )
+}
+
+
+run_sum=compile_activity(my_acts[i])
+run_id=my_acts_df$id[i]
+run_distance=run_sum$distance
+run_start=run_sum$start_date
+
+```
+
+
+
+```{r}
+
+
+id=run_id
+DATE=date(run_sum$start_date)
+
+
+
+types=c("time","latlng", "distance", "altitude", "velocity_smooth", "heartrate", "cadence", "watts", "temp", "moving", "grade_smooth")
+stream=get_streams(stoken, id, request = "activities",
+												 types, resolution = NULL, series_type = NULL)
+
+
+library(tidyverse)
+library(magrittr)
+library(purrr)
+
+#glimpse(stream)
+
+
+df<-stream %>% {
+    tibble(
+       lat = map_dbl(stream[[1]]$data, 1),
+       long = map_dbl(stream[[1]]$data, 2),
+       time = map_dbl(stream[[2]]$data, 1)/60,
+        distance = map_dbl(stream[[3]]$data, 1),
+      altitude = map_dbl(stream[[4]]$data, 1),
+      moving = map_dbl(stream[[6]]$data, 1)
+  )
+}
+glimpse(df)
+
+library(lubridate)
+
+run<-df %>% 
+  mutate(time_delta=time) %>% 
+  mutate(time=ymd_hms(run_start)+time*60) %>% 
+  mutate(longitude=long,latitude=lat) %>% 
+  mutate(speed=time_delta/distance) %>% 
+  mutate(altitude=100)
+
+
+run<-run %>% 
+  select(time,latitude,longitude,altitude,distance,speed)
+
+
+```
+
+### Get elevation from google
+
+```{r}
+# save the key, do only once
+#cat("google_key=AIzaSyDI68jtXZOrUjN32-tMiCvRd_-cI14gq94\n",
+#    file=file.path(normalizePath("~/"), ".Renviron"),
+#    append=TRUE)
+
+# retrieve the key, restart R if not found
+mykey <- Sys.getenv("google_key")
+```
+
+
+```{r}
+get_Google_Elevation <- function(lat, long, key){
+        # packages
+        require(httr)
+        require(jsonlite)
+        require(dplyr)
+        
+        # setup
+        Ndata <- length(lat)
+        base_int <- 40 # max roughly 40 data points per request
+        Ncells <- ceiling(Ndata/base_int) 
+        baseURL <- "https://maps.googleapis.com/maps/api/elevation/json?locations="
+        
+        # conversion to character vector
+        lat_long_str <- character(Ncells)
+        for (i in 1:(Ncells-1)){
+                lat_long_str[i] <- 
+                        paste(lat[((i-1)*base_int+1):(i*base_int)],
+                              long[((i-1)*base_int+1):(i*base_int)],
+                              sep = ",", collapse = "|")
+        }
+        lat_long_str[Ncells] <- paste(lat[-(1:(i*base_int))],
+                                  long[-(1:(i*base_int))],
+                                  sep = ",", collapse = "|")
+        
+        # request to Google Elevation API
+        elev <- data.frame()
+        for (i in 1:Ncells){
+                # Sys.sleep(0.1)  # pause
+                url <- paste0(baseURL,lat_long_str[i],"&key=",key)
+                tryCatch({
+                        json <- fromJSON(
+                                content(GET(url), as = "text"), 
+                                simplifyDataFrame = T)
+                        cat("Request",i,"of",Ncells,
+                            "- Status =",json$status,"\n")
+                        if(json$status == "OK"){
+                                gdata <- as.data.frame(json$results)
+                                gdata <- tbl_df(data.frame(gdata$location, 
+                                                           gdata$elevation, 
+                                                           gdata$resolution))
+                                elev <- bind_rows(elev, gdata)
+                        }
+                }, 
+                error = function(e) cat("Error during request", i)
+                )
+        }
+        
+        # end
+        colnames(elev) <- c("latitude","longitude","elevation","resolution")
+        return(elev)
+}
+```
+
+
+
+
+```{r}
+el<-get_Google_Elevation(run$latitude, run$longitude, key=mykey)
+
+run<-run %>% 
+  mutate(altitude=el$elevation)
+```
+
+```{r}
+
+run<-run %>% mutate(cumsum = cumsum(distance))
+
+run<-run %>% mutate(km = distance%/%1000+1)
+#run2<-run1 %>% group_by(km)%>%
+#    summarise(avg_speed = mean(speed), 
+#              min_time = min(time), 
+#              max_time = max(time)) %>%
+#  mutate(t=(max_time-min_time)/60)
+
+
+```
+
+
+
+## Load TCX
+
+```{r}
+setwd("C:/OneDrive/7_DataScience/02_Visual Studio/1_Team Services/Fitness_Analytics/Fitness_Analytics/tackeR")
+library("trackeR")
+#Read tcx Data
+run <- readTCX(file = "Data/2017-11-26_Strava.TCX")
+#Attach heart rate
+runTr0 <- trackeRdata(run)
+```
+
+
+#Fitbit
+
+
+```{r pressure, echo=FALSE}
+# install.packages("devtools")
+#devtools::install_github("teramonagi/fitbitr")
+setwd("C:/OneDrive/7_DataScience/02_Visual Studio/1_Team Services/Fitness_Analytics/Fitness_Analytics/Fitbit")
+library(fitbitr)
+load("Fitbit_token.Rdata")
+```
+
+## Search for Heart Rate
+
+
+```{r}
+
+hr <- get_heart_rate_intraday_time_series(token, date=DATE, detail_level="1min")
+str(hr)
+plot(hr$value)
+library(ggplot2)
+p=ggplot(hr, aes(x=time, y=value)) + geom_line()
+p
+
+
+
+
+library(tidyverse)
+hr<-hr %>%
+  mutate(Date=DATE)
+```
+
+
+# Convert streams to zoo
+
+```{r merge}
+library(zoo)
+
+
+
+
+
+
+#COnvert HR
+FORMAT="%H:%M:%S"
+HR=read.zoo(hr[,1:2], format = FORMAT)
+
+
+HR=read.zoo(hr[,1:3], index = c(3,1))
+
+#Convert tcx
+FORMAT="%Y-%m-%dT%H:%M:%S"
+TCX=read.zoo(run[,1:2], format = FORMAT,FUN=as.POSIXct)
+TCX=read.zoo(run)
+
+#Combine
+f <- function(u) which.min(abs(as.numeric(index(HR)) - as.numeric(u)))
+ix <- sapply(index(TCX), f)
+NEW=cbind(TCX, y = coredata(HR)[ix])
+head(NEW)
+
+dim(run)
+dim(NEW)
+
+
+runNEW<- run %>%
+  mutate(heart.rate=NEW[,8])
+  
+
+
+#runTr1 <- trackeRdata(runNEW)
+Running<-runNEW
+
+
+```
+
+
+# Save to SQL
+
+```{r SQL connection, echo=FALSE}
+source("R:/5_IT/5_Secrets/SQL_docker_connection_home.R")
+print("SQl connection enabled")
+```
+
+```{r}
+Running_old<- dbReadTable(conn = con, name = 'Running')
+Running<-bind_rows(Running_old,Running)
+dbWriteTable(conn = con, name = 'Running', value = Running, overwrite = T)
+```

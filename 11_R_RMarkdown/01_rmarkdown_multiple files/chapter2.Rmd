@@ -1,0 +1,27 @@
+---
+title: "SQL"
+output:
+  html_document:
+    code_folding: hide
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    number_sections: yes
+geometry: margin = 1.2in
+fontsize: 10pt
+always_allow_html: yes
+---
+
+
+
+```{r, message=F, warning=F}
+library(tidyverse)
+```
+
+
+
+```{r}
+a=12
+```
+
+

@@ -1,0 +1,53 @@
+---
+title: "Untitled"
+output: html_document
+params:
+  minimum: 100
+  region: east
+  start: teat
+  data: results.csv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Including Plots
+
+Source: http://rmarkdown.rstudio.com/developer_parameterized_reports.html
+
+```{r pressure, echo=FALSE}
+
+a=1
+
+#minimum
+
+
+params$region
+
+```
+
+#####
+rmarkdown::render("MyDocument.Rmd", params = list(
+  region = "west",
+  start="start"
+))
+
+or as function
+renderMyDocument <- function(region, start) {
+  rmarkdown::render("MyDocument.Rmd", params = list(
+    region = region,
+    start = start
+  ))
+}
+
+```{r}
+
+```
+
+rmarkdown::render("rmarkdown_dynamicInput.Rmd", params = list(
+  region = "west",
+  start="start"
+))
+
