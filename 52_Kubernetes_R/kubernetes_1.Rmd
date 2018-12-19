@@ -99,4 +99,9 @@ library(googleKubernetesR)
 ```
 ## Or gcloud
 
+## Using
+```{r}
+library(googleKubernetesR)
+```
+## Or gcloud
 
