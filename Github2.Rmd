@@ -1,0 +1,41 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+#Check
+## Linux
+
+In the shell, enter:
+
+git config --global credential.helper 'cache --timeout=10000000'
+
+to store your password for ten million seconds or around 16 weeks, enough for a semester.
+
+
+SOURCE: http://happygitwithr.com/credential-caching.html
+## Load credential helper
+
+```{bash}
+git config --global credential.helper cache
+```
+### Commit first by terminal to save credentials
+
+
+# Commit all changes
+
+```{bash}
+git add -A
+git commit -m "commit DR"
+git push
+```
+
+
+
+```{r}
+source("~/02_CloudComputing/10_Secrets/telegram_botDJR.R")
+library(telegram)
+## Send some messages..
+bot$sendMessage('This is a commit')
+```
+
