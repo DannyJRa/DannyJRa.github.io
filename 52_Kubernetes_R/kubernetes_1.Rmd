@@ -1,12 +1,17 @@
 ---
 title: "Untitled"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 Source: https://medium.com/google-cloud/deploying-docker-images-to-google-cloud-using-kubernetes-engine-637af009e594
+[link](www.rstudio.com)
+***
+> block quote 
 
 # Requirements
 This post assumes that you already have a working docker image, that you can build and run on your local machine, and obviously a Google Cloud account with all of the necessary APIs activated, and the Google Cloud SDK installed on your machine. If all of that is in order, you are good to go!
@@ -15,7 +20,7 @@ Source: https://www.r-bloggers.com/how-to-deploy-a-predictive-service-to-kuberne
 
 # Fit the model
 We’ll fit a simple model for illustrative purposes, using the Boston housing dataset (which ships with R in the MASS package). To make the deployment process more interesting, the model we fit will be a random forest, using the randomForest package. This is not part of R, so we’ll have to install it from CRAN.
-```{r}
+```{r eval=F}
 data(Boston, package="MASS")
 install.packages("randomForest")
 library(randomForest)
@@ -30,7 +35,7 @@ saveRDS(bos_rf, "bos_rf.rds")
 
 # Scoring script for plumber
 Now that we have the model, we also need a script to obtain predicted values from it given a set of inputs:
-```{r}
+```{r eval=F}
 # save as bos_rf_score.R
 
 bos_rf <- readRDS("bos_rf.rds")
@@ -70,7 +75,7 @@ ENTRYPOINT ["R", "-e", \
     "pr <- plumber::plumb('/data/bos_rf_score.R'); \
     pr$run(host='0.0.0.0', port=8000)"]
     
-```{bash}
+```{bash eval=F}
 docker build -t myimage .
 ```
 
@@ -79,8 +84,26 @@ docker build -t myimage .
 #Push it to Google CLoud
 
 Before pushing it to Google Cloud, we must quickly tag our image with the necessary information that Google Cloud needs. Make sure you replace <PROJECT NAME> with the correct project ID in the Google Cloud dashboard. Issue:
-```{bash}
-docker tag myimage gcr.io/<PROJECT NAME>/myimage:v1
+```{bash eval=F}
+docker tag myimage gcr.io/virtual-machine-196412/myimage:v1
+```
+
+Bash in terminal
+
+```
+$docker login -u _json_key -p "$(cat OneDrive/7_DataScience/02_CloudComputing/X_Secrets/GCP/auth.json)" https://gcr.io
+```
+$docker login -u _json_key -p "$(cat OneDrive/7_DataScience/02_CloudComputing/X_Secrets/GCP/auth.json)" https://gcr.io
+
+
+
+```{bash eval=F}
+docker push gcr.io/virtual-machine-196412/myimage:v1
+```
+
+
+```{bash eval=F}
+gcloud docker — push gcr.io/virtual-machine-196412/myimage:v1
 ```
 
 Now if you head to your Google Cloud Console, and over to the Container Registry, you should see your new Docker image there. Good work!
@@ -94,14 +117,40 @@ In the panel on the right, you will see the option to ‘Expose’ your image to
 # Part 1 - Creating an R cluster
 
 ## Using
-```{r}
+```{r eval=F}
 library(googleKubernetesR)
 ```
 ## Or gcloud
 
 ## Using
-```{r}
+```{r eval=F}
 library(googleKubernetesR)
 ```
 ## Or gcloud
 
+
+Follow the [setup steps to authenticate with gcloud and kuberctl](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-cluster) then create your cluster via:
+
+This is a test. Here's some \LaTeX{}:
+
+
+
+
+
+gcloud container clusters create r-cluster --num-nodes=3
+…or if using googleKubernetesR :
+
+library(googleKubernetesR)
+
+## create a 3 node cluster called r-cluster with defaults
+createCluster(projectId = gcp_get_project(), zone = "europe-west3-b")
+You’ll need to wait a bit as it provisions all the VMs.
+
+Most of the below will use the terminal/shell for working rather than R, but in the future a lot of this may be possible via googleKubernetesR within an R session.
+
+Set up your shell to get the credentials for Kuberctl:
+
+gcloud container clusters get-credentials r-cluster
+And we are all set to start setting up this cluster for R jobs!
+
+Here is a screenshot from the web UI of what it should look like:
