@@ -1,0 +1,92 @@
+---
+output:
+  pdf_document:
+    number_sections: yes
+  html_document:
+    theme: cerulean
+    highlight: tango
+    code_folding: show
+    toc: yes
+    toc_float: yes
+geometry: margin = 1.2in
+fontsize: 10pt
+always_allow_html: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+knitr::knit_hooks$set(
+   error = function(x, options) {
+     paste('\n\n<div class="alert alert-danger">',
+           gsub('##', '\n', gsub('^##\ Error', '**Error**', x)),
+           '</div>', sep = '\n')
+   },
+   warning = function(x, options) {
+     paste('\n\n<div class="alert alert-warning">',
+           gsub('##', '\n', gsub('^##\ Warning:', '**Warning**', x)),
+           '</div>', sep = '\n')
+   },
+   message = function(x, options) {
+     paste('\n\n<div class="alert alert-info">',
+           gsub('##', '\n', x),
+           '</div>', sep = '\n')
+   }
+)
+```
+
+## Create Dockerfile
+
+## Add configuration files for your ShinyApp
+
+Within the Dockerfile, we already specified two configuration files. The first one shiny_server.conf adjust some ShinyServer configurations. For example, it specifies that user inputs come from port 80. If you want to know more about this file, refer to the official ShinyServer Documentation.
+
+The second file shiny-server.sh specifies the location of log-files.
+
+* Download shiny-server.conf (Adapted from  rstudio.com)
+
+* Download shiny-server.sh (Adapted from rocker-org)
+
+Add both files to the Docker_ShinyApp directory. 
+
+## Build the docker image
+
+Building the Docker Image is straightforward. Make sure you are in the Docker_ShinyApp directory with the Terminal and type in:
+
+
+```{bash eval=F}
+ls
+```
+
+
+```{bash eval=F}
+docker build -t my_shinyapp .
+```
+This process might take a couple of minutes as Docker will download the dedicated R and ShinyApp version, as well as all dependencies and packages.
+
+## Test run the docker image with your ShinyApp
+
+When this process is done, you can run your ShinyApp in Docker 
+```{bash eval=F}
+docker run -p 3839:80 my_shinyapp2
+```
+
+This command specifies, that Docker should start the image called My_ShinyApp and route port 80 from your browser to port 80 of your Docker container.
+
+Now, you can open the app with any browser by visiting http://localhost :
+
+> Insert Picture of App
+
+## Transfer the ShinyApp to a web server and deploy it online
+
+So far, your Docker Image runs on your local machine. In order to deploy it on a web server or another machine, you can either push it to DockerHub or save it as an archive file and share it privately.
+
+As there are many tutorials on how to push and pull Docker Images to and from DockerHub, I will rather describe how to save a copy of your image and transfer it to a web server without making it public via  DockerHub.
+
+To save your Docker Image as a tar-archive, you simply type into your terminal:[^1]
+
+> glcloud
+
+
+[^1]: Addopted from https://www.jessesadler.com/
