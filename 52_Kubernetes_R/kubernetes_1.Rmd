@@ -1,8 +1,8 @@
 ---
 title: "Untitled"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -131,16 +131,25 @@ library(googleKubernetesR)
 
 Follow the [setup steps to authenticate with gcloud and kuberctl](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-cluster) then create your cluster via:
 
-This is a test. Here's some \LaTeX{}:
-
-
 
 
 
 gcloud container clusters create r-cluster --num-nodes=3
 …or if using googleKubernetesR :
 
+Install via [github](https://github.com/RhysJackson/googleKubernetesR) 
+```{r eval=F}
+devtools::install_github("RhysJackson/googleKubernetesR")
+```
+
+```{r}
 library(googleKubernetesR)
+```
+### Authenticate with JSON file
+***
+```{r eval=F}
+k8s_auth(json = "client_secret.json")
+```
 
 ## create a 3 node cluster called r-cluster with defaults
 createCluster(projectId = gcp_get_project(), zone = "europe-west3-b")

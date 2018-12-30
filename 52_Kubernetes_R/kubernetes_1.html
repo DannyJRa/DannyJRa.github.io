@@ -463,9 +463,14 @@ pr$run(host=‘0.0.0.0’, port=8000)”]</p>
 <div id="or-gcloud-1" class="section level2">
 <h2>Or gcloud</h2>
 <p>Follow the <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-cluster">setup steps to authenticate with gcloud and kuberctl</a> then create your cluster via:</p>
-<p>This is a test. Here’s some {}:</p>
 <p>gcloud container clusters create r-cluster –num-nodes=3 …or if using googleKubernetesR :</p>
-<p>library(googleKubernetesR)</p>
+<pre class="r"><code>devtools::install_github(&quot;RhysJackson/googleKubernetesR&quot;)</code></pre>
+<pre class="r"><code>library(googleKubernetesR)</code></pre>
+<div id="authenticate-with-json-file" class="section level3">
+<h3>Authenticate with JSON file</h3>
+<hr />
+<pre class="r"><code>k8s_auth(json = &quot;client_secret.json&quot;)</code></pre>
+</div>
 </div>
 <div id="create-a-3-node-cluster-called-r-cluster-with-defaults" class="section level2">
 <h2>create a 3 node cluster called r-cluster with defaults</h2>
