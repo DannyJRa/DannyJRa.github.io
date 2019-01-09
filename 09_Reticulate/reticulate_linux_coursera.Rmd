@@ -1,0 +1,73 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+
+```{r}
+#testfsfs
+library(reticulate)
+
+### Then Matplotlib works
+matplotlib <- import("matplotlib")
+matplotlib$use("Agg", force = TRUE)
+########################################
+
+```
+
+
+
+
+```{python test}
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.figure()
+# subplot with 1 row, 2 columns, and current axis is 1st subplot axes
+plt.subplot(1, 2, 1)
+
+linear_data = np.array([1,2,3,4,5,6,7,8])
+
+plt.plot(linear_data, '-o')
+plt.show()
+
+```
+
+```{python}
+exponential_data = linear_data**2 
+
+
+# subplot with 1 row, 2 columns, and current axis is 2nd subplot axes
+plt.subplot(1, 2, 2)
+plt.plot(exponential_data, '-o')
+
+plt.figure()
+ax1 = plt.subplot(1, 2, 1)
+plt.plot(linear_data, '-o')
+# pass sharey=ax1 to ensure the two subplots share the same y axis
+ax2 = plt.subplot(1, 2, 2, sharey=ax1)
+plt.plot(exponential_data, '-x')
+plt.show()
+```
+```{python}
+
+plt.figure()
+ax1 = plt.subplot(1, 2, 1)
+plt.plot(linear_data, '-o')
+# pass sharey=ax1 to ensure the two subplots share the same y axis
+ax2 = plt.subplot(1, 2, 2, sharey=ax1)
+plt.plot(exponential_data, '-x')
+plt.show()
+```
+
+
+```{python}
+
+x=[1,2,4,5,6,3]
+print(x)
+
+```
+```{r}
+py$x
+```
+
