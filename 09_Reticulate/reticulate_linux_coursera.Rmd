@@ -71,3 +71,19 @@ print(x)
 py$x
 ```
 
+
+```{python}
+
+import numpy as np
+x = np.arange(1, 11)
+x
+
+x_row = x.reshape((1, -1))
+x_row
+x
+x_col = x[:, np.newaxis]
+x_col
+print(x_col)
+y=np.dot(x_col, x_row)
+print(y)
+```
