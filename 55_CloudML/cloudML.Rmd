@@ -1,0 +1,21 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+
+
+
+
+
+
+
+
+
+# Serverless ML with Google "CloudML"
+
+```{r}
+library(cloudml)
+#cloudml_train("/mnist/train.R")
+```
+
