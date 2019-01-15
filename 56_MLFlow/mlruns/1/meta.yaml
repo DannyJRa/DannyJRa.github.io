@@ -1,0 +1,4 @@
+artifact_location: /home/danny/DannyJRa.github.io/56_MLFlow/mlruns/1
+experiment_id: 1
+lifecycle_stage: active
+name: Test

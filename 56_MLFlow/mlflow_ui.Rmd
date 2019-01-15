@@ -1,0 +1,23 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(mlflow)
+mlflow_install()
+```
+```{r}
+mlflow_set_experiment("Test")
+```
+
+
+Then you can list view your experiments from MLflows user interface by running:
+```{r}
+mlflow_ui()
+```
+

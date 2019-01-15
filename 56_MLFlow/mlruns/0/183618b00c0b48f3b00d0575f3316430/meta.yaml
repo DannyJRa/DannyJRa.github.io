@@ -1,0 +1,14 @@
+artifact_uri: /home/danny/DannyJRa.github.io/56_MLFlow/mlruns/0/183618b00c0b48f3b00d0575f3316430/artifacts
+end_time: 1547589130824
+entry_point_name: ''
+experiment_id: 0
+lifecycle_stage: active
+name: ''
+run_uuid: 183618b00c0b48f3b00d0575f3316430
+source_name: test.py
+source_type: 4
+source_version: ac6924d036a412d5085f132d1b6d3ffd9245dc08
+start_time: 1547589130772
+status: 3
+tags: []
+user_id: danny
