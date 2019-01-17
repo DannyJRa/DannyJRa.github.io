@@ -167,5 +167,28 @@ mtcars_glm
 spark_disconnect(sc)
 ```
 
+### Using H20
+
+rsparkling is a CRAN package from H2O that extends sparklyr to provide an interface into Sparkling Water. For instance, the following example installs, configures and runs h2o.glm:
+```{r}
+library(rsparkling)
+library(sparklyr)
+library(dplyr)
+library(h2o)
+
+sc <- spark_connect(master = "local", version = "2.3.0")
+mtcars_tbl <- copy_to(sc, mtcars, "mtcars",overwrite = T)
+
+mtcars_h2o <- as_h2o_frame(sc, mtcars_tbl, strict_version_check = FALSE)
+
+mtcars_glm <- h2o.glm(x = c("wt", "cyl"), 
+                      y = "mpg",
+                      training_frame = mtcars_h2o,
+                      lambda_search = TRUE)
+
+
+mtcars_glm
+spark_disconnect(sc)
+```
 
 [^1]: Adopted from https://github.com/rstudio/sparklyr
