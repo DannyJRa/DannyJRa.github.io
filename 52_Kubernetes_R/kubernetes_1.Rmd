@@ -116,11 +116,90 @@ In the panel on the right, you will see the option to ‘Expose’ your image to
 
 # Part 1 - Creating an R cluster
 
-## Using
-```{r eval=F}
-library(googleKubernetesR)
+
+## Install Google Cloud SDK
+```{bash, eval=F}
+# Create environment variable for correct distribution
+export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+
+# Add the Cloud SDK distribution URI as a package source
+echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+
+# Import the Google Cloud Platform public key
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+# Update the package list and install the Cloud SDK
+sudo apt-get update && sudo apt-get install google-cloud-sdk
+
+# Install Kubectl
+sudo apt-get install kubectl
+
+
+ls
 ```
-## Or gcloud
+
+```{bash}
+gcloud compute instances list
+```
+
+
+### Configure kubectl to talk to the cluster
+
+https://snyke.net/post/kubernetes-playground/
+Finally we need to get the credentials for kubectl to talk to the cluster we just created
+
+gcloud --project=$PROJECT_NAME container clusters get-credentials $CLUSTER_NAME \
+       --zone=$ZONE
+After that you should be able to call kubectl get nodes and see the virtual machines that comprise your cluster.
+
+Setting the environment variables above will cause this step's entrypoint to first run a command to fetch cluster credentials as follows.
+
+>gcloud container clusters get-credentials test-cluster --zone us-central1-a
+
+Then, kubectl will have the configuration needed to talk to your GKE cluster.
+
+
+### 
+kubectl cluster-info
+
+DR https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes-cloud.html
+
+### Install Spark
+
+https://spark.apache.org/docs/2.3.0/running-on-kubernetes.html
+
+### Install Spark Operator
+
+At Google Cloud, we’ve used Operators to better support different applications on Kubernetes. For example, we have Operators for running and managing Spark and Airflow applications in a Kubernetes native way. We’ve also made these Operators available on the GCP Marketplace for an easy click-to-deploy experience. The Spark Operator automatically runs spark-submit on behalf of users, provides cron support for running Spark jobs on a schedule, supports automatic application restarts and re-tries and enables mounting data from local Hadoop configuration as well as Google Cloud Storage. The Airflow Operator creates and manages the necessary Kubernetes resources for an Airflow deployment and supports the creation of Airflow schedulers with different Executors.
+## Connect
+
+```{r}
+library(sparklyr)
+sparklyr:::get_java()
+sc <- spark_connect(config = spark_config_kubernetes("k8s://35.239.34.73:8443"))
+# Make sure JAVA_HOME is set
+#readlink -f $(which java)
+Sys.setenv(JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/")
+#sudo apt install default-jre
+#sudo apt install default-jdk
+#sudo R CMD javareconf
+#
+Sys.getenv("JAVA_HOME")
+library(rJava)
+
+#
+Sys.setenv(JAVA_HOME="/usr/bin/java")
+#https://github.com/rstudio/sparklyr
+#Install latestes version
+install.packages("devtools")
+devtools::install_github("rstudio/sparklyr")
+```
+
+
+
+You may need the Java Development Kit (JDK) in addition to the JRE in order to compile and run some specific Java-based software. To install the JDK, execute the following command, which will also install the JRE:
+
+$sudo apt install default-jdk
 
 ## Using
 ```{r eval=F}
@@ -163,3 +242,7 @@ gcloud container clusters get-credentials r-cluster
 And we are all set to start setting up this cluster for R jobs!
 
 Here is a screenshot from the web UI of what it should look like:
+
+
+#DElete
+We’ll fit a simple model for illustrative purposes, using the Boston housing dataset (which ships with R in the MASS package). To make the deployment process more interesting, the model we fit will be a random forest, using the randomForest package. This is not part of R, so we’ll have to install it from CRAN.
