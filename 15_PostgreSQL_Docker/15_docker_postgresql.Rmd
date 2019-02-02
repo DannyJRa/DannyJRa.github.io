@@ -1,0 +1,109 @@
+---
+output:
+  html_document:
+    theme: cerulean
+    highlight: tango
+    code_folding: show
+    toc: yes
+    toc_float: yes
+    number_sections: true
+  pdf_document:
+    number_sections: yes
+geometry: margin = 1.2in
+fontsize: 10pt
+always_allow_html: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+knitr::knit_hooks$set(
+   error = function(x, options) {
+     paste('\n\n<div class="alert alert-danger">',
+           gsub('##', '\n', gsub('^##\ Error', '**Error**', x)),
+           '</div>', sep = '\n')
+   },
+   warning = function(x, options) {
+     paste('\n\n<div class="alert alert-warning">',
+           gsub('##', '\n', gsub('^##\ Warning:', '**Warning**', x)),
+           '</div>', sep = '\n')
+   },
+   message = function(x, options) {
+     paste('\n\n<div class="alert alert-info">',
+           gsub('##', '\n', x),
+           '</div>', sep = '\n')
+   }
+)
+```
+
+
+# Docker: PostgreSQL 10 and pgAdmin 4
+
+## Run Docker with PostgreSQL container
+
+Make persistent volume to store config files and database files:
+
+>mkdir -p $HOME/docker/volumes/postgres
+
+Rund docker command to create postgresql database with User: postgres and POSTGRES_PASSWORD=docker:
+
+>docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5434:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres
+
+## Connect to Postgres
+
+Once the container is up an running, connecting to it from an application is no different than connecting to a Postgres instance running outside a docker container. For example, to connect using psql we can execute[^1]
+
+>psql -h localhost -U postgres -d postgres
+
+### Access postgresql.conf file
+
+Switch to root 
+>sudo su
+
+
+And access the conf file to manage e.g. remote access to the database:
+
+>/home/danny/docker/volumes/postgres# sudo nano postgresql.conf
+
+
+### Open port
+
+If you work on the google cloud, you can open the port=5434 for all instances in the current workind directory with:
+
+>gcloud compute firewall-rules create postgresdocker --allow tcp:5434 \
+      --description "Allow incoming traffic on TCP port 5434" \
+      --direction INGRESS
+
+      
+##  Run Docker with pgAdmin 4 container
+
+Pull and start the pgAdmin container:
+
+>docker run -p 5050:5050 \
+        -e "PGADMIN_DEFAULT_EMAIL=xxxoutlook.com" \
+        -e "PGADMIN_DEFAULT_PASSWORD=secretpassword" \
+        -e "PGADMIN_LISTEN_PORT=5050" \
+        -d dpage/pgadmin4 \
+        -v "/home/danny/docker/volumes/pgadmin:/var/lib/pgadmin/shared"
+
+Problem: Not yet solved the issue that the volume will not be shared currently
+
+       
+### Open port 5050 
+
+
+>gcloud compute firewall-rules create pgadmin --allow tcp:5050 \
+      --description "Allow incoming traffic on TCP port 5050" \
+      --direction INGRESS
+ 
+        
+List all firewall rules:
+
+>gcloud compute firewall-rules list
+
+Then login with your set credentials at port 5050 (in this case):
+![Login](pgAdmin_login.png) 
+        
+***
+[^1]: Adopted from https://hackernoon.com/dont-install-postgres-docker-pull-postgres-bee20e200198

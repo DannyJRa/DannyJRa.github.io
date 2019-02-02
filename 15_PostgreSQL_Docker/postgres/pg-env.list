@@ -1,0 +1,17 @@
+
+PG_MODE=primary
+
+PG_PRIMARY_USER=postgres
+
+PG_PRIMARY_PASSWORD=yoursecurepassword
+
+PG_DATABASE=testdb
+
+PG_USER=yourusername
+
+PG_PASSWORD=yoursecurepassword
+
+PG_ROOT_PASSWORD=yoursecurepassword
+
+PG_PRIMARY_PORT=5432
+
