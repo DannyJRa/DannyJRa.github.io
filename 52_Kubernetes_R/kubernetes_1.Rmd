@@ -176,7 +176,7 @@ At Google Cloud, we’ve used Operators to better support different applications
 ```{r}
 library(sparklyr)
 sparklyr:::get_java()
-sc <- spark_connect(config = spark_config_kubernetes("k8s://35.239.34.73:8443"))
+sc <- spark_connect(config = spark_config_kubernetes("k8s://35.242.236.133:8443"))
 # Make sure JAVA_HOME is set
 #readlink -f $(which java)
 Sys.setenv(JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/")

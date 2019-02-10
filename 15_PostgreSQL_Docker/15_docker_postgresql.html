@@ -1321,6 +1321,105 @@ window.initializeCodeFolding = function(show) {
 </script>
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 
 
 <style type="text/css">
@@ -1588,7 +1687,7 @@ div.tocify {
 <blockquote>
 <p>mkdir -p $HOME/docker/volumes/postgres</p>
 </blockquote>
-<p>Rund docker command to create postgresql database with User: postgres and POSTGRES_PASSWORD=docker:</p>
+<p>Rund docker command to create postgresql database with User: postgres and POSTGRES_PASSWORD=docker: # Exucute postgresql</p>
 <blockquote>
 <p>docker run –rm –name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5434:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres</p>
 </blockquote>
@@ -1620,6 +1719,11 @@ div.tocify {
 <div id="run-docker-with-pgadmin-4-container" class="section level2">
 <h2><span class="header-section-number">1.3</span> Run Docker with pgAdmin 4 container</h2>
 <p>Pull and start the pgAdmin container:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="ex">docker</span> run -p 5051:5051 \</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">        -e <span class="st">&quot;PGADMIN_DEFAULT_EMAIL=</span><span class="va">${S_email}</span><span class="st">&quot;</span> \</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">        -e <span class="st">&quot;PGADMIN_DEFAULT_PASSWORD=</span><span class="va">${S_pwd_pgadmin}</span><span class="st">&quot;</span> \</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">        -e <span class="st">&quot;PGADMIN_LISTEN_PORT=5051&quot;</span> \</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">        -d dpage/pgadmin4</a></code></pre></div>
 <blockquote>
 <p>docker run -p 5050:5050<br />
 -e “PGADMIN_DEFAULT_EMAIL=xxxoutlook.com”<br />
@@ -1632,8 +1736,8 @@ div.tocify {
 <div id="open-port-5050" class="section level3">
 <h3><span class="header-section-number">1.3.1</span> Open port 5050</h3>
 <blockquote>
-<p>gcloud compute firewall-rules create pgadmin –allow tcp:5050<br />
-–description “Allow incoming traffic on TCP port 5050”<br />
+<p>gcloud compute firewall-rules create kafka –allow tcp:9092<br />
+–description “Allow incoming traffic on TCP port 9092”<br />
 –direction INGRESS</p>
 </blockquote>
 <p>List all firewall rules:</p>

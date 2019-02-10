@@ -47,6 +47,9 @@ Make persistent volume to store config files and database files:
 >mkdir -p $HOME/docker/volumes/postgres
 
 Rund docker command to create postgresql database with User: postgres and POSTGRES_PASSWORD=docker:
+# Exucute postgresql 
+
+
 
 >docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5434:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres
 
@@ -80,6 +83,17 @@ If you work on the google cloud, you can open the port=5434 for all instances in
 
 Pull and start the pgAdmin container:
 
+
+
+
+```{bash, eval=F, include=T}
+docker run -p 5051:5051 \
+        -e "PGADMIN_DEFAULT_EMAIL=${S_email}" \
+        -e "PGADMIN_DEFAULT_PASSWORD=${S_pwd_pgadmin}" \
+        -e "PGADMIN_LISTEN_PORT=5051" \
+        -d dpage/pgadmin4
+```
+
 >docker run -p 5050:5050 \
         -e "PGADMIN_DEFAULT_EMAIL=xxxoutlook.com" \
         -e "PGADMIN_DEFAULT_PASSWORD=secretpassword" \
@@ -93,8 +107,8 @@ Problem: Not yet solved the issue that the volume will not be shared currently
 ### Open port 5050 
 
 
->gcloud compute firewall-rules create pgadmin --allow tcp:5050 \
-      --description "Allow incoming traffic on TCP port 5050" \
+>gcloud compute firewall-rules create kafka --allow tcp:9092 \
+      --description "Allow incoming traffic on TCP port 9092" \
       --direction INGRESS
  
         
@@ -105,5 +119,7 @@ List all firewall rules:
 Then login with your set credentials at port 5050 (in this case):
 ![Login](pgAdmin_login.png) 
         
+        
+
 ***
 [^1]: Adopted from https://hackernoon.com/dont-install-postgres-docker-pull-postgres-bee20e200198
