@@ -1,0 +1,107 @@
+---
+title: "Untitled"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+gcloud container clusters get-credentials cluster-1 --zone europe-west3-b --project virtual-machine-196412
+
+Output:
+Fetching cluster endpoint and auth data.
+kubeconfig entry generated for cluster-1.
+
+
+### Connect to cluster
+>gcloud container clusters get-credentials cluster-1 --zone europe-west3-b --project virtual-machine-196412
+
+
+$ kubectl cluster-info
+> https://35.242.236.133
+
+
+k8s://https://10.23.240.1 \
+
+
+```{r}
+library(sparklyr)
+sparklyr:::get_java()
+sc <- spark_connect(config = spark_config_kubernetes("k8s://35.242.236.133:8443"))
+# Make sure JAVA_HOME is set
+#readlink -f $(which java)
+Sys.setenv(JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/")
+#sudo apt install default-jre
+#sudo apt install default-jdk
+#sudo R CMD javareconf
+#
+Sys.getenv("JAVA_HOME")
+library(rJava)
+
+#
+Sys.setenv(JAVA_HOME="/usr/bin/java")
+#https://github.com/rstudio/sparklyr
+#Install latestes version
+install.packages("devtools")
+devtools::install_github("rstudio/sparklyr")
+```
+## Error
+
+```{r}
+library(sparklyr) 
+config=spark_config_kubernetes(master="k8s://https://etc", version = "2.3.2", image = "sparkimage", driver = random_string("sparklyr-"), account = "sparklyr", jars="local:///opt/sparklyr", forward = TRUE, executors = 4, config = list( spark.kubernetes.namespace = "default", sparklyr.gateway.address = "ip" ) ) sc <- spark_connect(config = config ) # the above code works fine but whatever is inside config list is not passed as parameter to spark.shell.config. #Then i've tried the following: config$sparklyr.shell.conf=c("spark.kubernetes.namespace=spark",config$sparklyr.shell.conf) #This adds the spark as a namespace to spark.shell.config however it fails with the below error: Error from server (NotFound): pods "sparklyr-62935dd025c7" not found
+```
+
+
+## Local: Installation to connect Spark and H2O
+
+Source: https://rtask.thinkr.fr/blog/installation-to-connect-spark-and-h2o-in-r/
+```{r}
+# Libraries
+library(rsparkling)
+library(sparklyr)
+library(h2o)
+library(here)
+library(glue)
+```
+
+```{r}
+# Just in case you are already connected
+spark_disconnect_all()
+# Define a directory where to save model outputs and logs
+spark_dir <- here("tmp/spark_dir/")
+# Set driver and executor memory allocations **depending on your machine**
+config <- spark_config()
+config$`sparklyr.shell.driver-memory` <- "8G"
+config$`sparklyr.shell.executor-memory` <- "8G"
+config$spark.yarn.executor.memoryOverhead <- "4g"
+config$`sparklyr.shell.driver-java-options` <-
+  glue("-Djava.io.tmpdir={spark_dir}")
+```
+
+```{r}
+# This may install one version of Spark the first time
+sc <- spark_connect(master = "local", config = config)
+```
+
+```{r}
+# Create h2o cluster
+h2o_context(sc)
+```
+```{r}
+# Start H2O clusters
+h2o.init(ip = "localhost", nthreads = 4, max_mem_size = "14G",
+         strict_version_check = FALSE)
+```
+Yeah ! This worked ! Well. This should work. 
+
+
+##Example calculations
+
+```{r}
+spark_connection_is_open(sc)
+
+
+#Disconnect spark
+spark_disconnect(sc)
+```
+

@@ -18,5 +18,5 @@ Now you have a scrapy project which contains a spider named quotes_spider.py.
 ```{bash}
 scrapy crawl quotes_spider
 ```
-
+only XPATH 1.0 is supported by sxrapy browser
 

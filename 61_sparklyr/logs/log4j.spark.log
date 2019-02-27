@@ -10630,3 +10630,5 @@ Sparkling Water Context:
 19/01/13 22:22:01 INFO ShutdownHookManager: Deleting directory /tmp/spark-cc33ee1d-5343-401c-b523-499234b5ad29
 19/01/13 22:22:01 INFO ShutdownHookManager: Deleting directory /tmp/spark-7180ddfc-0185-4504-bd35-8b600e5ddcce
 19/01/13 22:22:07 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/01/13 22:23:07 INFO ShutdownHookManager: Shutdown hook called
+19/01/13 22:23:07 INFO ShutdownHookManager: Deleting directory /tmp/spark-6eab3cc1-aae0-4fa5-8416-933b532b9e4b
