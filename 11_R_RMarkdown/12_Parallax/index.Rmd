@@ -3,10 +3,10 @@ title: "<center><div class='mytitle'>R Markdown output with parallax</div></cent
 author: "<center><div class='mysubtitle'>See the original code on [github](https://github.com/holtzy/R-Markdown-Parallax).[^1] This tip is part of my [RMarkdown collection](https://github.com/DannyJRa/DannyJRa.github.io/tree/master/11_R_RMarkdown).</div></center>"
 output:
   html_document:
-      css: style.css
+      css: www/style.css
       toc: FALSE
       includes: 
-        before_body: header.html
+        before_body: www/header.html
 ---
 
 <br><br>
