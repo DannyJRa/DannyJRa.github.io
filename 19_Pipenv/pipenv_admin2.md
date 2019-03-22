@@ -46,7 +46,7 @@ Project home
 
 
 ```
-pipenv --whre
+pipenv --where
 ```
 
 Install from requirements.txt
