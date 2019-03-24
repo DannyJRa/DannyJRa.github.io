@@ -16,12 +16,18 @@ from sklearn.externals import joblib
 BUCKET_NAME = 'cloudml_test_djr'
 # [END setup]
 
-
+#%%
 # [START download-data]
 iris_data_filename = 'iris_data.csv'
 iris_target_filename = 'iris_target.csv'
 data_dir = 'gs://cloud-samples-data/ml-engine/iris'
 
+
+subprocess.check_call(['gsutil', 'cp', os.path.join(data_dir,
+                                                    iris_data_filename),
+                       iris_data_filename])
+
+#%%
 # gsutil outputs everything to stderr so we need to divert it to stdout.
 subprocess.check_call(['gsutil', 'cp', os.path.join(data_dir,
                                                     iris_data_filename),
@@ -30,7 +36,7 @@ subprocess.check_call(['gsutil', 'cp', os.path.join(data_dir,
                                                     iris_target_filename),
                        iris_target_filename], stderr=sys.stdout)
 # [END download-data]
-
+#%%
 
 # [START load-into-pandas]
 # Load data into pandas, then use `.values` to get NumPy arrays
@@ -62,7 +68,6 @@ joblib.dump(classifier, model_filename)
 # Upload the saved model file to Cloud Storage
 gcs_model_path = os.path.join('gs://', BUCKET_NAME,
     datetime.datetime.now().strftime('iris_%Y%m%d_%H%M%S'), model_filename)
-subprocess.check_call(['gsutil', 'cp', model_filename, gcs_model_path],
-    stderr=sys.stdout)
+subprocess.check_call(['gsutil', 'cp', model_filename, gcs_model_path])
 # [END upload-model]
 
