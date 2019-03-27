@@ -79,8 +79,8 @@ Problem: Not yet solved the issue that the volume will not be shared currently
 ### Open port 5050 
 
 
->gcloud compute firewall-rules create kafka --allow tcp:9092 \
-      --description "Allow incoming traffic on TCP port 9092" \
+>gcloud compute firewall-rules create streamset --allow tcp:18630 \
+      --description "Allow incoming traffic on TCP port 18630" \
       --direction INGRESS
  
         
