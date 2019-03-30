@@ -5,7 +5,7 @@ output:
   html_document: default
 ---
 
-gcloud container clusters get-credentials cluster-1 --zone europe-west3-b --project virtual-machine-196412
+gcloud container clusters get-credentials cluster-1 --zone europe-west3-c --project workplacedanny
 
 Output:
 Fetching cluster endpoint and auth data.
@@ -16,17 +16,51 @@ kubeconfig entry generated for cluster-1.
 >gcloud container clusters get-credentials cluster-1 --zone europe-west3-b --project virtual-machine-196412
 
 
-$ kubectl cluster-info
+ 
+
+```{bash}
+kubectl cluster-info
+```
+
 > https://35.242.236.133
 
 
 k8s://https://10.23.240.1 \
 
 
+
 ```{r}
 library(sparklyr)
-sparklyr:::get_java()
-sc <- spark_connect(config = spark_config_kubernetes("k8s://35.242.236.133:8443"))
+#sparklyr:::get_java()
+sc <- spark_connect(config = spark_config_kubernetes("k8s://35.198.151.142:8443"))
+```
+
+
+```{r}
+library(sparklyr)
+
+config=spark_config_kubernetes(master="k8s://35.198.151.142:8443", 
+                               version = "2.4.0", 
+                               image = "sparkimage",
+                               driver = random_string("sparklyr-"),
+                               account = "sparklyr",
+                               jars="local:///opt/sparklyr",
+                               forward = TRUE, 
+                               executors = 4,
+                               config = list(
+                                 spark.kubernetes.namespace = "default",
+                                 sparklyr.gateway.address = "ip"
+                               )
+)
+sc <- spark_connect(config = config )
+```
+
+
+
+```{r}
+library(sparklyr)
+#sparklyr:::get_java()
+sc <- spark_connect(config = spark_config_kubernetes("k8s://35.198.151.142:8443"))
 # Make sure JAVA_HOME is set
 #readlink -f $(which java)
 Sys.setenv(JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/")
@@ -48,7 +82,7 @@ devtools::install_github("rstudio/sparklyr")
 
 ```{r}
 library(sparklyr) 
-config=spark_config_kubernetes(master="k8s://https://etc", version = "2.3.2", image = "sparkimage", driver = random_string("sparklyr-"), account = "sparklyr", jars="local:///opt/sparklyr", forward = TRUE, executors = 4, config = list( spark.kubernetes.namespace = "default", sparklyr.gateway.address = "ip" ) ) sc <- spark_connect(config = config ) # the above code works fine but whatever is inside config list is not passed as parameter to spark.shell.config. #Then i've tried the following: config$sparklyr.shell.conf=c("spark.kubernetes.namespace=spark",config$sparklyr.shell.conf) #This adds the spark as a namespace to spark.shell.config however it fails with the below error: Error from server (NotFound): pods "sparklyr-62935dd025c7" not found
+config=spark_config_kubernetes(master="k8s://35.198.151.142:8443", version = "2.3.2", image = "sparkimage", driver = random_string("sparklyr-"), account = "sparklyr", jars="local:///opt/sparklyr", forward = TRUE, executors = 4, config = list( spark.kubernetes.namespace = "default", sparklyr.gateway.address = "ip" ) ) sc <- spark_connect(config = config ) # the above code works fine but whatever is inside config list is not passed as parameter to spark.shell.config. #Then i've tried the following: config$sparklyr.shell.conf=c("spark.kubernetes.namespace=spark",config$sparklyr.shell.conf) #This adds the spark as a namespace to spark.shell.config however it fails with the below error: Error from server (NotFound): pods "sparklyr-62935dd025c7" not found
 ```
 
 
