@@ -265,8 +265,8 @@ You can also run SparkR sessions
 NOT WORKING
 ```{r, eval=FALSE}
 azureSparkNewSession(context, clustername = "spark1987", 
-                     hdiAdmin = "insider_danny", 
-                     hdiPassword = ".Alfonstini642856",
+                     hdiAdmin = "", 
+                     hdiPassword = "",
                      kind = "sparkr")
 
 
