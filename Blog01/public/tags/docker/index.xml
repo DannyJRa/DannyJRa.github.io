@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on </title>
+    <link>/tags/docker/</link>
+    <description>Recent content in Docker on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 13 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker PostGreSQL</title>
+      <link>/post/docker-postgresql/</link>
+      <pubDate>Fri, 13 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/docker-postgresql/</guid>
+      <description>Docker: PostgreSQL 10 and pgAdmin 4 Run Docker with PostgreSQL container Make persistent volume to store config files and database files:
+ mkdir -p $HOME/docker/volumes/postgres
+ Rund docker command to create postgresql database with User: postgres and POSTGRES_PASSWORD=docker: # Exucute postgresql
+ docker run –rm –name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5434:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres
+  Connect to Postgres Once the container is up an running, connecting to it from an application is no different than connecting to a Postgres instance running outside a docker container.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on </title>
+    <link>/categories/r/</link>
+    <description>Recent content in R on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 13 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker PostGreSQL</title>
+      <link>/post/docker-postgresql/</link>
+      <pubDate>Fri, 13 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/docker-postgresql/</guid>
+      <description>Docker: PostgreSQL 10 and pgAdmin 4 Run Docker with PostgreSQL container Make persistent volume to store config files and database files:
+ mkdir -p $HOME/docker/volumes/postgres
+ Rund docker command to create postgresql database with User: postgres and POSTGRES_PASSWORD=docker: # Exucute postgresql
+ docker run –rm –name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5434:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres
+  Connect to Postgres Once the container is up an running, connecting to it from an application is no different than connecting to a Postgres instance running outside a docker container.</description>
+    </item>
+    
+    <item>
+      <title>Hello R Markdown</title>
+      <link>/post/hello-r-markdown/</link>
+      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      
+      <guid>/post/hello-r-markdown/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+You can embed an R code chunk like this:
+summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+    </item>
+    
+  </channel>
+</rss>
