@@ -1,0 +1,68 @@
+
+<div id="TOC">
+<ul>
+<li><a href="#github-repos">Github Repos</a></li>
+<li><a href="#pagination">Pagination</a><ul>
+<li><a href="#issues">Issues</a></li>
+<li><a href="#issues-1">Issues</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="github-repos" class="section level2">
+<h2>Github Repos</h2>
+<pre class="r"><code>library(jsonlite)
+hadley_orgs &lt;- fromJSON(&quot;https://api.github.com/users/hadley/orgs&quot;)
+hadley_repos &lt;- fromJSON(&quot;https://api.github.com/users/dannyjra/repos&quot;)
+
+gg_issues &lt;- fromJSON(&quot;https://api.github.com/repos/hadley/ggplot2/issues&quot;)
+
+#latest commits
+gg_commits &lt;- fromJSON(&quot;https://api.github.com/repos/dannyjra/DannyJRa.github.io/commits&quot;)
+
+paste(format(gg_commits$commit$committer$date), &quot;:&quot;, gg_commits$commit$message)</code></pre>
+</div>
+<div id="pagination" class="section level2">
+<h2>Pagination</h2>
+<p>SOURCE: <a href="https://blog.exploratory.io/analyzing-issue-data-with-github-rest-api-63945017dedc" class="uri">https://blog.exploratory.io/analyzing-issue-data-with-github-rest-api-63945017dedc</a></p>
+<div id="issues" class="section level3">
+<h3>Issues</h3>
+<pre class="r"><code>library(dplyr)
+pages &lt;- list()
+for(i in 1:15){
+  res &lt;- GET(&quot;https://api.github.com/repos/hadley/dplyr/issues&quot;, 
+             query = list(state = &quot;all&quot;, per_page = 100, page = i))
+  jsondata &lt;- content(res, type = &quot;text&quot;)
+  github_df &lt;- fromJSON(jsondata, flatten = TRUE)
+  pages[[i]] &lt;- github_df
+}
+issues &lt;- bind_rows(pages)
+issues &lt;- as_data_frame(issues)</code></pre>
+</div>
+<div id="issues-1" class="section level3">
+<h3>Issues</h3>
+<pre class="r"><code>library(dplyr)
+pages &lt;- list()
+for(i in 1:15){
+  res &lt;- GET(&quot;https://api.github.com/repos/dannyjra/DannyJRa.github.io/commits&quot;, 
+             query = list(state = &quot;all&quot;, per_page = 100, page = i))
+  jsondata &lt;- content(res, type = &quot;text&quot;)
+  github_df &lt;- fromJSON(jsondata, flatten = TRUE)
+  pages[[i]] &lt;- github_df
+}
+commits &lt;- bind_rows(pages)
+commits &lt;- as_data_frame(commits)</code></pre>
+<p>The columns whose names end with “url” don’t seem to be necessary for this time, except that we want to keep ‘pull_request.url’ column. As you remember, this data contains not only Issues, but also Pull Requests. We want to differentiate those two types of ‘issues’ later, so we want to keep this column which has values if they are Pull Requests, otherwise NA. That says, we can rename this before we drop all the other columns whose names end with ‘url’.</p>
+<pre class="r"><code>test&lt;-commits %&gt;% 
+    select(-ends_with(&quot;url&quot;))</code></pre>
+<p>Time</p>
+<pre class="r"><code>library(lubridate)
+test %&gt;%
+  mutate(date = ymd_hms(commit.author.date))%&gt;%
+    select(date)</code></pre>
+<div class="figure">
+<img src="64_1_github_REST/blog_title.png" alt="Firebase_authenfication" />
+<p class="caption">Firebase_authenfication</p>
+</div>
+</div>
+</div>

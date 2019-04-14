@@ -1,0 +1,92 @@
+---
+title: GitHub REST API
+author: DannyJRa
+date: '2019-01-11'
+slug: github_rest_api
+categories:
+  - R
+tags:
+  - GitHub
+hidden: false
+image: "img/cover.jpg"
+share: false
+output:
+  blogdown::html_page:
+   # number_sections: true
+    toc: TRUE
+
+---
+
+
+
+## Github Repos
+
+
+
+
+```{r, eval=F}
+library(jsonlite)
+hadley_orgs <- fromJSON("https://api.github.com/users/hadley/orgs")
+hadley_repos <- fromJSON("https://api.github.com/users/dannyjra/repos")
+
+gg_issues <- fromJSON("https://api.github.com/repos/hadley/ggplot2/issues")
+
+#latest commits
+gg_commits <- fromJSON("https://api.github.com/repos/dannyjra/DannyJRa.github.io/commits")
+
+paste(format(gg_commits$commit$committer$date), ":", gg_commits$commit$message)
+
+```
+
+## Pagination
+
+SOURCE: https://blog.exploratory.io/analyzing-issue-data-with-github-rest-api-63945017dedc
+
+### Issues
+```{r,eval=F}
+library(dplyr)
+pages <- list()
+for(i in 1:15){
+  res <- GET("https://api.github.com/repos/hadley/dplyr/issues", 
+             query = list(state = "all", per_page = 100, page = i))
+  jsondata <- content(res, type = "text")
+  github_df <- fromJSON(jsondata, flatten = TRUE)
+  pages[[i]] <- github_df
+}
+issues <- bind_rows(pages)
+issues <- as_data_frame(issues)
+```
+
+### Issues
+```{r, eval=F}
+library(dplyr)
+pages <- list()
+for(i in 1:15){
+  res <- GET("https://api.github.com/repos/dannyjra/DannyJRa.github.io/commits", 
+             query = list(state = "all", per_page = 100, page = i))
+  jsondata <- content(res, type = "text")
+  github_df <- fromJSON(jsondata, flatten = TRUE)
+  pages[[i]] <- github_df
+}
+commits <- bind_rows(pages)
+commits <- as_data_frame(commits)
+```
+
+The columns whose names end with “url” don’t seem to be necessary for this time, except that we want to keep ‘pull_request.url’ column. As you remember, this data contains not only Issues, but also Pull Requests. We want to differentiate those two types of ‘issues’ later, so we want to keep this column which has values if they are Pull Requests, otherwise NA. That says, we can rename this before we drop all the other columns whose names end with ‘url’.
+
+```{r,eval=F}
+test<-commits %>% 
+    select(-ends_with("url"))
+```
+
+Time
+
+```{r,eval=F}
+library(lubridate)
+test %>%
+  mutate(date = ymd_hms(commit.author.date))%>%
+    select(date)
+
+```
+
+![Firebase_authenfication](64_1_github_REST/blog_title.png)
