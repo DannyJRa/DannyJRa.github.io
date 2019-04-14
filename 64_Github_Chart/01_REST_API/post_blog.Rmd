@@ -69,14 +69,28 @@ site_path = "/home/danny/00_blog"
   file.copy(asset_path, static_path, recursive = TRUE)
 ```
 ```{r}
-Sys.setenv(params = params$myParam1)
+asset_folder
+Sys.setenv(asset_folder = asset_folder)
+```
+```{bash}
+echo ${asset_folder}
+cd $HOME/00_blog
+ls
 ```
 
 
+```{r}
+setwd("/home/danny/00_blog/")
+#blogdown::serve_site()
+blogdown::hugo_build()
+```
+
 
 ```{bash}
+cd $HOME/00_blog
+
 git add -A
-git commit -m "commit DR"
+git commit -m "commit blog #${asset_folder})"
 git push
 ```
 
