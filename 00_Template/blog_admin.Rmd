@@ -1,0 +1,30 @@
+---
+title: "admin"
+output: html_document
+---
+
+
+```{r}
+site_path = "/home/danny/00_blog/content/post"
+folder<-"/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io/"
+filename<-list.files(folder, pattern = "BLOG_P.md",recursive = TRUE, full.names = TRUE)
+filename
+file.copy(filename, site_path, recursive = TRUE)
+
+```
+
+```{r}
+files=strsplit(filename, "/")
+head(files)
+files 
+
+files[[1]][length(files[[1]])]
+```
+
+```{r}
+site_path = "/home/danny/00_blog/static/img"
+filename<-list.files(folder, pattern = "BLOG.jpg",recursive = TRUE, full.names = TRUE)
+filename
+file.copy(filename, site_path, recursive = TRUE)
+```
+

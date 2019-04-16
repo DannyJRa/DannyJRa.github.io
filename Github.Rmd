@@ -26,7 +26,7 @@ git config --global credential.helper cache
 
 ```{bash}
 git add -A
-git commit -m "commit DR"
+git commit -m "md file creation"
 git push
 ```
 

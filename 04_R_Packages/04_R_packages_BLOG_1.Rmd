@@ -1,0 +1,157 @@
+# Favorite packages
+
+Here are my go-to R packages -- in a handy searchable table.
+One of the great things about R is the thousands of packages users have written to solve specific problems in various disciplines -- analyzing everything from weather or financial data to the human genome -- not to mention analyzing computer security-breach data.
+
+
+Some tasks are common to almost all users, though, regardless of subject area: data import, data wrangling and data visualization. The table below show my favorite go-to packages for one of these three tasks (plus a few miscellaneous ones tossed in). The package names in the table are clickable if you want more information. 
+
+
+
+```{r}
+library(openxlsx)
+favorites <- read.xlsx(xlsxFile = "Packages_favorite.xlsx", sheet = 1, skipEmptyRows = FALSE)
+```
+
+
+```{r}
+library(DT)
+datatable(favorites)
+```
+
+
+
+# Save and install packages
+
+
+## Save packages
+
+
+```{r}
+##########################################################333
+
+### 64bit Version of Java needed
+#library(XLConnect)
+########################################################
+
+############3
+#shell("zip")
+#ZIP needed
+#library(openxlsx)
+#path="C:/Program Files/7-Zip/7z.exe"
+#Sys.setenv("R_ZIPCMD" = path)
+#Sys.setenv("R_ZIPCMD"="C:/RBuildTools/3.4/bin/zip.exe")
+
+###########
+
+
+
+ip <- as.data.frame(installed.packages()[,c(1,3:4)])
+rownames(ip) <- NULL
+ip <- ip[is.na(ip$Priority),1:2,drop=FALSE]
+#print(ip, row.names=FALSE)
+
+### No need of java
+library(openxlsx)
+
+#wb=read.xlsx(xlsxFile="Packages.xlsx")
+#wb <- createWorkbook()
+
+#addWorksheet(wb, "Packages")
+#writeData(wb, "Packages", ip, startCol = 2, startRow = 3, rowNames = TRUE)
+
+###########
+
+write.xlsx(ip, "Packages_installed.xlsx", asTable = T)
+```
+
+
+## Install packages on new machine
+
+```{r}
+### No need of java
+library(openxlsx)
+
+ip <- read.xlsx(xlsxFile = "Packages_installed.xlsx", sheet = 1, skipEmptyRows = FALSE)
+
+packages=as.character(ip[,1])
+#packages=c("ggplot2")
+
+packages<-packages[1:100]
+#install.packages(packages)
+
+```
+
+
+# Speeding up package installation
+
+
+A simple one line tweak can significantly speed up package installation and updates.
+## The wonder of CRAN
+One of the best features of R is CRAN. When a package is submitted to CRAN, not only is it checked under three versions of R
+	• R-past, R-release and R-devel
+but also three different operating systems
+	• Windows, Linux and Mac (with multiple flavours of each)
+CRAN also checks that the updated package doesn’t break existing packages. This last part is particularly tricky when you consider all the dependencies a package like ggplot2 or Rcpp have. Furthermore, it performs all these checks within 24 hours, ready for the next set packages.
+What many people don’t realise is that for CRAN to perform this miracle of package checking, it builds and checks these packages in parallel; so rather than installing a single package at a time, it checks multiple packages at once. Obviously some care has to be taken when checking/installing packages due to the connectivity between packages, but R takes care of these details.
+
+## Parallel package installation: Ncpus
+
+If you examine the help package of ?install.packages, there’s a sneaky argument called Ncpus. From the help page:
+Ncpus: The number of parallel processes to use for a parallel install of more than one source package.
+The default value of this argument is
+Ncpus = getOption(‘Ncpus’, 1L)
+The getOption() part determines if the value has been set in options(). If no value is found, the default number of processes to use is 1. If you haven’t heard of Ncpus, it’s almost certainly 1, but you can check using
+
+```{r}
+getOption("Ncpus", 1L)
+```
+
+
+
+How many cores can be utilized:
+
+```{r}
+cores = parallel::detectCores()
+```
+My machine has eight cores `r cores`. So it doesn’t make sense to set Ncpus above `r cores`. 
+
+Set cores and install selected packages
+
+```{r, eval=FALSE}
+options(Ncpus = cores)
+system.time(install.packages(packages))
+```
+
+
+So setting Ncpus to 2 allows us to half the installation time from 409 seconds to around 224 (seconds). Increasing Ncpus to 4 gives a further speed boost. Due to the dependencies between packages, we’ll never achieve a perfect speed-up, e.g. if package X depends on Y, then we have to install X first. However, for a simple change we get an easy speed boost.
+Furthermore, setting Ncpus gives a speed boost when updating packages via update.packages().
+
+
+A permanent change: .Rprofile
+Clearly writing options(Ncpus = 6) before you install a package is a pain. However, you can just add it to your .Rprofile file. 
+
+Maybe it is also helpful not to utilize all available cores. This allows packages to be installed in parallel, while giving me a little bit of wiggle room to check email and listen to music.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
