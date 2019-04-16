@@ -13,12 +13,6 @@ fontsize: 10pt
 always_allow_html: yes
 ---
 
-```{r cache, include=FALSE}
-#Caching of all chunks
-knitr::opts_chunk$set(cache=TRUE)
-```
-
-
 ```{r, eval=FALSE, include=FALSE}
 sudo apt-get install libudunits2-dev
 ```

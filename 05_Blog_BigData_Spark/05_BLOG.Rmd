@@ -1,14 +1,14 @@
 ---
-title: Blog JSON
+title: Network Analysis
 author: DannyJRa
-date: '2019-01-11'
-slug: github_rest_api3
+date: '2018-06-20'
+slug: network_analysis
 categories:
   - R
 tags:
-  - GitHub
+  - Viz
 hidden: false
-image: "img/00_blog_cover.jpg"
+image: "img/06_network_d3_BLOG.png"
 share: false
 output:
   html_document:
@@ -26,7 +26,7 @@ always_allow_html: yes
 
 ---
 
-```{r setup, include=FALSE}
+```{r cache, include=FALSE}
 #Caching of all chunks
 knitr::opts_chunk$set(cache=TRUE)
 ```
@@ -52,5 +52,5 @@ Add summary desdcription of blog
 
 
 
-```{r child = 'blog_Part1.Rmd'}
+```{r child = 'networks-with-r_3.Rmd'}
 ```

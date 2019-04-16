@@ -1,12 +1,12 @@
 ---
-title: Blog JSON
+title: MathArt
 author: DannyJRa
 date: '2019-01-11'
-slug: github_rest_api3
+slug: mathart1
 categories:
   - R
 tags:
-  - GitHub
+  - Viz
 hidden: false
 image: "img/00_blog_cover.jpg"
 share: false
@@ -52,5 +52,5 @@ Add summary desdcription of blog
 
 
 
-```{r child = 'blog_Part1.Rmd'}
+```{r child = 'math_art.Rmd'}
 ```

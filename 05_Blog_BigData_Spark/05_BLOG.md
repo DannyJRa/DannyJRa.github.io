@@ -1,6 +1,19 @@
 ---
+title: BigData with Spark
+author: DannyJRa
+date: '2018-06-05'
+slug: bigdata_with_spark
+categories:
+  - R
+tags:
+  - BigData
+  - Azure
+hidden: false
+image: "img/05_spark_ml_logo_BLOG.png"
+share: false
 output:
   html_document:
+    keep_md: yes
     theme: cerulean
     highlight: tango
     code_folding: show
@@ -11,23 +24,25 @@ output:
 geometry: margin = 1.2in
 fontsize: 10pt
 always_allow_html: yes
+
 ---
 
-```{r setup, include=FALSE}
-knitr::knit_hooks$set(timeit = local({
-  now = NULL
-  function(before, options) {
-    if (before) {
-      now <<- Sys.time()
-    } else {
-      res = round(difftime(Sys.time(),units = "mins", now),2)
-      now <<- NULL
-      # use options$label if you want the chunk label as well
-      paste('Time for this code chunk:', as.character(res), "[min]")
-    }
-  }})
-)
-```
+
+
+
+
+
+Original post here: https://dannyjra.github.io/05_Blog_BigData_Spark/01_blog_caret_Tut.html
+
+Add summary desdcription of blog
+ 
+<!--more-->
+
+
+
+
+
+
 
 
 # Use Case
@@ -51,7 +66,8 @@ to contain this information.
 
 We can simply source the credentials file in R.
 
-```{r, eval=FALSE}
+
+```r
 # Load the required subscription resources: TID, CID, and KEY.
 # Also includes the ssh PUBKEY for the user.
 
@@ -94,7 +110,8 @@ To get started, please refer to the [authorisation tutorial](http://htmlpreview.
 
 ## Load the package
 
-```{r, eval=FALSE}
+
+```r
 library(AzureSMR)
 ```
 
@@ -104,13 +121,15 @@ The Azure APIs require many parameters to be managed. Rather than supplying all 
 
 To create an `azureActiveContext` object and attempt to authenticate against the Azure service, use:
 
-```{r, eval=FALSE}
+
+```r
 context <- createAzureContext(tenantID=TID, clientID=CID, authKey=KEY)
 ```
 
 ##Create a resource group
 
-```{r, eval=FALSE}
+
+```r
 azureCreateResourceGroup(context, resourceGroup = "R_Control", location = "centralus")
 ```
 
@@ -122,7 +141,8 @@ You can use `AzureSMR` to manage [HDInsight](https://azure.microsoft.com/en-gb/s
 
 For advanced configurations use Resource Templates (See below).
 ca. 17 minutes
-```{r, eval=FALSE}
+
+```r
 azureCreateHDI(context,
                  resourceGroup = "R_control",
                  clustername = "smrhdi", # only low case letters, digit, and dash.
@@ -137,13 +157,15 @@ azureCreateHDI(context,
 
 Use `azureListHDI()` to list available clusters.
 
-```{r, eval=FALSE}
+
+```r
 azureListHDI(context, resourceGroup ="R_control")
 ```
 
 Use `azureResizeHDI()` to resize a cluster
 NOT_WORKING
-```{r, eval=FALSE}
+
+```r
 azureResizeHDI(context, resourceGroup = "R_control", clustername = "smrhdi", role="workernode",size=3)
 
 ## azureResizeHDI: Request Submitted:  2016-06-23 18:50:57
@@ -164,7 +186,8 @@ ADMIN TIP: If a deployment fails, go to the Azure Portal and look at `Activity l
 
 You can use these functions to run and manage hive jobs on an HDInsight Cluster.
 
-```{r, eval=FALSE}
+
+```r
 azureHiveStatus(context, clusterName = "smrhdi", 
                 hdiAdmin = "hdiadmin", 
                 hdiPassword = "AzureSMR_password123")
@@ -181,7 +204,8 @@ azureHiveSQL(context,
 
 To create a new Spark session (via [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)) use `azureSparkNewSession()`
 
-```{r, eval=FALSE}
+
+```r
 azureSparkNewSession(context, clustername = "spark1987", 
                      hdiAdmin = "", 
                      hdiPassword = "",
@@ -190,13 +214,15 @@ azureSparkNewSession(context, clustername = "spark1987",
 
 To view the status of sessions use `azureSparkListSessions()`. Wait for status to be idle.
 
-```{r, eval=FALSE}
+
+```r
 azureSparkListSessions(context, clustername = "spark1987")
 ```
 
 To send a command to the Spark Session use `azureSparkCMD()`. In this case it submits a Python routine. Ensure you preserve indents for Python.
 
-```{r, eval=FALSE}
+
+```r
 # SAMPLE PYSPARK SCRIPT TO CALCULATE PI
 pythonCmd <- '
 from pyspark import SparkContext
@@ -221,7 +247,8 @@ azureSparkCMD(context, CMD = pythonCmd, sessionID = "0")
 
 Check Session variables are retained
 
-```{r, eval=FALSE}
+
+```r
 azureSparkCMD(context, clustername = "spark1987", CMD = "print Pi", sessionID = "0")
 
 #[1] "3.1422"
@@ -230,7 +257,8 @@ azureSparkCMD(context, clustername = "spark1987", CMD = "print Pi", sessionID = 
 You can also run SparkR sessions
 
 NOT WORKING
-```{r, eval=FALSE}
+
+```r
 azureSparkNewSession(context, clustername = "spark1987", 
                      hdiAdmin = "insider_danny", 
                      hdiPassword = ".Alfonstini642856",
