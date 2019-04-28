@@ -7,7 +7,7 @@ output: html_document
 ```{r}
 site_path = "/home/danny/00_blog/content/post"
 folder<-"/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io/"
-filename<-list.files(folder, pattern = "BLOG_P.md",recursive = TRUE, full.names = TRUE)
+filename<-list.files(folder, pattern = "BLOG.md",recursive = TRUE, full.names = TRUE)
 filename
 file.copy(filename, site_path, recursive = TRUE)
 
@@ -23,8 +23,49 @@ files[[1]][length(files[[1]])]
 
 ```{r}
 site_path = "/home/danny/00_blog/static/img"
-filename<-list.files(folder, pattern = "BLOG.jpg",recursive = TRUE, full.names = TRUE)
+filename<-list.files(folder, pattern = ".png",recursive = TRUE, full.names = TRUE)
 filename
 file.copy(filename, site_path, recursive = TRUE)
 ```
 
+```{r}
+site_path = "/home/danny/00_blog/static/img"
+filename<-list.files(folder, pattern = ".jpg",recursive = TRUE, full.names = TRUE)
+filename
+file.copy(filename, site_path, recursive = TRUE)
+```
+
+
+```{r}
+setwd("/home/danny/00_blog/")
+#blogdown::serve_site()
+blogdown::hugo_build()
+```
+
+
+```{bash}
+cd $HOME/00_blog
+
+git add -A
+git commit -m "commit blog #${asset_folder})"
+git push
+```
+### List all html
+
+```{r}
+
+folder<-"/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io/"
+filename<-list.files(folder, pattern = ".html",recursive = TRUE, full.names = TRUE)
+filename
+```
+
+```{r}
+
+
+
+url <- gsub("/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io", 
+                      "https://dannyjra.github.io",
+                      filename, fixed = TRUE)
+url
+write.csv(file = "links.csv",url)
+```

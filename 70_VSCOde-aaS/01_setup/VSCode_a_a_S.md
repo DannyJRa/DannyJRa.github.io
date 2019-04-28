@@ -1,6 +1,6 @@
 ---
 title: "<center><div class='mytitle'>VS-Code as a Server</div></center>"
-author: "<center><div class='mysubtitle'>See the original code on [github](https://github.com/codercom/code-server).[^1] This tip is part of DJRs [Data Science](https://github.com/DannyJRa/DannyJRa.github.io/tree/master/11_R_RMarkdown).</div></center>"
+author: "<center><div class='mysubtitle'>See the original code on [github](https://github.com/codercom/code-server).[^1] This tip is part of DJRs [blog.dannyrasch.com](http://www.blog.dannyrasch.com/).</div></center>"
 output:
   html_document:
       keep_md: yes

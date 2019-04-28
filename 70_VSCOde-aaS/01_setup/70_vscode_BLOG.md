@@ -1,14 +1,42 @@
 ---
-title: "<center><div class='mytitle'>VS-Code as a Server</div></center>"
-author: "<center><div class='mysubtitle'>See the original code on [github](https://github.com/codercom/code-server).[^1] This tip is part of DJRs [blog.dannyrasch.com](http://www.blog.dannyrasch.com/).</div></center>"
+title: VS-Code as a Server
+author: DannyJRa
+date: '2019-04-27'
+slug: vscodeasaserver
+categories:
+  - DataScience
+tags:
+  - Engineering
+hidden: false
+image: "img/70_vscode-ide.jpg"
+share: false
 output:
   html_document:
-      keep_md: yes
-      css: www/style.css
-      toc: FALSE
-      includes: 
-        before_body: www/header.html
+    keep_md: yes
+    theme: cerulean
+    highlight: tango
+    code_folding: show
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    number_sections: yes
+geometry: margin = 1.2in
+fontsize: 10pt
+always_allow_html: yes
+
 ---
+
+
+
+
+Code on your Chromebook, tablet, and laptop with a consistent dev environment. If you have a Windows or Mac workstation, more easily develop for Linux. Take advantage of large cloud servers to speed up tests, compilations, downloads, and more.
+
+ 
+<!--more-->
+
+
+
+
 
 <br><br>
 
@@ -25,7 +53,8 @@ Visit this github repo [Github](https://github.com/codercom/code-server)
 
 Copy and download latest version to folder: /vs-code
 
-```{bash, eval=F}
+
+```bash
 cd $HOME/vs-code
 
 #Replace link with latest version
@@ -35,7 +64,8 @@ wget https://github.com/codercom/code-server/releases/download/1.939-vsc1.33.1/c
 
 # 1.2 Unzip the tar.gz file
 
-```{bash,eval=FALSE}
+
+```bash
 cd $HOME/vs-code
 tar xvzf code-server1.939-vsc1.33.1-linux-x64.tar.gz
 ```
@@ -43,7 +73,8 @@ tar xvzf code-server1.939-vsc1.33.1-linux-x64.tar.gz
 
 The file code-server is generated and you can execute the file by using following command
 
-```{bash, eval=FALSE}
+
+```bash
 Usage
 code-server --help
 code-server can be ran with a number of arguments to customize your working directory, host, port, and SSL certificate.
@@ -73,7 +104,8 @@ OPTIONS
 
 I am using the following options to set the port, data dir of all extensions and user data and a password to login to the server as the current user:
 
-```{bash, eval=F}
+
+```bash
 $HOME/VSCode/code-server -p 8086 --data-dir=/home/danny/vs-code/data/ --password=${S_pwd_vscode}
 ```
 
@@ -135,7 +167,8 @@ sudo rm /etc/systemd/system/nifi.service
 /home/danny/nifi/nifi/bin/nifi.sh start
 
 
-```{bash, eval=F}
+
+```bash
 sudo systemctl enable nifi
 ```
 
@@ -150,7 +183,8 @@ service status nifi
 
 # 2.3 Check if enabled
 
-```{bash,eval=F}
+
+```bash
 systemctl list-unit-files | grep enabled
 ```
 
