@@ -32,21 +32,7 @@ knitr::opts_chunk$set(cache=TRUE)
 ```
 
 
-```{r, include=F}
-here=getwd()
-
-
-url <- gsub("/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io", 
-                      "https://dannyjra.github.io",
-                      here, fixed = TRUE)
-thisFilename="/01_blog_caret_Tut.html"
-url<-paste0(url,thisFilename)
-url
-```
-
-Original post here: `r url`
-
-Add summary desdcription of blog
+Add summary desdcription here
  
 <!--more-->
 

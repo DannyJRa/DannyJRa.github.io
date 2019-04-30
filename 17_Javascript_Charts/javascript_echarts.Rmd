@@ -3,16 +3,17 @@ title: "Untitled"
 output: ioslides_presentation
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
 
+```{r setup, include=FALSE}
+#Caching of all chunks
+knitr::opts_chunk$set(cache=TRUE)
+```
 ## R Markdown
 
 
 ```{r}
-remotes::install_github("JohnCoene/echarts4r") # github
-remotes::install_github("JohnCoene/echarts4r.suite")
+#remotes::install_github("JohnCoene/echarts4r") # github
+#remotes::install_github("JohnCoene/echarts4r.suite")
 ```
 
 

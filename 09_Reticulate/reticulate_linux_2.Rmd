@@ -1,7 +1,12 @@
 ---
-title: "Untitled"
+title: "Reticluate on Linux"
 output: html_document
 ---
+
+```{r setup, include=FALSE}
+#Caching of all chunks
+knitr::opts_chunk$set(cache=TRUE)
+```
 
 
 ```{r}
@@ -39,7 +44,11 @@ ax.set(xlabel='time (s)', ylabel='voltage (mV)',
 ax.grid()
 
 plt.show()
+plt.savefig('img/foo.png')
 ```
+
+Output image:
+![output](img/foo.png)
 
 #Sourcing Python scripts
 

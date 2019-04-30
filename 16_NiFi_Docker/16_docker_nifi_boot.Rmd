@@ -7,9 +7,6 @@ output:
     highlight.chooser: TRUE
 ---
 
-https://github.com/jimhester/knitrBootstrap
-
-
 # Docker: PostgreSQL 10 and pgAdmin 4
 
 ## Run Docker with PostgreSQL container
@@ -81,9 +78,7 @@ List all firewall rules:
 
 >gcloud compute firewall-rules list
 
-Then login with your set credentials at port 5050 (in this case):
-![Login](pgAdmin_login.png) 
-        
+
         
 
 ***

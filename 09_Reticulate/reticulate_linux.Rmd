@@ -1,8 +1,14 @@
 ---
 title: "Untitled"
-output: html_document
+output: 
+  html_document:
+    keep_md: yes
 ---
 
+```{r setup, include=FALSE}
+#Caching of all chunks
+knitr::opts_chunk$set(cache=TRUE)
+```
 
 ```{r}
 #testfsfs

@@ -382,12 +382,16 @@ $(document).ready(function () {
 folder&lt;-&quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io/&quot;
 filename&lt;-list.files(folder, pattern = &quot;BLOG.md&quot;,recursive = TRUE, full.names = TRUE)
 filename</code></pre>
-<pre><code>## [1] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//01_Blog_caret/01_blog_caret_Tut_BLOG.md&quot; 
-## [2] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//05_Blog_BigData_Spark/05_BLOG.md&quot;        
-## [3] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//06_Network_Analysis/06_BLOG.md&quot;          
-## [4] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//70_VSCOde-aaS/01_setup/70_vscode_BLOG.md&quot;</code></pre>
+<pre><code>## [1] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//01_Blog_caret/01_blog_caret_Tut_BLOG.md&quot;         
+## [2] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//05_Blog_BigData_Spark/05_BLOG.md&quot;                
+## [3] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//06_Network_Analysis/06_BLOG.md&quot;                  
+## [4] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//07_DSVM_Part1/07_DSVM_Part1_BLOG.md&quot;             
+## [5] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//08_Blog_MathArt/08_MathArts_BLOG.md&quot;             
+## [6] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/09_Reticulate_BLOG.md&quot;             
+## [7] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//63_GCP_CloudScheduler/63_cloud_scheduler_BLOG.md&quot;
+## [8] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//70_VSCOde-aaS/01_setup/70_vscode_BLOG.md&quot;</code></pre>
 <pre class="r"><code>file.copy(filename, site_path, recursive = TRUE)</code></pre>
-<pre><code>## [1] TRUE TRUE TRUE TRUE</code></pre>
+<pre><code>## [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
 <pre class="r"><code>files=strsplit(filename, &quot;/&quot;)
 head(files)</code></pre>
 <pre><code>## [[1]]
@@ -412,11 +416,25 @@ head(files)</code></pre>
 ## [9] &quot;06_BLOG.md&quot;                  
 ## 
 ## [[4]]
-##  [1] &quot;&quot;                             &quot;home&quot;                        
-##  [3] &quot;danny&quot;                        &quot;OneDrive&quot;                    
-##  [5] &quot;DataScience&quot;                  &quot;11_GitHub_DannyJRa.github.io&quot;
-##  [7] &quot;&quot;                             &quot;70_VSCOde-aaS&quot;               
-##  [9] &quot;01_setup&quot;                     &quot;70_vscode_BLOG.md&quot;</code></pre>
+## [1] &quot;&quot;                             &quot;home&quot;                        
+## [3] &quot;danny&quot;                        &quot;OneDrive&quot;                    
+## [5] &quot;DataScience&quot;                  &quot;11_GitHub_DannyJRa.github.io&quot;
+## [7] &quot;&quot;                             &quot;07_DSVM_Part1&quot;               
+## [9] &quot;07_DSVM_Part1_BLOG.md&quot;       
+## 
+## [[5]]
+## [1] &quot;&quot;                             &quot;home&quot;                        
+## [3] &quot;danny&quot;                        &quot;OneDrive&quot;                    
+## [5] &quot;DataScience&quot;                  &quot;11_GitHub_DannyJRa.github.io&quot;
+## [7] &quot;&quot;                             &quot;08_Blog_MathArt&quot;             
+## [9] &quot;08_MathArts_BLOG.md&quot;         
+## 
+## [[6]]
+## [1] &quot;&quot;                             &quot;home&quot;                        
+## [3] &quot;danny&quot;                        &quot;OneDrive&quot;                    
+## [5] &quot;DataScience&quot;                  &quot;11_GitHub_DannyJRa.github.io&quot;
+## [7] &quot;&quot;                             &quot;09_Reticulate&quot;               
+## [9] &quot;09_Reticulate_BLOG.md&quot;</code></pre>
 <pre class="r"><code>files </code></pre>
 <pre><code>## [[1]]
 ## [1] &quot;&quot;                             &quot;home&quot;                        
@@ -440,6 +458,34 @@ head(files)</code></pre>
 ## [9] &quot;06_BLOG.md&quot;                  
 ## 
 ## [[4]]
+## [1] &quot;&quot;                             &quot;home&quot;                        
+## [3] &quot;danny&quot;                        &quot;OneDrive&quot;                    
+## [5] &quot;DataScience&quot;                  &quot;11_GitHub_DannyJRa.github.io&quot;
+## [7] &quot;&quot;                             &quot;07_DSVM_Part1&quot;               
+## [9] &quot;07_DSVM_Part1_BLOG.md&quot;       
+## 
+## [[5]]
+## [1] &quot;&quot;                             &quot;home&quot;                        
+## [3] &quot;danny&quot;                        &quot;OneDrive&quot;                    
+## [5] &quot;DataScience&quot;                  &quot;11_GitHub_DannyJRa.github.io&quot;
+## [7] &quot;&quot;                             &quot;08_Blog_MathArt&quot;             
+## [9] &quot;08_MathArts_BLOG.md&quot;         
+## 
+## [[6]]
+## [1] &quot;&quot;                             &quot;home&quot;                        
+## [3] &quot;danny&quot;                        &quot;OneDrive&quot;                    
+## [5] &quot;DataScience&quot;                  &quot;11_GitHub_DannyJRa.github.io&quot;
+## [7] &quot;&quot;                             &quot;09_Reticulate&quot;               
+## [9] &quot;09_Reticulate_BLOG.md&quot;       
+## 
+## [[7]]
+## [1] &quot;&quot;                             &quot;home&quot;                        
+## [3] &quot;danny&quot;                        &quot;OneDrive&quot;                    
+## [5] &quot;DataScience&quot;                  &quot;11_GitHub_DannyJRa.github.io&quot;
+## [7] &quot;&quot;                             &quot;63_GCP_CloudScheduler&quot;       
+## [9] &quot;63_cloud_scheduler_BLOG.md&quot;  
+## 
+## [[8]]
 ##  [1] &quot;&quot;                             &quot;home&quot;                        
 ##  [3] &quot;danny&quot;                        &quot;OneDrive&quot;                    
 ##  [5] &quot;DataScience&quot;                  &quot;11_GitHub_DannyJRa.github.io&quot;
@@ -468,52 +514,78 @@ filename</code></pre>
 ## [16] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//06_Network_Analysis/06_BLOG_files/figure-html/network-circle-plot-1.png&quot; 
 ## [17] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//06_Network_Analysis/06_BLOG_files/figure-html/network-plot-1.png&quot;        
 ## [18] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//06_Network_Analysis/img/06_network_d3_BLOG.png&quot;                          
-## [19] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//07_DSVM_Part1/images/jupyter_hub.png&quot;                                    
-## [20] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//08_Blog_MathArt/harmonograph01.png&quot;                                      
-## [21] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//08_Blog_MathArt/harmonograph02.png&quot;                                      
-## [22] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//08_Blog_MathArt/img/08_cover_BLOG.png&quot;                                   
-## [23] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//08_Blog_MathArt/lissajous001.png&quot;                                        
-## [24] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/12_Parallax/index_files/figure-html/unnamed-chunk-1-1.png&quot;
-## [25] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/12_Parallax/www/overview_RGG_faded.png&quot;                   
-## [26] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/12_Parallax/www/Rlogo.png&quot;                                
-## [27] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//15_PostgreSQL_Docker/pgAdmin_login.png&quot;                                  
-## [28] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//21_VSCode/test/www/overview_RGG_faded.png&quot;                               
-## [29] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//21_VSCode/test/www/Rlogo.png&quot;                                            
-## [30] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//52_Kubernetes_R/docker_logo.png&quot;                                         
-## [31] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//54_Firebase_Shiny/54_firebase_shiny/blog_title.png&quot;                      
-## [32] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//61_sparklyr/sparklyr_files/figure-html/unnamed-chunk-7-1.png&quot;            
-## [33] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//63_GCP_CloudScheduler/nodejs-docs-samples/functions/ocr/images/sign.png&quot; 
-## [34] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//64_Github_Chart/01_REST_API/64_1_github_REST/blog_title.png&quot;             
-## [35] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//64_Github_Chart/my-stats.png&quot;                                            
-## [36] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//69_Python_R/69_python_R/blog_title.png&quot;                                  
-## [37] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//70_VSCOde-aaS/01_setup/img/logo.png&quot;</code></pre>
+## [19] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//07_DSVM_Part1/img/jupyter_hub.png&quot;                                       
+## [20] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//08_Blog_MathArt/harmonograph02.png&quot;                                      
+## [21] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//08_Blog_MathArt/img/08_cover_BLOG.png&quot;                                   
+## [22] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//08_Blog_MathArt/img/harmonograph01.png&quot;                                  
+## [23] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//08_Blog_MathArt/img/lissajous001.png&quot;                                    
+## [24] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/09_Reticulate_BLOG_files/figure-html/pyplot-1.png&quot;         
+## [25] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/09_Reticulate_BLOG_files/figure-html/unnamed-chunk-3-1.png&quot;
+## [26] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/09_Reticulate_BLOG_files/figure-html/unnamed-chunk-4-1.png&quot;
+## [27] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/09_Reticulate_BLOG_files/figure-html/unnamed-chunk-5-1.png&quot;
+## [28] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/09_Reticulate_BLOG_files/figure-html/unnamed-chunk-6-1.png&quot;
+## [29] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/09_Reticulate_BLOG_files/figure-html/unnamed-chunk-7-1.png&quot;
+## [30] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/img/foo.png&quot;                                               
+## [31] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/img/reticulated_python.png&quot;                                
+## [32] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/reticulate_linux_2_files/figure-html/pyplot-1.png&quot;         
+## [33] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/reticulate_linux_2_files/figure-html/unnamed-chunk-2-1.png&quot;
+## [34] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/reticulate_linux_2_files/figure-html/unnamed-chunk-4-1.png&quot;
+## [35] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/12_Parallax/index_files/figure-html/unnamed-chunk-1-1.png&quot;
+## [36] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/12_Parallax/www/overview_RGG_faded.png&quot;                   
+## [37] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/12_Parallax/www/Rlogo.png&quot;                                
+## [38] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//15_PostgreSQL_Docker/pgAdmin_login.png&quot;                                  
+## [39] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//21_VSCode/test/www/overview_RGG_faded.png&quot;                               
+## [40] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//21_VSCode/test/www/Rlogo.png&quot;                                            
+## [41] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//52_Kubernetes_R/docker_logo.png&quot;                                         
+## [42] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//54_Firebase_Shiny/54_firebase_shiny/blog_title.png&quot;                      
+## [43] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//61_sparklyr/sparklyr_files/figure-html/unnamed-chunk-7-1.png&quot;            
+## [44] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//63_GCP_CloudScheduler/img/63_GoogleCloudFunctions_Title.png&quot;             
+## [45] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//63_GCP_CloudScheduler/nodejs-docs-samples/functions/ocr/images/sign.png&quot; 
+## [46] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//64_Github_Chart/01_REST_API/64_1_github_REST/blog_title.png&quot;             
+## [47] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//64_Github_Chart/my-stats.png&quot;                                            
+## [48] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//69_Python_R/69_python_R/blog_title.png&quot;                                  
+## [49] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//70_VSCOde-aaS/01_setup/img/logo.png&quot;</code></pre>
 <pre class="r"><code>file.copy(filename, site_path, recursive = TRUE)</code></pre>
 <pre><code>##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
 ## [15] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
-## [29] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
+## [29] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+## [43] TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
 <pre class="r"><code>site_path = &quot;/home/danny/00_blog/static/img&quot;
 filename&lt;-list.files(folder, pattern = &quot;.jpg&quot;,recursive = TRUE, full.names = TRUE)
 filename</code></pre>
 <pre><code>## [1] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//01_Blog_caret/img/01_blog_cover.jpg&quot;                                    
 ## [2] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//04_R_Packages/img/04_cover_BLOG.jpg&quot;                                    
-## [3] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/03_report_corporate_watermark/test.jpg&quot;                  
-## [4] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/09_styles/test.jpg&quot;                                      
-## [5] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//63_GCP_CloudScheduler/nodejs-docs-samples/functions/ocr/images/menu.jpg&quot;
-## [6] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//70_VSCOde-aaS/01_setup/img/70_vscode-ide.jpg&quot;</code></pre>
+## [3] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//07_DSVM_Part1/img/dsvm_review_header.jpg&quot;                               
+## [4] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/03_report_corporate_watermark/test.jpg&quot;                  
+## [5] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/09_styles/test.jpg&quot;                                      
+## [6] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//63_GCP_CloudScheduler/nodejs-docs-samples/functions/ocr/images/menu.jpg&quot;
+## [7] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//70_VSCOde-aaS/01_setup/img/70_vscode-ide.jpg&quot;</code></pre>
 <pre class="r"><code>file.copy(filename, site_path, recursive = TRUE)</code></pre>
-<pre><code>## [1] TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
+<pre><code>## [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
 <pre class="r"><code>setwd(&quot;/home/danny/00_blog/&quot;)
 #blogdown::serve_site()
 blogdown::hugo_build()</code></pre>
 <pre class="bash"><code>cd $HOME/00_blog
 
 git add -A
-git commit -m &quot;commit blog #${asset_folder})&quot;
+git commit -m &quot;commit blog 09&quot;
 git push</code></pre>
-<pre><code>## [master dbd9b76] commit blog #)
-##  33 files changed, 240 insertions(+), 225 deletions(-)
+<pre><code>## [master 8fbe243] commit blog 09
+##  24 files changed, 89 insertions(+), 90 deletions(-)
+##  create mode 100644 public/09_Reticulate_BLOG_files/figure-html/pyplot-1.png
+##  create mode 100644 public/09_Reticulate_BLOG_files/figure-html/unnamed-chunk-3-1.png
+##  create mode 100644 public/09_Reticulate_BLOG_files/figure-html/unnamed-chunk-4-1.png
+##  create mode 100644 public/09_Reticulate_BLOG_files/figure-html/unnamed-chunk-5-1.png
+##  create mode 100644 public/09_Reticulate_BLOG_files/figure-html/unnamed-chunk-6-1.png
+##  create mode 100644 public/09_Reticulate_BLOG_files/figure-html/unnamed-chunk-7-1.png
+##  create mode 100644 static/09_Reticulate_BLOG_files/figure-html/pyplot-1.png
+##  create mode 100644 static/09_Reticulate_BLOG_files/figure-html/unnamed-chunk-3-1.png
+##  create mode 100644 static/09_Reticulate_BLOG_files/figure-html/unnamed-chunk-4-1.png
+##  create mode 100644 static/09_Reticulate_BLOG_files/figure-html/unnamed-chunk-5-1.png
+##  create mode 100644 static/09_Reticulate_BLOG_files/figure-html/unnamed-chunk-6-1.png
+##  create mode 100644 static/09_Reticulate_BLOG_files/figure-html/unnamed-chunk-7-1.png
 ## To https://github.com/DannyJRa/blog.git
-##    d05bfa6..dbd9b76  master -&gt; master</code></pre>
+##    737c539..8fbe243  master -&gt; master</code></pre>
 <div id="list-all-html" class="section level3">
 <h3>List all html</h3>
 <pre class="r"><code>folder&lt;-&quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io/&quot;
@@ -536,61 +608,66 @@ filename</code></pre>
 ## [15] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//05_Blog_BigData_Spark/05_BLOG.html&quot;                                                        
 ## [16] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//06_Network_Analysis/06_BLOG.html&quot;                                                          
 ## [17] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//06_Network_Analysis/networks-with-r_3.html&quot;                                                
-## [18] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//07_DSVM_Part1/DSVM_Part1.html&quot;                                                             
-## [19] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/python_webcrawling.html&quot;                                                     
-## [20] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/reticulate_blog.html&quot;                                                        
-## [21] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/reticulate_linux.html&quot;                                                       
-## [22] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/reticulate_new.html&quot;                                                         
-## [23] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/01_rmarkdown_multiple files/parent.html&quot;                                    
-## [24] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/02_message highlighting/rmarkdown_higlighting.html&quot;                         
-## [25] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/03_logo_top_right/rmakrdown_logo_right_-_Kopie.html&quot;                        
-## [26] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/03_logo_top_right/rmakrdown_logo_right.html&quot;                                
-## [27] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/03_report_corporate_watermark/report.html&quot;                                  
-## [28] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/04_latex/latex.html&quot;                                                        
-## [29] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/05_timing chunks/rmarkdown_timing_chungs.html&quot;                              
-## [30] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/06_dropdown/selectInput_bss_select.html&quot;                                    
-## [31] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/07_rmarkdown_slides/slides.html&quot;                                            
-## [32] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/08_rmarkdown_dynamicInput/rmarkdown_dynamicInput.html&quot;                      
-## [33] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/09_styles/RStrava_3_SQL_Export_wo_TCX_old.html&quot;                             
-## [34] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/09_styles/RStrava_3_SQL_Export_wo_TCX_tango_-_Kopie.html&quot;                   
-## [35] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/09_styles/RStrava_3_SQL_Export_wo_TCX_tango.html&quot;                           
-## [36] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/09_styles/RStrava_3_SQL_Export_wo_TCX.html&quot;                                 
-## [37] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/09_styles/test2.html&quot;                                                       
-## [38] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/12_Parallax/index.html&quot;                                                     
-## [39] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/12_Parallax/www/header.html&quot;                                                
-## [40] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/13_custom_css/script.html&quot;                                                  
-## [41] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//15_PostgreSQL_Docker/15_docker_postgresql_boot.html&quot;                                       
-## [42] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//15_PostgreSQL_Docker/15_docker_postgresql.html&quot;                                            
-## [43] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//19_Pipenv/pipenv_admin.html&quot;                                                               
-## [44] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//19_Pipenv/pipenv_admin2.html&quot;                                                              
-## [45] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//21_VSCode/test/index.html&quot;                                                                 
-## [46] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//21_VSCode/test/www/header.html&quot;                                                            
-## [47] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//22_Shiny_docker/Docker_ShinyApp/app/about.html&quot;                                            
-## [48] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//52_Kubernetes_R/docker_shiny.html&quot;                                                         
-## [49] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//52_Kubernetes_R/kubernetes_1.html&quot;                                                         
-## [50] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//54_Firebase_Shiny/firebase_shiny_html.html&quot;                                                
-## [51] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//54_Firebase_Shiny/firebase_shiny_html.Rmd&quot;                                                 
-## [52] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//54_Firebase_Shiny/firebase_shiny.html&quot;                                                     
-## [53] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//58_Django/django_basics.html&quot;                                                              
-## [54] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//58_Django/django.html&quot;                                                                     
-## [55] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//58_Django/test.html&quot;                                                                       
-## [56] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//61_sparklyr/sparklyr.html&quot;                                                                 
-## [57] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//63_GCP_CloudScheduler/63_cloud_scheduler.html&quot;                                             
-## [58] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//63_GCP_CloudScheduler/nodejs-docs-samples/appengine/building-an-app/update/views/form.html&quot;
-## [59] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//64_Github_Chart/01_REST_API/64_1_github_REST.html&quot;                                         
-## [60] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//64_Github_Chart/01_REST_API/post_blog.html&quot;                                                
-## [61] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//64_Github_Chart/cal_heatmap/cal_heatmap_github.html&quot;                                       
-## [62] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//64_Github_Chart/cal_heatmap/cal_heatmap_test2.html&quot;                                        
-## [63] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//64_Github_Chart/cal_heatmap/cal_heatmap_test3.html&quot;                                        
-## [64] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//64_Github_Chart/cal_heatmap/cal_heatmap_test4_works.html&quot;                                  
-## [65] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//66_MicrosoftGraph_Django/graph_tutorial/tutorial/templates/tutorial/calendar.html&quot;         
-## [66] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//66_MicrosoftGraph_Django/graph_tutorial/tutorial/templates/tutorial/home.html&quot;             
-## [67] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//66_MicrosoftGraph_Django/graph_tutorial/tutorial/templates/tutorial/layout.html&quot;           
-## [68] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//69_Python_R/Python_R.html&quot;                                                                 
-## [69] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//70_VSCOde-aaS/01_setup/70_vscode_BLOG.html&quot;                                                
-## [70] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//70_VSCOde-aaS/01_setup/VSCode_a_a_S.html&quot;                                                  
-## [71] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//70_VSCOde-aaS/01_setup/www/header.html&quot;                                                    
-## [72] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//index.html&quot;</code></pre>
+## [18] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//07_DSVM_Part1/07_DSVM_Part1_BLOG.html&quot;                                                     
+## [19] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//07_DSVM_Part1/DSVM_Part1.html&quot;                                                             
+## [20] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//08_Blog_MathArt/08_MathArts_BLOG.html&quot;                                                     
+## [21] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/09_Reticulate_BLOG.html&quot;                                                     
+## [22] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/python_webcrawling.html&quot;                                                     
+## [23] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/reticulate_blog.html&quot;                                                        
+## [24] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/reticulate_linux_2.html&quot;                                                     
+## [25] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/reticulate_linux.html&quot;                                                       
+## [26] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//09_Reticulate/reticulate_new.html&quot;                                                         
+## [27] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/01_rmarkdown_multiple files/parent.html&quot;                                    
+## [28] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/02_message highlighting/rmarkdown_higlighting.html&quot;                         
+## [29] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/03_logo_top_right/rmakrdown_logo_right_-_Kopie.html&quot;                        
+## [30] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/03_logo_top_right/rmakrdown_logo_right.html&quot;                                
+## [31] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/03_report_corporate_watermark/report.html&quot;                                  
+## [32] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/04_latex/latex.html&quot;                                                        
+## [33] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/05_timing chunks/rmarkdown_timing_chungs.html&quot;                              
+## [34] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/06_dropdown/selectInput_bss_select.html&quot;                                    
+## [35] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/07_rmarkdown_slides/slides.html&quot;                                            
+## [36] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/08_rmarkdown_dynamicInput/rmarkdown_dynamicInput.html&quot;                      
+## [37] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/09_styles/RStrava_3_SQL_Export_wo_TCX_old.html&quot;                             
+## [38] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/09_styles/RStrava_3_SQL_Export_wo_TCX_tango_-_Kopie.html&quot;                   
+## [39] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/09_styles/RStrava_3_SQL_Export_wo_TCX_tango.html&quot;                           
+## [40] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/09_styles/RStrava_3_SQL_Export_wo_TCX.html&quot;                                 
+## [41] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/09_styles/test2.html&quot;                                                       
+## [42] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/12_Parallax/index.html&quot;                                                     
+## [43] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/12_Parallax/www/header.html&quot;                                                
+## [44] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//11_R_RMarkdown/13_custom_css/script.html&quot;                                                  
+## [45] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//15_PostgreSQL_Docker/15_docker_postgresql_boot.html&quot;                                       
+## [46] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//15_PostgreSQL_Docker/15_docker_postgresql.html&quot;                                            
+## [47] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//19_Pipenv/pipenv_admin.html&quot;                                                               
+## [48] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//19_Pipenv/pipenv_admin2.html&quot;                                                              
+## [49] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//21_VSCode/test/index.html&quot;                                                                 
+## [50] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//21_VSCode/test/www/header.html&quot;                                                            
+## [51] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//22_Shiny_docker/Docker_ShinyApp/app/about.html&quot;                                            
+## [52] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//52_Kubernetes_R/docker_shiny.html&quot;                                                         
+## [53] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//52_Kubernetes_R/kubernetes_1.html&quot;                                                         
+## [54] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//54_Firebase_Shiny/firebase_shiny_html.html&quot;                                                
+## [55] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//54_Firebase_Shiny/firebase_shiny_html.Rmd&quot;                                                 
+## [56] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//54_Firebase_Shiny/firebase_shiny.html&quot;                                                     
+## [57] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//58_Django/django_basics.html&quot;                                                              
+## [58] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//58_Django/django.html&quot;                                                                     
+## [59] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//58_Django/test.html&quot;                                                                       
+## [60] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//61_sparklyr/sparklyr.html&quot;                                                                 
+## [61] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//63_GCP_CloudScheduler/63_cloud_scheduler_BLOG.html&quot;                                        
+## [62] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//63_GCP_CloudScheduler/63_cloud_scheduler.html&quot;                                             
+## [63] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//63_GCP_CloudScheduler/nodejs-docs-samples/appengine/building-an-app/update/views/form.html&quot;
+## [64] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//64_Github_Chart/01_REST_API/64_1_github_REST.html&quot;                                         
+## [65] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//64_Github_Chart/01_REST_API/post_blog.html&quot;                                                
+## [66] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//64_Github_Chart/cal_heatmap/cal_heatmap_github.html&quot;                                       
+## [67] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//64_Github_Chart/cal_heatmap/cal_heatmap_test2.html&quot;                                        
+## [68] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//64_Github_Chart/cal_heatmap/cal_heatmap_test3.html&quot;                                        
+## [69] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//64_Github_Chart/cal_heatmap/cal_heatmap_test4_works.html&quot;                                  
+## [70] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//66_MicrosoftGraph_Django/graph_tutorial/tutorial/templates/tutorial/calendar.html&quot;         
+## [71] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//66_MicrosoftGraph_Django/graph_tutorial/tutorial/templates/tutorial/home.html&quot;             
+## [72] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//66_MicrosoftGraph_Django/graph_tutorial/tutorial/templates/tutorial/layout.html&quot;           
+## [73] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//69_Python_R/Python_R.html&quot;                                                                 
+## [74] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//70_VSCOde-aaS/01_setup/70_vscode_BLOG.html&quot;                                                
+## [75] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//70_VSCOde-aaS/01_setup/VSCode_a_a_S.html&quot;                                                  
+## [76] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//70_VSCOde-aaS/01_setup/www/header.html&quot;                                                    
+## [77] &quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io//index.html&quot;</code></pre>
 <pre class="r"><code>url &lt;- gsub(&quot;/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io&quot;, 
                       &quot;https://dannyjra.github.io&quot;,
                       filename, fixed = TRUE)
@@ -612,61 +689,66 @@ url</code></pre>
 ## [15] &quot;https://dannyjra.github.io//05_Blog_BigData_Spark/05_BLOG.html&quot;                                                        
 ## [16] &quot;https://dannyjra.github.io//06_Network_Analysis/06_BLOG.html&quot;                                                          
 ## [17] &quot;https://dannyjra.github.io//06_Network_Analysis/networks-with-r_3.html&quot;                                                
-## [18] &quot;https://dannyjra.github.io//07_DSVM_Part1/DSVM_Part1.html&quot;                                                             
-## [19] &quot;https://dannyjra.github.io//09_Reticulate/python_webcrawling.html&quot;                                                     
-## [20] &quot;https://dannyjra.github.io//09_Reticulate/reticulate_blog.html&quot;                                                        
-## [21] &quot;https://dannyjra.github.io//09_Reticulate/reticulate_linux.html&quot;                                                       
-## [22] &quot;https://dannyjra.github.io//09_Reticulate/reticulate_new.html&quot;                                                         
-## [23] &quot;https://dannyjra.github.io//11_R_RMarkdown/01_rmarkdown_multiple files/parent.html&quot;                                    
-## [24] &quot;https://dannyjra.github.io//11_R_RMarkdown/02_message highlighting/rmarkdown_higlighting.html&quot;                         
-## [25] &quot;https://dannyjra.github.io//11_R_RMarkdown/03_logo_top_right/rmakrdown_logo_right_-_Kopie.html&quot;                        
-## [26] &quot;https://dannyjra.github.io//11_R_RMarkdown/03_logo_top_right/rmakrdown_logo_right.html&quot;                                
-## [27] &quot;https://dannyjra.github.io//11_R_RMarkdown/03_report_corporate_watermark/report.html&quot;                                  
-## [28] &quot;https://dannyjra.github.io//11_R_RMarkdown/04_latex/latex.html&quot;                                                        
-## [29] &quot;https://dannyjra.github.io//11_R_RMarkdown/05_timing chunks/rmarkdown_timing_chungs.html&quot;                              
-## [30] &quot;https://dannyjra.github.io//11_R_RMarkdown/06_dropdown/selectInput_bss_select.html&quot;                                    
-## [31] &quot;https://dannyjra.github.io//11_R_RMarkdown/07_rmarkdown_slides/slides.html&quot;                                            
-## [32] &quot;https://dannyjra.github.io//11_R_RMarkdown/08_rmarkdown_dynamicInput/rmarkdown_dynamicInput.html&quot;                      
-## [33] &quot;https://dannyjra.github.io//11_R_RMarkdown/09_styles/RStrava_3_SQL_Export_wo_TCX_old.html&quot;                             
-## [34] &quot;https://dannyjra.github.io//11_R_RMarkdown/09_styles/RStrava_3_SQL_Export_wo_TCX_tango_-_Kopie.html&quot;                   
-## [35] &quot;https://dannyjra.github.io//11_R_RMarkdown/09_styles/RStrava_3_SQL_Export_wo_TCX_tango.html&quot;                           
-## [36] &quot;https://dannyjra.github.io//11_R_RMarkdown/09_styles/RStrava_3_SQL_Export_wo_TCX.html&quot;                                 
-## [37] &quot;https://dannyjra.github.io//11_R_RMarkdown/09_styles/test2.html&quot;                                                       
-## [38] &quot;https://dannyjra.github.io//11_R_RMarkdown/12_Parallax/index.html&quot;                                                     
-## [39] &quot;https://dannyjra.github.io//11_R_RMarkdown/12_Parallax/www/header.html&quot;                                                
-## [40] &quot;https://dannyjra.github.io//11_R_RMarkdown/13_custom_css/script.html&quot;                                                  
-## [41] &quot;https://dannyjra.github.io//15_PostgreSQL_Docker/15_docker_postgresql_boot.html&quot;                                       
-## [42] &quot;https://dannyjra.github.io//15_PostgreSQL_Docker/15_docker_postgresql.html&quot;                                            
-## [43] &quot;https://dannyjra.github.io//19_Pipenv/pipenv_admin.html&quot;                                                               
-## [44] &quot;https://dannyjra.github.io//19_Pipenv/pipenv_admin2.html&quot;                                                              
-## [45] &quot;https://dannyjra.github.io//21_VSCode/test/index.html&quot;                                                                 
-## [46] &quot;https://dannyjra.github.io//21_VSCode/test/www/header.html&quot;                                                            
-## [47] &quot;https://dannyjra.github.io//22_Shiny_docker/Docker_ShinyApp/app/about.html&quot;                                            
-## [48] &quot;https://dannyjra.github.io//52_Kubernetes_R/docker_shiny.html&quot;                                                         
-## [49] &quot;https://dannyjra.github.io//52_Kubernetes_R/kubernetes_1.html&quot;                                                         
-## [50] &quot;https://dannyjra.github.io//54_Firebase_Shiny/firebase_shiny_html.html&quot;                                                
-## [51] &quot;https://dannyjra.github.io//54_Firebase_Shiny/firebase_shiny_html.Rmd&quot;                                                 
-## [52] &quot;https://dannyjra.github.io//54_Firebase_Shiny/firebase_shiny.html&quot;                                                     
-## [53] &quot;https://dannyjra.github.io//58_Django/django_basics.html&quot;                                                              
-## [54] &quot;https://dannyjra.github.io//58_Django/django.html&quot;                                                                     
-## [55] &quot;https://dannyjra.github.io//58_Django/test.html&quot;                                                                       
-## [56] &quot;https://dannyjra.github.io//61_sparklyr/sparklyr.html&quot;                                                                 
-## [57] &quot;https://dannyjra.github.io//63_GCP_CloudScheduler/63_cloud_scheduler.html&quot;                                             
-## [58] &quot;https://dannyjra.github.io//63_GCP_CloudScheduler/nodejs-docs-samples/appengine/building-an-app/update/views/form.html&quot;
-## [59] &quot;https://dannyjra.github.io//64_Github_Chart/01_REST_API/64_1_github_REST.html&quot;                                         
-## [60] &quot;https://dannyjra.github.io//64_Github_Chart/01_REST_API/post_blog.html&quot;                                                
-## [61] &quot;https://dannyjra.github.io//64_Github_Chart/cal_heatmap/cal_heatmap_github.html&quot;                                       
-## [62] &quot;https://dannyjra.github.io//64_Github_Chart/cal_heatmap/cal_heatmap_test2.html&quot;                                        
-## [63] &quot;https://dannyjra.github.io//64_Github_Chart/cal_heatmap/cal_heatmap_test3.html&quot;                                        
-## [64] &quot;https://dannyjra.github.io//64_Github_Chart/cal_heatmap/cal_heatmap_test4_works.html&quot;                                  
-## [65] &quot;https://dannyjra.github.io//66_MicrosoftGraph_Django/graph_tutorial/tutorial/templates/tutorial/calendar.html&quot;         
-## [66] &quot;https://dannyjra.github.io//66_MicrosoftGraph_Django/graph_tutorial/tutorial/templates/tutorial/home.html&quot;             
-## [67] &quot;https://dannyjra.github.io//66_MicrosoftGraph_Django/graph_tutorial/tutorial/templates/tutorial/layout.html&quot;           
-## [68] &quot;https://dannyjra.github.io//69_Python_R/Python_R.html&quot;                                                                 
-## [69] &quot;https://dannyjra.github.io//70_VSCOde-aaS/01_setup/70_vscode_BLOG.html&quot;                                                
-## [70] &quot;https://dannyjra.github.io//70_VSCOde-aaS/01_setup/VSCode_a_a_S.html&quot;                                                  
-## [71] &quot;https://dannyjra.github.io//70_VSCOde-aaS/01_setup/www/header.html&quot;                                                    
-## [72] &quot;https://dannyjra.github.io//index.html&quot;</code></pre>
+## [18] &quot;https://dannyjra.github.io//07_DSVM_Part1/07_DSVM_Part1_BLOG.html&quot;                                                     
+## [19] &quot;https://dannyjra.github.io//07_DSVM_Part1/DSVM_Part1.html&quot;                                                             
+## [20] &quot;https://dannyjra.github.io//08_Blog_MathArt/08_MathArts_BLOG.html&quot;                                                     
+## [21] &quot;https://dannyjra.github.io//09_Reticulate/09_Reticulate_BLOG.html&quot;                                                     
+## [22] &quot;https://dannyjra.github.io//09_Reticulate/python_webcrawling.html&quot;                                                     
+## [23] &quot;https://dannyjra.github.io//09_Reticulate/reticulate_blog.html&quot;                                                        
+## [24] &quot;https://dannyjra.github.io//09_Reticulate/reticulate_linux_2.html&quot;                                                     
+## [25] &quot;https://dannyjra.github.io//09_Reticulate/reticulate_linux.html&quot;                                                       
+## [26] &quot;https://dannyjra.github.io//09_Reticulate/reticulate_new.html&quot;                                                         
+## [27] &quot;https://dannyjra.github.io//11_R_RMarkdown/01_rmarkdown_multiple files/parent.html&quot;                                    
+## [28] &quot;https://dannyjra.github.io//11_R_RMarkdown/02_message highlighting/rmarkdown_higlighting.html&quot;                         
+## [29] &quot;https://dannyjra.github.io//11_R_RMarkdown/03_logo_top_right/rmakrdown_logo_right_-_Kopie.html&quot;                        
+## [30] &quot;https://dannyjra.github.io//11_R_RMarkdown/03_logo_top_right/rmakrdown_logo_right.html&quot;                                
+## [31] &quot;https://dannyjra.github.io//11_R_RMarkdown/03_report_corporate_watermark/report.html&quot;                                  
+## [32] &quot;https://dannyjra.github.io//11_R_RMarkdown/04_latex/latex.html&quot;                                                        
+## [33] &quot;https://dannyjra.github.io//11_R_RMarkdown/05_timing chunks/rmarkdown_timing_chungs.html&quot;                              
+## [34] &quot;https://dannyjra.github.io//11_R_RMarkdown/06_dropdown/selectInput_bss_select.html&quot;                                    
+## [35] &quot;https://dannyjra.github.io//11_R_RMarkdown/07_rmarkdown_slides/slides.html&quot;                                            
+## [36] &quot;https://dannyjra.github.io//11_R_RMarkdown/08_rmarkdown_dynamicInput/rmarkdown_dynamicInput.html&quot;                      
+## [37] &quot;https://dannyjra.github.io//11_R_RMarkdown/09_styles/RStrava_3_SQL_Export_wo_TCX_old.html&quot;                             
+## [38] &quot;https://dannyjra.github.io//11_R_RMarkdown/09_styles/RStrava_3_SQL_Export_wo_TCX_tango_-_Kopie.html&quot;                   
+## [39] &quot;https://dannyjra.github.io//11_R_RMarkdown/09_styles/RStrava_3_SQL_Export_wo_TCX_tango.html&quot;                           
+## [40] &quot;https://dannyjra.github.io//11_R_RMarkdown/09_styles/RStrava_3_SQL_Export_wo_TCX.html&quot;                                 
+## [41] &quot;https://dannyjra.github.io//11_R_RMarkdown/09_styles/test2.html&quot;                                                       
+## [42] &quot;https://dannyjra.github.io//11_R_RMarkdown/12_Parallax/index.html&quot;                                                     
+## [43] &quot;https://dannyjra.github.io//11_R_RMarkdown/12_Parallax/www/header.html&quot;                                                
+## [44] &quot;https://dannyjra.github.io//11_R_RMarkdown/13_custom_css/script.html&quot;                                                  
+## [45] &quot;https://dannyjra.github.io//15_PostgreSQL_Docker/15_docker_postgresql_boot.html&quot;                                       
+## [46] &quot;https://dannyjra.github.io//15_PostgreSQL_Docker/15_docker_postgresql.html&quot;                                            
+## [47] &quot;https://dannyjra.github.io//19_Pipenv/pipenv_admin.html&quot;                                                               
+## [48] &quot;https://dannyjra.github.io//19_Pipenv/pipenv_admin2.html&quot;                                                              
+## [49] &quot;https://dannyjra.github.io//21_VSCode/test/index.html&quot;                                                                 
+## [50] &quot;https://dannyjra.github.io//21_VSCode/test/www/header.html&quot;                                                            
+## [51] &quot;https://dannyjra.github.io//22_Shiny_docker/Docker_ShinyApp/app/about.html&quot;                                            
+## [52] &quot;https://dannyjra.github.io//52_Kubernetes_R/docker_shiny.html&quot;                                                         
+## [53] &quot;https://dannyjra.github.io//52_Kubernetes_R/kubernetes_1.html&quot;                                                         
+## [54] &quot;https://dannyjra.github.io//54_Firebase_Shiny/firebase_shiny_html.html&quot;                                                
+## [55] &quot;https://dannyjra.github.io//54_Firebase_Shiny/firebase_shiny_html.Rmd&quot;                                                 
+## [56] &quot;https://dannyjra.github.io//54_Firebase_Shiny/firebase_shiny.html&quot;                                                     
+## [57] &quot;https://dannyjra.github.io//58_Django/django_basics.html&quot;                                                              
+## [58] &quot;https://dannyjra.github.io//58_Django/django.html&quot;                                                                     
+## [59] &quot;https://dannyjra.github.io//58_Django/test.html&quot;                                                                       
+## [60] &quot;https://dannyjra.github.io//61_sparklyr/sparklyr.html&quot;                                                                 
+## [61] &quot;https://dannyjra.github.io//63_GCP_CloudScheduler/63_cloud_scheduler_BLOG.html&quot;                                        
+## [62] &quot;https://dannyjra.github.io//63_GCP_CloudScheduler/63_cloud_scheduler.html&quot;                                             
+## [63] &quot;https://dannyjra.github.io//63_GCP_CloudScheduler/nodejs-docs-samples/appengine/building-an-app/update/views/form.html&quot;
+## [64] &quot;https://dannyjra.github.io//64_Github_Chart/01_REST_API/64_1_github_REST.html&quot;                                         
+## [65] &quot;https://dannyjra.github.io//64_Github_Chart/01_REST_API/post_blog.html&quot;                                                
+## [66] &quot;https://dannyjra.github.io//64_Github_Chart/cal_heatmap/cal_heatmap_github.html&quot;                                       
+## [67] &quot;https://dannyjra.github.io//64_Github_Chart/cal_heatmap/cal_heatmap_test2.html&quot;                                        
+## [68] &quot;https://dannyjra.github.io//64_Github_Chart/cal_heatmap/cal_heatmap_test3.html&quot;                                        
+## [69] &quot;https://dannyjra.github.io//64_Github_Chart/cal_heatmap/cal_heatmap_test4_works.html&quot;                                  
+## [70] &quot;https://dannyjra.github.io//66_MicrosoftGraph_Django/graph_tutorial/tutorial/templates/tutorial/calendar.html&quot;         
+## [71] &quot;https://dannyjra.github.io//66_MicrosoftGraph_Django/graph_tutorial/tutorial/templates/tutorial/home.html&quot;             
+## [72] &quot;https://dannyjra.github.io//66_MicrosoftGraph_Django/graph_tutorial/tutorial/templates/tutorial/layout.html&quot;           
+## [73] &quot;https://dannyjra.github.io//69_Python_R/Python_R.html&quot;                                                                 
+## [74] &quot;https://dannyjra.github.io//70_VSCOde-aaS/01_setup/70_vscode_BLOG.html&quot;                                                
+## [75] &quot;https://dannyjra.github.io//70_VSCOde-aaS/01_setup/VSCode_a_a_S.html&quot;                                                  
+## [76] &quot;https://dannyjra.github.io//70_VSCOde-aaS/01_setup/www/header.html&quot;                                                    
+## [77] &quot;https://dannyjra.github.io//index.html&quot;</code></pre>
 <pre class="r"><code>write.csv(file = &quot;links.csv&quot;,url)</code></pre>
 </div>
 

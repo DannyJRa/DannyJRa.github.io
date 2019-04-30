@@ -7,9 +7,6 @@ output:
     highlight.chooser: TRUE
 ---
 
-https://github.com/jimhester/knitrBootstrap
-
-
 # Docker: PostgreSQL 10 and pgAdmin 4
 
 ## Run Docker with PostgreSQL container
@@ -66,17 +63,19 @@ docker run -p 5051:5051 \
         -d dpage/pgadmin4
 ```
 
+Problem: Not yet solved the issue that the volume will not be shared currently:
+
+```{bash, eval=F, include=T}
 >docker run -p 5050:5050 \
         -e "PGADMIN_DEFAULT_EMAIL=xxxoutlook.com" \
         -e "PGADMIN_DEFAULT_PASSWORD=secretpassword" \
         -e "PGADMIN_LISTEN_PORT=5050" \
         -d dpage/pgadmin4 \
         -v "/home/danny/docker/volumes/pgadmin:/var/lib/pgadmin/shared"
+```
 
-Problem: Not yet solved the issue that the volume will not be shared currently
 
-       
-### Open port 5050 
+### Open port 5050 on GCP
 
 
 >gcloud compute firewall-rules create streamset --allow tcp:18630 \
@@ -89,9 +88,6 @@ List all firewall rules:
 >gcloud compute firewall-rules list
 
 Then login with your set credentials at port 5050 (in this case):
-![Login](pgAdmin_login.png) 
+![Login](img/pgAdmin_login.png) 
         
-        
-
-***
 [^1]: Adopted from https://hackernoon.com/dont-install-postgres-docker-pull-postgres-bee20e200198

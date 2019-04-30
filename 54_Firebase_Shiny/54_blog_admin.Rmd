@@ -1,0 +1,140 @@
+---
+title: "admin"
+output: html_document
+---
+
+
+```{r}
+slug="54_firebaseauthshiny2"
+```
+
+## Create Links
+
+```{r}
+folder<-getwd()
+filename<-list.files(folder, pattern = "BLOG.md",recursive = TRUE, full.names = TRUE)
+
+
+filename <- gsub("BLOG.md", 
+                      "BLOG.html",
+                      filename, fixed = TRUE)
+filename
+
+url <- gsub("/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io", 
+                      "https://dannyjra.github.io",
+                      filename, fixed = TRUE)
+url
+
+github_folder <- gsub("/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io", 
+                      "https://github.com/DannyJRa/DannyJRa.github.io/tree/master/",
+                      filename, fixed = TRUE)
+
+github_folder <- gsub("15_Docker_PostGreSQL_BLOG.html", #TODO
+                      "",
+                      github_folder, fixed = TRUE)
+github_folder
+```
+
+
+## Copy Cache Folder of Rmarkdown
+
+```{r,eval=F}
+
+folder<-getwd()
+folder
+filename<-list.files(folder, pattern = "BLOG.md",recursive = TRUE, full.names = TRUE)
+folder <- gsub("BLOG.md", 
+                      "BLOG_files/",
+                      filename, fixed = TRUE)
+folder
+
+new_folder<-paste0('/home/danny/00_blog/static/post/',slug)
+dir.create(new_folder)
+
+
+
+file.copy(folder, new_folder, recursive=T)
+```
+
+##Copy img folder to static
+
+```{r}
+folder<-getwd()
+folder
+folder<-paste0(folder,"/img")
+
+new_folder<-paste0('/home/danny/00_blog/static/post/',slug)
+dir.create(new_folder)
+
+
+
+file.copy(folder, new_folder, recursive=T)
+```
+
+##Copy blog md file
+
+```{r}
+site_path = "/home/danny/00_blog/content/post"
+folder<-"/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io/"
+filename<-list.files(folder, pattern = "BLOG.md",recursive = TRUE, full.names = TRUE)
+filename
+file.copy(filename, site_path, recursive = TRUE)
+
+```
+
+## Copy Blog Image
+
+```{r}
+site_path = "/home/danny/00_blog/static/img"
+filename<-list.files(folder, pattern = "BLOG.png",recursive = TRUE, full.names = TRUE)
+filename
+file.copy(filename, site_path, recursive = TRUE)
+```
+
+```{r}
+site_path = "/home/danny/00_blog/static/img"
+filename<-list.files(folder, pattern = "BLOG.jpg",recursive = TRUE, full.names = TRUE)
+filename
+file.copy(filename, site_path, recursive = TRUE)
+```
+
+```{r}
+site_path = "/home/danny/00_blog/static/img"
+filename<-list.files(folder, pattern = "BLOG.gif",recursive = TRUE, full.names = TRUE)
+filename
+file.copy(filename, site_path, recursive = TRUE)
+```
+
+```{r}
+setwd("/home/danny/00_blog/")
+#blogdown::serve_site()
+blogdown::hugo_build()
+```
+
+
+```{bash, eval=F}
+cd $HOME/00_blog
+
+git add -A
+git commit -m "commit blog 09 including files"
+git push
+```
+### List all html
+
+```{r}
+
+folder<-"/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io/"
+filename<-list.files(folder, pattern = ".html",recursive = TRUE, full.names = TRUE)
+filename
+```
+
+```{r}
+
+
+
+url <- gsub("/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io", 
+                      "https://dannyjra.github.io",
+                      filename, fixed = TRUE)
+url
+write.csv(file = "links.csv",url)
+```
