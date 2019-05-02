@@ -23,14 +23,14 @@ files[[1]][length(files[[1]])]
 
 ```{r}
 site_path = "/home/danny/00_blog/static/img"
-filename<-list.files(folder, pattern = ".png",recursive = TRUE, full.names = TRUE)
+filename<-list.files(folder, pattern = "BLOG.png",recursive = TRUE, full.names = TRUE)
 filename
 file.copy(filename, site_path, recursive = TRUE)
 ```
 
 ```{r}
 site_path = "/home/danny/00_blog/static/img"
-filename<-list.files(folder, pattern = ".jpg",recursive = TRUE, full.names = TRUE)
+filename<-list.files(folder, pattern = "BLOG.jpg",recursive = TRUE, full.names = TRUE)
 filename
 file.copy(filename, site_path, recursive = TRUE)
 ```
@@ -55,8 +55,42 @@ git push
 ```{r}
 
 folder<-"/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io/"
-filename<-list.files(folder, pattern = ".html",recursive = TRUE, full.names = TRUE)
+filename<-list.files(folder, pattern = "BLOG.html",recursive = TRUE, full.names = TRUE)
 filename
+```
+
+```{r}
+
+folder<-"/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io/"
+filename<-list.files(folder, pattern = "BLOG.html",recursive = TRUE, full.names = FALSE,include.dirs=F)
+filename
+files<-basename(filename)
+# [1] "a.ext"
+
+titles <- gsub("_", 
+                      " ",
+                      files, fixed = TRUE)
+titles <- gsub("BLOG.html", 
+                      "",
+                      titles, fixed = TRUE)
+
+
+folders<-dirname(filename)
+# [1] "C:/some_dir"
+library(tidyverse)
+data=as.data.frame(files)
+
+data<-data %>% 
+  add_column(title=titles)  %>% 
+  add_column(folders)  %>% 
+  add_column(github_page_prefix="https://dannyjra.github.io") %>%
+  add_column(github_page=paste0("https://dannyjra.github.io/",folders,"/",files)) %>%
+  add_column(github_repo_prefix="https://github.com/DannyJRa/DannyJRa.github.io/tree/master/")
+
+library(openxlsx)
+write.xlsx(file = "links.xlsx",data)
+
+
 ```
 
 ```{r}
@@ -67,5 +101,20 @@ url <- gsub("/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io",
                       "https://dannyjra.github.io",
                       filename, fixed = TRUE)
 url
+write.csv(file = "links.csv",url)
+```
+
+```{r}
+
+
+
+url <- gsub("/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io", 
+                      "",
+                      filename, fixed = TRUE)
+
+data<-strsplit(url, split="/", fixed = FALSE, perl = FALSE, useBytes = FALSE)
+
+
+
 write.csv(file = "links.csv",url)
 ```

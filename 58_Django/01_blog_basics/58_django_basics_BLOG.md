@@ -1,6 +1,7 @@
 ---
 output:
   html_document:
+    keep_md: yes
     theme: cerulean
     highlight: tango
     code_folding: show
@@ -16,28 +17,7 @@ editor_options:
   chunk_output_type: inline
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 
-
-knitr::knit_hooks$set(
-   error = function(x, options) {
-     paste('\n\n<div class="alert alert-danger">',
-           gsub('##', '\n', gsub('^##\ Error', '**Error**', x)),
-           '</div>', sep = '\n')
-   },
-   warning = function(x, options) {
-     paste('\n\n<div class="alert alert-warning">',
-           gsub('##', '\n', gsub('^##\ Warning:', '**Warning**', x)),
-           '</div>', sep = '\n')
-   },
-   message = function(x, options) {
-     paste('\n\n<div class="alert alert-info">',
-           gsub('##', '\n', x),
-           '</div>', sep = '\n')
-   }
-)
-```
 
 
 # Getting started with Django 
@@ -56,7 +36,8 @@ Using virtual environments is not mandatory, but it’s highly recommended.
 
 Assuming python is installed (using 3.7.2 currently), we are going to use pipenv, a tool to manage and install Python packages with even more features thant just using virtuenv
 
-```{bash, eval=F}
+
+```bash
 pip install pipenv
 ```
 
@@ -105,7 +86,8 @@ Think of it like this: for each Django project you start, you will first create 
 
 Activated the virtual environment, run the following command to install Django:
 
-```{bash, eval=F}
+
+```bash
 pip install django
 ```
 
@@ -113,13 +95,15 @@ pip install django
 
 To start a new Django project, run the command below:
 
-```{bash, eval=F}
+
+```bash
 django-admin startproject admin_proj
 ```
 
 Django comes with a simple web server installed. It’s very convenient during the development, so we don’t have to install anything else to run the project locally. We can test it by executing the command:
 
-```{bash, eval=F}
+
+```bash
 python manage.py runserver
 ```
 
@@ -150,7 +134,8 @@ To do that, open the settings.py and try to find the INSTALLED_APPS variable and
 
 settings.py
 
-```{python, eval=F}
+
+```python
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

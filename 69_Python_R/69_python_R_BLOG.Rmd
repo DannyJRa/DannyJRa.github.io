@@ -1,20 +1,20 @@
 ---
-title: R-Python Bridge
-author: DannyJRa
-date: '2018-04-14'
-slug: r-python-bridge
-categories:
-  - R
-tags:
-  - Docker
-hidden: false
-image: "img/cover.jpg"
-share: false
 output:
-  blogdown::html_page:
-   # number_sections: true
-    toc: TRUE
-
+  html_document:
+    keep_md: yes
+    theme: cerulean
+    highlight: tango
+    code_folding: show
+    toc: yes
+    toc_float: yes
+    number_sections: true
+  pdf_document:
+    number_sections: yes
+geometry: margin = 1.2in
+fontsize: 10pt
+always_allow_html: yes
+editor_options: 
+  chunk_output_type: inline
 ---
 
 Linear models
