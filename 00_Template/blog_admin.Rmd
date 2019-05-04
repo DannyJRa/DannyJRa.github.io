@@ -20,12 +20,17 @@ files
 
 files[[1]][length(files[[1]])]
 ```
-
+#TODO
+https://www.r-bloggers.com/regular-expressions-every-r-programmer-should-know/
 ```{r}
 site_path = "/home/danny/00_blog/static/img"
-filename<-list.files(folder, pattern = "BLOG.png",recursive = TRUE, full.names = TRUE)
+filename<-list.files(folder, pattern = "BLOG.png$|BLOG.jpg$|BLOG.gif$",recursive = TRUE, full.names = TRUE)
 filename
+files<-basename(filename)
+files
 file.copy(filename, site_path, recursive = TRUE)
+# AND copy to img subfolder
+file.copy(filename, "img/", recursive = TRUE)
 ```
 
 ```{r}
