@@ -31,6 +31,7 @@ files
 file.copy(filename, site_path, recursive = TRUE)
 # AND copy to img subfolder
 file.copy(filename, "img/", recursive = TRUE)
+#file.copy(filename, "/mnt/sshftps/floox/images", recursive = TRUE)
 ```
 
 ```{r}
