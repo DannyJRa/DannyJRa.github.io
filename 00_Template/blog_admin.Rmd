@@ -13,13 +13,7 @@ file.copy(filename, site_path, recursive = TRUE)
 
 ```
 
-```{r}
-files=strsplit(filename, "/")
-head(files)
-files 
 
-files[[1]][length(files[[1]])]
-```
 #TODO
 https://www.r-bloggers.com/regular-expressions-every-r-programmer-should-know/
 ```{r}
@@ -53,7 +47,7 @@ blogdown::hugo_build()
 cd $HOME/00_blog
 
 git add -A
-git commit -m "commit blog 08"
+git commit -m "commit blog 73 draft"
 git push
 ```
 ### List all html

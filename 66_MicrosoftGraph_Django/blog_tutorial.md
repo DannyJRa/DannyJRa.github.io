@@ -10,3 +10,7 @@ pipenv install python-dateutil
 
 cd 66_MicrosoftGraph_Django/graph_tutorial
 cd DannyJRa.github.io/66_MicrosoftGraph_Django/graph_tutorial/
+
+python manage.py runserver
+
+### test
