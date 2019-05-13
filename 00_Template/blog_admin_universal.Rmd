@@ -120,7 +120,7 @@ blogdown::hugo_build()
 cd $HOME/home/danny/OneDrive/DataScience/42_Website_dannyrasch/01_Blog-Universal
 
 git add -A
-git commit -m "commit blog first"
+git commit -m "commit blog realtive path"
 git push
 ```
 ### List all html

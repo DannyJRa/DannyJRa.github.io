@@ -430,9 +430,26 @@ process_md &lt;- function(md_path, site_path) {
  # static_path &lt;- file.path(site_path, &quot;static&quot;)
   #file.copy(asset_path, static_path, recursive = TRUE)
 }</code></pre>
-<pre class="r"><code>for(i in length(filename)){
+<pre class="r"><code>i=1
+for(i in c(1:length(filename))) {
   process_md(md_path=filename[i],site_path=&quot;/home/danny/OneDrive/DataScience/42_Website_dannyrasch/01_Blog-Universal&quot;)
+  print(i)
   }</code></pre>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9
+## [1] 10
+## [1] 11
+## [1] 12
+## [1] 13
+## [1] 14
+## [1] 15</code></pre>
 <p>#TODO <a href="https://www.r-bloggers.com/regular-expressions-every-r-programmer-should-know/" class="uri">https://www.r-bloggers.com/regular-expressions-every-r-programmer-should-know/</a></p>
 <pre class="r"><code>site_path = paste0(blog_path,&quot;/static/img/banners&quot;)
 
@@ -578,11 +595,38 @@ filename</code></pre>
 <pre class="r"><code>setwd(&quot;/home/danny/00_blog/&quot;)
 #blogdown::serve_site()
 blogdown::hugo_build()</code></pre>
-<pre class="bash"><code>cd $HOME/00_blog
+<pre class="bash"><code>cd $HOME/home/danny/OneDrive/DataScience/42_Website_dannyrasch/01_Blog-Universal
 
 git add -A
-git commit -m &quot;commit blog 73 draft&quot;
+git commit -m &quot;commit blog first&quot;
 git push</code></pre>
+<pre><code>## bash: line 0: cd: /home/danny/home/danny/OneDrive/DataScience/42_Website_dannyrasch/01_Blog-Universal: No such file or directory
+## [master 88ba48c] commit blog first
+##  31 files changed, 4085 insertions(+), 205 deletions(-)
+##  create mode 100644 00_Template/blog_admin_universal.Rmd
+##  create mode 100644 00_Template/blog_admin_universal.html
+##  create mode 100644 00_Template/img/72_Nginx_BLOG.png
+##  rename 54_Firebase_Shiny/img/Firebase_authenfication.jpg =&gt; 00_Template/img/Firebase_authenfication_BLOG.jpg (100%)
+##  create mode 100644 00_Template/img/complainer_BLOG.gif
+##  rewrite 00_Template/links.csv (98%)
+##  rewrite 00_Template/links.xlsx (100%)
+##  create mode 100644 54_Firebase_Shiny/img/Firebase_authenfication_BLOG.jpg
+##  create mode 100644 66_MicrosoftGraph_Django/73_Joomla/setup.md
+##  create mode 100644 66_MicrosoftGraph_Django/graph_tutorial/tutorial/__pycache__/auth_helper.cpython-37.pyc
+##  rewrite 66_MicrosoftGraph_Django/graph_tutorial/tutorial/__pycache__/views.cpython-37.pyc (99%)
+##  create mode 100644 72_Nginx/72_Nginx_BLOG.Rmd
+##  create mode 100644 72_Nginx/72_Nginx_BLOG.html
+##  create mode 100644 72_Nginx/72_Nginx_BLOG.md
+##  create mode 100644 72_Nginx/img/72_Nginx_BLOG.png
+##  create mode 100644 72_Nginx/img/complainer_BLOG.gif
+##  create mode 100644 static/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/72_Nginx/72_Nginx_BLOG_files/72_Nginx_BLOG.png
+##  create mode 100644 test.md
+## remote: 
+## remote: GitHub found 1 vulnerability on DannyJRa/DannyJRa.github.io's default branch (1 high). To find out more, visit:        
+## remote:      https://github.com/DannyJRa/DannyJRa.github.io/network/alerts        
+## remote: 
+## To https://github.com/DannyJRa/DannyJRa.github.io
+##    3529ccb..88ba48c  master -&gt; master</code></pre>
 </div>
 <div id="list-all-html" class="section level3">
 <h3>List all html</h3>
