@@ -9,7 +9,7 @@
 "8","08_Blog_MathArt/08_MathArts_BLOG.html"
 "9","09_Reticulate/09_Reticulate3_BLOG.html"
 "10","15_PostgreSQL_Docker/15_Docker_PostGreSQL_BLOG.html"
-"11","19_Pipenv/19_Docker_NiFi_BLOG.html"
+"11","19_Pipenv/00_blog/19_Pipenv_BLOG.html"
 "12","54_Firebase_Shiny/54_Firebase_Shiny_BLOG.html"
 "13","58_Django/01_blog_basics/58_django_basics_BLOG.html"
 "14","61_sparklyr/61_sparklyr_BLOG.html"
@@ -18,3 +18,4 @@
 "17","69_Python_R/69_python_R_BLOG.html"
 "18","70_VSCOde-aaS/01_setup/70_vscode_BLOG.html"
 "19","72_Nginx/72_Nginx_BLOG.html"
+"20","74_Blogdown/73_Blogdown_BLOG.html"

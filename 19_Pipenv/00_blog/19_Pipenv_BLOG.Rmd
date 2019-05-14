@@ -1,0 +1,74 @@
+---
+title: Pipenv 
+author: DannyJRa
+date: '2019-01-25'
+slug: 19_pipenv3
+categories:
+  - Python
+tags:
+  - Engineering
+hidden: false
+image: "img/19_pipenv_BLOG.gif"
+share: false
+output:
+  html_document:
+    keep_md: yes
+    includes:
+      #before_body: header.html
+      #after_body: footer.html
+    theme: cerulean
+    highlight: tango
+    code_folding: show
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    number_sections: yes
+geometry: margin = 1.2in
+fontsize: 10pt
+always_allow_html: yes
+
+---
+
+Pipenv to manage python virtual environments and dependencies.
+
+<!--more-->
+
+```{r setup2, include=FALSE}
+#Caching of all chunks
+knitr::opts_chunk$set(cache=TRUE)
+```
+
+```{r, include=F}
+folder<-getwd()
+filename<-list.files(folder, pattern = "BLOG.md",recursive = TRUE, full.names = TRUE)
+
+
+filename <- gsub("BLOG.md", 
+                      "BLOG.html",
+                      filename, fixed = TRUE)
+filename
+
+url <- gsub("/home/danny/OneDrive/DataScience/41_DannyJRa.github.io", 
+                      "https://dannyjra.github.io",
+                      filename, fixed = TRUE)
+url
+
+github_folder <- gsub("/home/danny/OneDrive/DataScience/41_DannyJRa.github.io", 
+                      "https://github.com/DannyJRa/DannyJRa.github.io/tree/master",
+                      filename, fixed = TRUE)
+
+github_folder <- gsub("19_Pipenv_BLOG.html", #TODO
+                      "",
+                      github_folder, fixed = TRUE)
+github_folder
+```
+<a href="`r github_folder`"><img align="right" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_red_aa0000.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+
+
+
+
+```{r child = '../pipenv_admin.Rmd'}
+
+```
+***
+Original post on Github Pages: `r url[1]`
