@@ -42,11 +42,16 @@ process_md <- function(md_path, site_path) {
                       paste0('](/img/'),
                       input_lines, fixed = TRUE)
   
+
+  
   input_lines <- gsub(paste0('image: "img/'), 
                       paste0('banner: "img/banners/'),
                       input_lines, fixed = TRUE)
     
 
+      input_lines <- gsub(paste0('src="img/'), 
+                      paste0('src="/img/'),
+                      input_lines, fixed = TRUE)
   post_path <- file.path(site_path, "content", "blog", file_name)
   writeLines(input_lines, post_path)
   # copy asset folder to static/. also assume using / instead of \
