@@ -1,0 +1,98 @@
+---
+output:
+  knitrBootstrap::bootstrap_document:
+    title: "Test file"
+    highlight: XCode
+    theme.chooser: TRUE
+    highlight.chooser: TRUE
+---
+
+# Docker: PostgreSQL 10 and pgAdmin 4
+
+## Run Docker with PostgreSQL container
+
+
+## Step 1: Get the docker-run.sh bash script
+The hasura/graphql-engine/install-manifests repo contains all installation manifests required to deploy Hasura anywhere.
+
+Get the docker run bash script from there:
+
+```{bash}
+wget https://raw.githubusercontent.com/hasura/graphql-engine/master/install-manifests/docker-run/docker-run.sh
+```
+Source from secrets folder
+```{r}
+Sys.setenv(SECRETS_PATH = "/home/danny/OneDrive/DataScience/10_Secrets/")
+
+path=Sys.getenv("SECRETS_PATH")
+getwd()
+source(file=paste0(path,"docker/docker_postgresql.R"),local=T)
+```
+```{bash}
+env | grep ^S_
+
+```
+
+
+```{bash}
+docker run -p 8005:8005 \
+       -e HASURA_GRAPHQL_DATABASE_URL=postgres://${S_postgresql_user}:${S_postgresql_pwd}@${S_postgresql_host}:${S_postgresql_port}/flask \
+       -e HASURA_GRAPHQL_ENABLE_CONSOLE=true \
+       hasura/graphql-engine:v1.0.0-beta.2
+```
+
+
+```{r}
+docker logs 5814c27b2224
+```
+
+
+
+```{r}
+path=Sys.getenv("SECRETS_PATH")
+getwd()
+source(file=paste0(path,"docker/docker_bash.R"),local=T)
+```
+
+
+
+
+```{bash, eval=F, include=T}
+docker run -p 5051:5051 \
+        -e "PGADMIN_DEFAULT_EMAIL=${S_email}" \
+        -e "PGADMIN_DEFAULT_PASSWORD=${S_pwd_pgadmin}" \
+        -e "PGADMIN_LISTEN_PORT=5051" \
+        -d dpage/pgadmin4
+```
+
+Problem: Not yet solved the issue that the volume will not be shared currently:
+
+```{bash, eval=F, include=T}
+>docker run -p 5050:5050 \
+        -e "PGADMIN_DEFAULT_EMAIL=xxxoutlook.com" \
+        -e "PGADMIN_DEFAULT_PASSWORD=secretpassword" \
+        -e "PGADMIN_LISTEN_PORT=5050" \
+        -d dpage/pgadmin4 \
+        -v "/home/danny/docker/volumes/pgadmin:/var/lib/pgadmin/shared"
+```
+
+
+### Open port 5050 on GCP
+
+### Open port
+
+If you work on the google cloud, you can open the port=5434 for all instances in the current workind directory with:
+
+>gcloud compute firewall-rules create postgresdocker --allow tcp:5434 \
+      --description "Allow incoming traffic on TCP port 5434" \
+      --direction INGRESS
+
+        
+List all firewall rules:
+
+>gcloud compute firewall-rules list
+
+Then login with your set credentials at port 5050 (in this case):
+![Login](img/pgAdmin_login.png) 
+        
+[^1]: Adopted from https://hackernoon.com/dont-install-postgres-docker-pull-postgres-bee20e200198

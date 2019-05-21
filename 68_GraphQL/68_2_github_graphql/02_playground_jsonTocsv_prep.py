@@ -1,7 +1,7 @@
 #%% Change working directory from the workspace root to the ipynb file location. Turn this addition off with the DataScience.changeDirOnImportExport setting
 import os
 try:
-	os.chdir(os.path.join(os.getcwd(), '64_Github_Chart'))
+	os.chdir(os.path.join(os.getcwd(), '68_2_github_graphql'))
 	print(os.getcwd())
 except:
 	pass
@@ -20,8 +20,42 @@ import json
 
 github=open('github.json', 'r').read()
 json.dumps(github,indent=4)
+github_dict = json.loads(github)
 
 
+#%%
+from glom import glom
+target = {"galaxy": 
+    {'system': 
+    {'planet': 'jupiter'}}}
+spec = 'galaxy.system.planet'
+
+output = glom(target, spec)
+print(output)
+# output = 'jupiter'
+#%%
+type(github)
+type(github_dict)
+#%%
+
+from glom import glom
+messages=glom(github_dict,("data.repository.ref.target.history.edges",['node.message']))
+dates=glom(github_dict,("data.repository.ref.target.history.edges",['node.author.date']))
+
+#import pandas as pd
+#df = pd.DataFrame(messages, columns =['Message']) 
+#df 
+
+# dictionary of lists  
+dict = {'message': messages, 'date': dates}  
+    
+df = pd.DataFrame(dict) 
+    
+df  
+#%%
+df['datetime'] = pd.to_datetime(df['date'])
+df=df.drop(columns=['date'])
+df
 #%%
 test=map(lambda x: x['data'], github)
 print(test)
@@ -175,7 +209,7 @@ x
 
 #%%
 #Save to json
-#final=x.set_index('index1').rename(columns={'0':'index1'}).to_json()
+final=x.set_index('index1').rename(columns={'0':'index1'}).to_json()
 
 
 #x.set_index('index1').rename(columns={'0':'index1'}).to_json('file.json')
@@ -208,3 +242,7 @@ with open('github_test.json', 'w') as f:  # writing JSON object
     json.dump(final, f,indent=4)
 
 #%%
+
+
+with open('github_test.csv', 'w') as f:  # writing JSON object
+    x.to_csv(f, header=False, sep=';') 
