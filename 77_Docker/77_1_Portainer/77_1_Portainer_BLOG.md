@@ -58,7 +58,7 @@ Portainer is an open-source management UI for Docker, including Docker Swarm env
 - Install and Configure Portainer
 - Docker Environment Management
 
-# What is Portainer?[^1]
+# What is Portainer?
 
 >Portainer is an open-source web-based management user interface for Docker. It allows you to manage images, networks, and volumes in addition to containers. One really cool thing about Portainer is that it is a Docker container itself!
 
