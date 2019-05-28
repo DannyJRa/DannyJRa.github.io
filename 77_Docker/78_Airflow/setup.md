@@ -3,7 +3,7 @@
 sudo /etc/init.d/postgresql stop
 netstat -tulpn | grep LISTEN
 docker-compose up -d 
-
+docker-compose up -d 
 export UID=${UID}
 export GID=${GID}
 docker-compose up -d
