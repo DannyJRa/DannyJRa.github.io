@@ -40,7 +40,7 @@ Nginx is one of the most popular web servers in the world and is responsible for
 
 ### Installing Nginx
 
-Install on Ubuntu 18.04 with ...
+Install on Ubuntu 18.04 with following command
 
 ```{bash, eval=F}
 sudo apt install nginx
