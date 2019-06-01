@@ -1,0 +1,56 @@
+---
+jupyter:
+  jupytext:
+    formats: ipynb,md
+    text_representation:
+      extension: .md
+      format_name: markdown
+      format_version: '1.1'
+      jupytext_version: 1.1.3
+  kernelspec:
+    display_name: R
+    language: R
+    name: ir
+output:
+  html_document:
+    keep_md: yes
+    theme: cerulean
+    highlight: tango
+    code_folding: show
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    number_sections: yes
+geometry: margin = 1.2in
+fontsize: 10pt
+always_allow_html: yes
+
+---
+
+```R
+library(plotly)
+
+p <- plot_ly(
+  x = c("giraffes", "orangutans", "monkeys"),
+  y = c(20, 14, 23),
+  name = "SF Zoo",
+  type = "bar"
+)
+
+# Create a shareable link to your chart
+# Set up API credentials: https://plot.ly/r/getting-started
+p
+```
+
+```r
+plot(1,1)
+```
+
+![](R_test_2_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+
+
+```
+
+```R
+
+```
