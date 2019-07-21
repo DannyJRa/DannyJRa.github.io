@@ -8,7 +8,7 @@ categories:
 tags:
   - GitHub
 hidden: false
-image: "img/01_blog_caret_Tut_BLOG.jpg"
+image: "img/01_blog_cover_BLOG.jpg"
 share: false
 output:
   html_document:

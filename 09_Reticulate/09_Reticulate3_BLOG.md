@@ -9,7 +9,7 @@ categories:
 tags:
   - R-package
 hidden: false
-image: "/img/reticulated_python.png"
+image: "img/reticulated_python_BLOG.png"
 share: false
 output:
   html_document:
@@ -34,7 +34,7 @@ The reticulate package provides a comprehensive set of tools for interoperabilit
 
 
 d
->The original blog entry is here https://dannyjra.github.io/09_Reticulate/09_Reticulate3_BLOG.html and the code can be found in this repository folder https://github.com/DannyJRa/DannyJRa.github.io/tree/master//09_Reticulate/09_Reticulate3_BLOG.html
+>The original blog entry is here /home/danny/OneDrive/DataScience/41_DannyJRa.github.io/09_Reticulate/09_Reticulate3_BLOG.html and the code can be found in this repository folder /home/danny/OneDrive/DataScience/41_DannyJRa.github.io/09_Reticulate/09_Reticulate3_BLOG.html
 
 
 

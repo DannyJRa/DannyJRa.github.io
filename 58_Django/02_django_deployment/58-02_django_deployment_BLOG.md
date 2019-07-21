@@ -1,14 +1,14 @@
 ---
-title: Pipenv 
+title: Django Deployment 
 author: DannyJRa
-date: '2019-01-25'
-slug: 19_pipenv3
+date: '2019-01-27'
+slug: django_deployment
 categories:
   - Python
 tags:
-  - Engineering
+  - Django
 hidden: false
-image: "img/19_pipenv_BLOG.gif"
+image: "img/phyton-django_BLOG.jpg"
 share: false
 output:
   html_document:

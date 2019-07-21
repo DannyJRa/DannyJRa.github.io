@@ -125,7 +125,7 @@ blogdown::hugo_build()
 cd $HOME/OneDrive/DataScience/42_Website_dannyrasch/01_Blog-Universal
 
 git add -A
-git commit -m "commit blog 74"
+git commit -m "commit blog 81"
 git push
 ```
 ### List all html

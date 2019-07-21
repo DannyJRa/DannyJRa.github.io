@@ -1,4 +1,15 @@
 ---
+title: Django basics
+author: DannyJRa
+date: '2018-03-20'
+slug: django_basics
+categories:
+  - Python
+tags:
+  - WebDev
+hidden: false
+image: "img/phyton-django_BLOG.jpg"
+share: false
 output:
   html_document:
     keep_md: yes
@@ -7,14 +18,12 @@ output:
     code_folding: show
     toc: yes
     toc_float: yes
-    number_sections: true
   pdf_document:
     number_sections: yes
 geometry: margin = 1.2in
 fontsize: 10pt
 always_allow_html: yes
-editor_options: 
-  chunk_output_type: inline
+
 ---
 
 

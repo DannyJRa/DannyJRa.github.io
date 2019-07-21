@@ -4,7 +4,7 @@ author: DannyJRa
 date: '2019-04-27'
 slug: vscodeasaserver
 categories:
-  - DataScience
+  - Cloud
 tags:
   - Engineering
 hidden: false

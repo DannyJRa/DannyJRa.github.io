@@ -105,7 +105,7 @@ blogdown::hugo_build()
 cd $HOME/00_blog
 
 git add -A
-git commit -m "commit blog 09 including files"
+git commit -m "commit blog 70 update including files"
 git push
 ```
 ### List all html
