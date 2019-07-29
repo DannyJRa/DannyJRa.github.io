@@ -483,89 +483,93 @@ for(i in c(1:length(filename))) {
 filename&lt;-list.files(folder, pattern = &quot;BLOG.png$|BLOG.jpg$|BLOG.gif$&quot;,recursive = TRUE, full.names = TRUE)
 filename</code></pre>
 <pre><code>##  [1] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/01_blog_caret_Tut_BLOG.png&quot;                                                                 
-##  [2] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/03_20_Azure_Workflow_BLOG.png&quot;                                                              
-##  [3] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/04_R_packages_BLOG.jpg&quot;                                                                     
-##  [4] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/05_BLOG.png&quot;                                                                                
-##  [5] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/06_Network_Analysis_BLOG.png&quot;                                                               
-##  [6] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/07_DSVM_Part1_BLOG.jpg&quot;                                                                     
-##  [7] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/08_cover_BLOG.png&quot;                                                                          
-##  [8] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/15_Docker_PostGreSQL_BLOG.png&quot;                                                              
-##  [9] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/19_Docker_NiFi_BLOG.gif&quot;                                                                    
-## [10] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/19_pipenv_BLOG.gif&quot;                                                                         
-## [11] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/54_Firebase_Shiny_BLOG.gif&quot;                                                                 
-## [12] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/63_cloud_scheduler_BLOG.png&quot;                                                                
-## [13] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/70_vscode-ide_BLOG.jpg&quot;                                                                     
-## [14] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/72_Nginx_BLOG.png&quot;                                                                          
-## [15] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/77_portainer_BLOG.png&quot;                                                                      
-## [16] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/blogdown_BLOG.png&quot;                                                                          
-## [17] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/complainer_BLOG.gif&quot;                                                                        
-## [18] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/Firebase_authenfication_BLOG.jpg&quot;                                                           
-## [19] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/graphql_BLOG.png&quot;                                                                           
-## [20] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/nifi_logo_BLOG.png&quot;                                                                         
-## [21] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/swagger_BLOG.png&quot;                                                                           
-## [22] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/01_Blog_caret/img/01_blog_cover_BLOG.jpg&quot;                                                                   
-## [23] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/03_Blog_Azure_RStudio/img/03_20_Azure_Workflow_BLOG.png&quot;                                                    
-## [24] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/04_R_Packages/img/04_R_packages_BLOG.jpg&quot;                                                                   
-## [25] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/05_Blog_BigData_Spark/img/05_BLOG.png&quot;                                                                      
-## [26] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/06_Network_Analysis/img/06_Network_Analysis_BLOG.png&quot;                                                       
-## [27] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/07_DSVM_Part1/img/07_DSVM_Part1_BLOG.jpg&quot;                                                                   
-## [28] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/08_Blog_MathArt/img/08_cover_BLOG.png&quot;                                                                      
-## [29] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/09_Reticulate/img/reticulated_python_BLOG.png&quot;                                                              
-## [30] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/15_PostgreSQL_Docker/img/15_Docker_PostGreSQL_BLOG.png&quot;                                                     
-## [31] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/16_NiFi_Docker/img/nifi_logo_BLOG.png&quot;                                                                      
-## [32] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/19_Pipenv/img/19_pipenv_BLOG.gif&quot;                                                                           
-## [33] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/19_Pipenv/img/graphql_BLOG.png&quot;                                                                             
-## [34] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/54_Firebase_Shiny/img/54_Firebase_Shiny_BLOG.gif&quot;                                                           
-## [35] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/54_Firebase_Shiny/img/Firebase_authenfication_BLOG.jpg&quot;                                                     
-## [36] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/58_Django/01_blog_basics/img/phyton-django_BLOG.jpg&quot;                                                        
-## [37] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/63_GCP_CloudScheduler/img/63_cloud_scheduler_BLOG.png&quot;                                                      
-## [38] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/68_GraphQL/68_1 Python libraries/img/19_pipenv_BLOG.gif&quot;                                                    
-## [39] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/68_GraphQL/68_1 Python libraries/img/graphql_BLOG.png&quot;                                                      
-## [40] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/70_VSCOde-aaS/01_setup/img/70_vscode-ide_BLOG.jpg&quot;                                                          
-## [41] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/72_Nginx/img/72_Nginx_BLOG.png&quot;                                                                             
-## [42] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/72_Nginx/img/complainer_BLOG.gif&quot;                                                                           
-## [43] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/74_Blogdown/img/blogdown_BLOG.png&quot;                                                                          
-## [44] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/77_Docker/77_1_Portainer/img/77_portainer_BLOG.png&quot;                                                         
-## [45] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/78_Docker2/77_1_Portainer/img/77_portainer_BLOG.png&quot;                                                        
-## [46] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/81_Flask/img/swagger_BLOG.png&quot;                                                                              
-## [47] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/static/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/72_Nginx/72_Nginx_BLOG_files/72_Nginx_BLOG.png&quot;</code></pre>
+##  [2] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/01_blog_cover_BLOG.jpg&quot;                                                                     
+##  [3] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/03_20_Azure_Workflow_BLOG.png&quot;                                                              
+##  [4] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/04_R_packages_BLOG.jpg&quot;                                                                     
+##  [5] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/05_BLOG.png&quot;                                                                                
+##  [6] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/06_Network_Analysis_BLOG.png&quot;                                                               
+##  [7] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/07_DSVM_Part1_BLOG.jpg&quot;                                                                     
+##  [8] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/08_cover_BLOG.png&quot;                                                                          
+##  [9] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/15_Docker_PostGreSQL_BLOG.png&quot;                                                              
+## [10] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/19_Docker_NiFi_BLOG.gif&quot;                                                                    
+## [11] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/19_pipenv_BLOG.gif&quot;                                                                         
+## [12] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/54_Firebase_Shiny_BLOG.gif&quot;                                                                 
+## [13] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/63_cloud_scheduler_BLOG.png&quot;                                                                
+## [14] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/70_vscode-ide_BLOG.jpg&quot;                                                                     
+## [15] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/72_Nginx_BLOG.png&quot;                                                                          
+## [16] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/77_portainer_BLOG.png&quot;                                                                      
+## [17] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/blogdown_BLOG.png&quot;                                                                          
+## [18] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/complainer_BLOG.gif&quot;                                                                        
+## [19] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/Firebase_authenfication_BLOG.jpg&quot;                                                           
+## [20] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/graphql_BLOG.png&quot;                                                                           
+## [21] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/nifi_logo_BLOG.png&quot;                                                                         
+## [22] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/phyton-django_BLOG.jpg&quot;                                                                     
+## [23] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/reticulated_python_BLOG.png&quot;                                                                
+## [24] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/00_Template/img/swagger_BLOG.png&quot;                                                                           
+## [25] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/01_Blog_caret/img/01_blog_cover_BLOG.jpg&quot;                                                                   
+## [26] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/03_Blog_Azure_RStudio/img/03_20_Azure_Workflow_BLOG.png&quot;                                                    
+## [27] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/04_R_Packages/img/04_R_packages_BLOG.jpg&quot;                                                                   
+## [28] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/05_Blog_BigData_Spark/img/05_BLOG.png&quot;                                                                      
+## [29] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/06_Network_Analysis/img/06_Network_Analysis_BLOG.png&quot;                                                       
+## [30] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/07_DSVM_Part1/img/07_DSVM_Part1_BLOG.jpg&quot;                                                                   
+## [31] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/08_Blog_MathArt/img/08_cover_BLOG.png&quot;                                                                      
+## [32] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/09_Reticulate/img/reticulated_python_BLOG.png&quot;                                                              
+## [33] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/15_PostgreSQL_Docker/img/15_Docker_PostGreSQL_BLOG.png&quot;                                                     
+## [34] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/16_NiFi_Docker/img/nifi_logo_BLOG.png&quot;                                                                      
+## [35] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/19_Pipenv/img/19_pipenv_BLOG.gif&quot;                                                                           
+## [36] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/19_Pipenv/img/graphql_BLOG.png&quot;                                                                             
+## [37] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/54_Firebase_Shiny/img/54_Firebase_Shiny_BLOG.gif&quot;                                                           
+## [38] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/54_Firebase_Shiny/img/Firebase_authenfication_BLOG.jpg&quot;                                                     
+## [39] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/58_Django/01_blog_basics/img/phyton-django_BLOG.jpg&quot;                                                        
+## [40] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/63_GCP_CloudScheduler/img/63_cloud_scheduler_BLOG.png&quot;                                                      
+## [41] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/68_GraphQL/68_1 Python libraries/img/19_pipenv_BLOG.gif&quot;                                                    
+## [42] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/68_GraphQL/68_1 Python libraries/img/graphql_BLOG.png&quot;                                                      
+## [43] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/70_VSCOde-aaS/01_setup/img/70_vscode-ide_BLOG.jpg&quot;                                                          
+## [44] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/72_Nginx/img/72_Nginx_BLOG.png&quot;                                                                             
+## [45] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/72_Nginx/img/complainer_BLOG.gif&quot;                                                                           
+## [46] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/74_Blogdown/img/blogdown_BLOG.png&quot;                                                                          
+## [47] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/77_Docker/77_1_Portainer/img/77_portainer_BLOG.png&quot;                                                         
+## [48] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/78_Docker2/77_1_Portainer/img/77_portainer_BLOG.png&quot;                                                        
+## [49] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/81_Flask/img/swagger_BLOG.png&quot;                                                                              
+## [50] &quot;/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/static/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/72_Nginx/72_Nginx_BLOG_files/72_Nginx_BLOG.png&quot;</code></pre>
 <pre class="r"><code>files&lt;-basename(filename)
 files</code></pre>
-<pre><code>##  [1] &quot;01_blog_caret_Tut_BLOG.png&quot;       &quot;03_20_Azure_Workflow_BLOG.png&quot;   
-##  [3] &quot;04_R_packages_BLOG.jpg&quot;           &quot;05_BLOG.png&quot;                     
-##  [5] &quot;06_Network_Analysis_BLOG.png&quot;     &quot;07_DSVM_Part1_BLOG.jpg&quot;          
-##  [7] &quot;08_cover_BLOG.png&quot;                &quot;15_Docker_PostGreSQL_BLOG.png&quot;   
-##  [9] &quot;19_Docker_NiFi_BLOG.gif&quot;          &quot;19_pipenv_BLOG.gif&quot;              
-## [11] &quot;54_Firebase_Shiny_BLOG.gif&quot;       &quot;63_cloud_scheduler_BLOG.png&quot;     
-## [13] &quot;70_vscode-ide_BLOG.jpg&quot;           &quot;72_Nginx_BLOG.png&quot;               
-## [15] &quot;77_portainer_BLOG.png&quot;            &quot;blogdown_BLOG.png&quot;               
-## [17] &quot;complainer_BLOG.gif&quot;              &quot;Firebase_authenfication_BLOG.jpg&quot;
-## [19] &quot;graphql_BLOG.png&quot;                 &quot;nifi_logo_BLOG.png&quot;              
-## [21] &quot;swagger_BLOG.png&quot;                 &quot;01_blog_cover_BLOG.jpg&quot;          
-## [23] &quot;03_20_Azure_Workflow_BLOG.png&quot;    &quot;04_R_packages_BLOG.jpg&quot;          
-## [25] &quot;05_BLOG.png&quot;                      &quot;06_Network_Analysis_BLOG.png&quot;    
-## [27] &quot;07_DSVM_Part1_BLOG.jpg&quot;           &quot;08_cover_BLOG.png&quot;               
-## [29] &quot;reticulated_python_BLOG.png&quot;      &quot;15_Docker_PostGreSQL_BLOG.png&quot;   
-## [31] &quot;nifi_logo_BLOG.png&quot;               &quot;19_pipenv_BLOG.gif&quot;              
-## [33] &quot;graphql_BLOG.png&quot;                 &quot;54_Firebase_Shiny_BLOG.gif&quot;      
-## [35] &quot;Firebase_authenfication_BLOG.jpg&quot; &quot;phyton-django_BLOG.jpg&quot;          
-## [37] &quot;63_cloud_scheduler_BLOG.png&quot;      &quot;19_pipenv_BLOG.gif&quot;              
-## [39] &quot;graphql_BLOG.png&quot;                 &quot;70_vscode-ide_BLOG.jpg&quot;          
-## [41] &quot;72_Nginx_BLOG.png&quot;                &quot;complainer_BLOG.gif&quot;             
-## [43] &quot;blogdown_BLOG.png&quot;                &quot;77_portainer_BLOG.png&quot;           
-## [45] &quot;77_portainer_BLOG.png&quot;            &quot;swagger_BLOG.png&quot;                
-## [47] &quot;72_Nginx_BLOG.png&quot;</code></pre>
+<pre><code>##  [1] &quot;01_blog_caret_Tut_BLOG.png&quot;       &quot;01_blog_cover_BLOG.jpg&quot;          
+##  [3] &quot;03_20_Azure_Workflow_BLOG.png&quot;    &quot;04_R_packages_BLOG.jpg&quot;          
+##  [5] &quot;05_BLOG.png&quot;                      &quot;06_Network_Analysis_BLOG.png&quot;    
+##  [7] &quot;07_DSVM_Part1_BLOG.jpg&quot;           &quot;08_cover_BLOG.png&quot;               
+##  [9] &quot;15_Docker_PostGreSQL_BLOG.png&quot;    &quot;19_Docker_NiFi_BLOG.gif&quot;         
+## [11] &quot;19_pipenv_BLOG.gif&quot;               &quot;54_Firebase_Shiny_BLOG.gif&quot;      
+## [13] &quot;63_cloud_scheduler_BLOG.png&quot;      &quot;70_vscode-ide_BLOG.jpg&quot;          
+## [15] &quot;72_Nginx_BLOG.png&quot;                &quot;77_portainer_BLOG.png&quot;           
+## [17] &quot;blogdown_BLOG.png&quot;                &quot;complainer_BLOG.gif&quot;             
+## [19] &quot;Firebase_authenfication_BLOG.jpg&quot; &quot;graphql_BLOG.png&quot;                
+## [21] &quot;nifi_logo_BLOG.png&quot;               &quot;phyton-django_BLOG.jpg&quot;          
+## [23] &quot;reticulated_python_BLOG.png&quot;      &quot;swagger_BLOG.png&quot;                
+## [25] &quot;01_blog_cover_BLOG.jpg&quot;           &quot;03_20_Azure_Workflow_BLOG.png&quot;   
+## [27] &quot;04_R_packages_BLOG.jpg&quot;           &quot;05_BLOG.png&quot;                     
+## [29] &quot;06_Network_Analysis_BLOG.png&quot;     &quot;07_DSVM_Part1_BLOG.jpg&quot;          
+## [31] &quot;08_cover_BLOG.png&quot;                &quot;reticulated_python_BLOG.png&quot;     
+## [33] &quot;15_Docker_PostGreSQL_BLOG.png&quot;    &quot;nifi_logo_BLOG.png&quot;              
+## [35] &quot;19_pipenv_BLOG.gif&quot;               &quot;graphql_BLOG.png&quot;                
+## [37] &quot;54_Firebase_Shiny_BLOG.gif&quot;       &quot;Firebase_authenfication_BLOG.jpg&quot;
+## [39] &quot;phyton-django_BLOG.jpg&quot;           &quot;63_cloud_scheduler_BLOG.png&quot;     
+## [41] &quot;19_pipenv_BLOG.gif&quot;               &quot;graphql_BLOG.png&quot;                
+## [43] &quot;70_vscode-ide_BLOG.jpg&quot;           &quot;72_Nginx_BLOG.png&quot;               
+## [45] &quot;complainer_BLOG.gif&quot;              &quot;blogdown_BLOG.png&quot;               
+## [47] &quot;77_portainer_BLOG.png&quot;            &quot;77_portainer_BLOG.png&quot;           
+## [49] &quot;swagger_BLOG.png&quot;                 &quot;72_Nginx_BLOG.png&quot;</code></pre>
 <pre class="r"><code>file.copy(filename, site_path, recursive = TRUE)</code></pre>
 <pre><code>##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
 ## [15] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
 ## [29] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
-## [43] TRUE TRUE TRUE TRUE TRUE</code></pre>
+## [43] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
 <pre class="r"><code># AND copy to img subfolder
 file.copy(filename, &quot;img/&quot;, recursive = TRUE)</code></pre>
 <pre><code>##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
 ## [15] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
 ## [29] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
-## [43] TRUE TRUE TRUE TRUE TRUE</code></pre>
+## [43] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
 <pre class="r"><code>#file.copy(filename, &quot;/mnt/sshftps/floox/images&quot;, recursive = TRUE)</code></pre>
 </div>
 <div id="copy-blog-images" class="section level3">
@@ -689,17 +693,11 @@ blogdown::hugo_build()</code></pre>
 git add -A
 git commit -m &quot;commit blog 81&quot;
 git push</code></pre>
-<pre><code>## [master e1c8398] commit blog 81
-##  13 files changed, 21 insertions(+), 12 deletions(-)
-##  rewrite static/img/01_blog_caret_Tut_BLOG.png (100%)
-##  create mode 100644 static/img/01_blog_cover_BLOG.jpg
-##  create mode 100644 static/img/banners/01_blog_cover_BLOG.jpg
-##  create mode 100644 static/img/banners/phyton-django_BLOG.jpg
-##  create mode 100644 static/img/banners/reticulated_python_BLOG.png
-##  create mode 100644 static/img/phyton-django_BLOG.jpg
-##  create mode 100644 static/img/reticulated_python_BLOG.png
+<pre><code>## [master 43215f8] commit blog 81
+##  2 files changed, 1 insertion(+), 1 deletion(-)
+##  rewrite static/img/banners/01_blog_caret_Tut_BLOG.png (100%)
 ## To https://github.com/DannyJRa/blog_universal
-##    2b0b794..e1c8398  master -&gt; master</code></pre>
+##    e1c8398..43215f8  master -&gt; master</code></pre>
 </div>
 <div id="list-all-html" class="section level3">
 <h3>List all html</h3>

@@ -58,7 +58,7 @@ You can enable this by typing:
 ```{bash, eval=F}
 sudo ufw allow 'Nginx HTTP'
 ```
-
+4/jwFqJ8_UO0EnuES1XLy4gGMARpL-Mv5LtJMaHG5IoUKRdyLFfPQpauE
 
 You can verify the change by typing:
 ```{bash}

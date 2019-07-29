@@ -60,7 +60,7 @@ https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-exte
 
 jupyter lab --port=8891
 
-
+#
 Useful Tools and Extensions for JupyterLab
 MAY 09, 2019
 Things on this page are fragmentary and immature notes/thoughts of the author. It is not meant to readers but rather for convenient reference of the author and future improvement.
