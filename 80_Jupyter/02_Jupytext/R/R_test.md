@@ -14,7 +14,6 @@ jupyter:
 ---
 
 # Test
-
 ```R
 library(plotly)
 #Test

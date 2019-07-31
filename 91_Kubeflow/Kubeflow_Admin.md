@@ -47,3 +47,13 @@ tar -xvf kfctl_v0.6.1_linux.tar.gz
 #Try local remote 
 
 git clone https://github.com/kubeflow/fairing 
+
+
+#Microk8s manage local kubernetes cluster
+#Source: https://microk8s.io/
+kubectl config view
+kubectl stop
+
+microk8s.enable dns dashboard
+sudo microk8s.stop
+sudo microk8s.start
