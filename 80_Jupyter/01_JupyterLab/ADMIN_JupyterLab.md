@@ -1,4 +1,11 @@
-pipenv run jupyter notebook
+#RUN: Start JupyterLab without password/token request
+
+jupyter lab --port=8891 --NotebookApp.token='' --NotebookApp.password=''
+
+
+
+
+
 
 
 Setting up python, pipenv and jupyter notebook on Ubuntu 18.04
