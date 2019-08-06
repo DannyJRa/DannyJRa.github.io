@@ -1,0 +1,65 @@
+---
+title: R-Python Bridge with Reticulate 
+author: DannyJRa
+date: '2018-11-11'
+slug: 09_reticulate
+categories:
+  - R
+  - Python
+tags:
+  - R-package
+hidden: false
+image: "/img/reticulated_python.png"
+share: false
+output:
+  html_document:
+    keep_md: yes
+    theme: cerulean
+    highlight: tango
+    code_folding: show
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    number_sections: yes
+geometry: margin = 1.2in
+fontsize: 10pt
+always_allow_html: yes
+
+---
+
+The reticulate package provides a comprehensive set of tools for interoperability between Python and R.
+
+<!--more-->
+
+
+```{r, include=F}
+folder<-getwd()
+filename<-list.files(folder, pattern = "BLOG.md",recursive = TRUE, full.names = TRUE)
+
+
+filename <- gsub("BLOG.md", 
+                      "BLOG.html",
+                      filename, fixed = TRUE)
+filename
+
+url <- gsub("/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io", 
+                      "https://dannyjra.github.io",
+                      filename, fixed = TRUE)
+url
+
+github_folder <- gsub("/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io", 
+                      "https://github.com/DannyJRa/DannyJRa.github.io/tree/master/",
+                      filename, fixed = TRUE)
+
+github_folder <- gsub("09_Reticulate_BLOG.html", #TODO
+                      "",
+                      github_folder, fixed = TRUE)
+github_folder
+```
+d
+>The original blog entry is here `r url` and the code can be found in this repository folder `r github_folder`
+
+
+```{r child = 'reticulate_linux.Rmd'}
+
+```

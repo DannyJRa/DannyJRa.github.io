@@ -157,3 +157,7 @@ pip install papermill
 papermill R_test.ipynb R_test_run.ipynb
 jupyter nbconvert --to markdown R_test_run.ipynb
 jupyter nbconvert --to Rmd R_test_run.ipynb
+
+# Jupyter Noteboos Developement Manifesto
+
+## NOVA extension: Execute notebook on GCP AI Platform
