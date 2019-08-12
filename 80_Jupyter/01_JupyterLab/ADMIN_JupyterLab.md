@@ -161,3 +161,18 @@ jupyter nbconvert --to Rmd R_test_run.ipynb
 # Jupyter Noteboos Developement Manifesto
 
 ## NOVA extension: Execute notebook on GCP AI Platform
+
+# Github extions (bowse only)
+
+jupyter labextension install @jupyterlab/github
+
+# Tensorboard
+https://github.com/chaoleili/jupyterlab_tensorboard
+
+jupyter labextension install jupyterlab_tensorboard
+
+# Overview
+
+Community-developed extensions on GitHub are tagged with the jupyterlab-extension topic, and currently include file viewers (GeoJSON, FASTA, etc.), Google Drive integration, GitHub browsing, and ipywidgets support.
+
+https://github.com/topics/jupyterlab-extension

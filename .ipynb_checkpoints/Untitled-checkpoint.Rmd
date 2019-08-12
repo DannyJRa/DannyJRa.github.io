@@ -1,0 +1,27 @@
+---
+jupyter:
+  jupytext:
+    formats: ipynb,Rmd
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.1'
+      jupytext_version: 1.1.7
+  kernelspec:
+    display_name: R
+    language: R
+    name: ir
+---
+
+```{r}
+a=1
+```
+
+```{r}
+a
+
+```
+
+```{r}
+
+```
