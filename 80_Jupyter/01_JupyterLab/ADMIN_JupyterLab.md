@@ -148,6 +148,7 @@ jupytext --set-formats ipynb,R//R --sync R_test.ipynb
 
 jupyter nbconvert --to html R_test.ipynb
 
+jupyter nbconvert --to html R_test.ipynb
 
 #Execute/paramter
 
