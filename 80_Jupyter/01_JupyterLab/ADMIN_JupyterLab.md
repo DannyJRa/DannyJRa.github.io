@@ -1,4 +1,4 @@
-#RUN: Start JupyterLab without password/token request
+#WORKS on this port: Start JupyterLab without password/token request
 
 jupyter lab --port=8891 --NotebookApp.token='' --NotebookApp.password=''
 
