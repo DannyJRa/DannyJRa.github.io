@@ -1,0 +1,15 @@
+[Unit]
+Description=Airflow scheduler daemon
+After=network.target
+
+[Service]
+Environment="PATH=/srv/airflow/bin"
+Environment="AIRFLOW_HOME=/home/danny/airflow"
+User=danny
+Type=simple
+ExecStart=/home/danny/anaconda3/bin/airflow scheduler
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
