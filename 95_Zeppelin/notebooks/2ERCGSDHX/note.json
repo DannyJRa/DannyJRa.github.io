@@ -1,0 +1,374 @@
+{
+  "paragraphs": [
+    {
+      "text": "%python\na\u003d1",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-23 02:49:55.118",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1571790797249_1706240562",
+      "id": "20191023-023317_21713075",
+      "dateCreated": "2019-10-23 02:33:17.249",
+      "dateStarted": "2019-10-23 02:33:46.082",
+      "dateFinished": "2019-10-23 02:33:46.121",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\na\nz.show(a)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-23 02:49:55.124",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1571790801539_-528048561",
+      "id": "20191023-023321_1448922001",
+      "dateCreated": "2019-10-23 02:33:21.539",
+      "dateStarted": "2019-10-23 02:38:37.148",
+      "dateFinished": "2019-10-23 02:38:37.161",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql postgresql+psycopg2://insider_danny:alfonstini@localhost:5434/hassio",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-23 02:49:55.130",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\nmismatched input \u0027postgresql\u0027 expecting {\u0027(\u0027, \u0027SELECT\u0027, \u0027FROM\u0027, \u0027ADD\u0027, \u0027DESC\u0027, \u0027WITH\u0027, \u0027VALUES\u0027, \u0027CREATE\u0027, \u0027TABLE\u0027, \u0027INSERT\u0027, \u0027DELETE\u0027, \u0027DESCRIBE\u0027, \u0027EXPLAIN\u0027, \u0027SHOW\u0027, \u0027USE\u0027, \u0027DROP\u0027, \u0027ALTER\u0027, \u0027MAP\u0027, \u0027SET\u0027, \u0027RESET\u0027, \u0027START\u0027, \u0027COMMIT\u0027, \u0027ROLLBACK\u0027, \u0027REDUCE\u0027, \u0027REFRESH\u0027, \u0027CLEAR\u0027, \u0027CACHE\u0027, \u0027UNCACHE\u0027, \u0027DFS\u0027, \u0027TRUNCATE\u0027, \u0027ANALYZE\u0027, \u0027LIST\u0027, \u0027REVOKE\u0027, \u0027GRANT\u0027, \u0027LOCK\u0027, \u0027UNLOCK\u0027, \u0027MSCK\u0027, \u0027EXPORT\u0027, \u0027IMPORT\u0027, \u0027LOAD\u0027}(line 1, pos 0)\n\n\u003d\u003d SQL \u003d\u003d\npostgresql+psycopg2://insider_danny:alfonstini@localhost:5434/hassio\n^^^\n\nset zeppelin.spark.sql.stacktrace \u003d true to see full stacktrace"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1571790831201_2007584810",
+      "id": "20191023-023351_1246303834",
+      "dateCreated": "2019-10-23 02:33:51.201",
+      "dateStarted": "2019-10-23 02:44:59.960",
+      "dateFinished": "2019-10-23 02:44:59.983",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nSELECT * FROM states LIMIT 10",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-23 02:49:55.139",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Table or view not found: states; line 1 pos 14\nset zeppelin.spark.sql.stacktrace \u003d true to see full stacktrace"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1571791225959_994666828",
+      "id": "20191023-024025_1281734564",
+      "dateCreated": "2019-10-23 02:40:25.959",
+      "dateStarted": "2019-10-23 02:49:39.396",
+      "dateFinished": "2019-10-23 02:49:39.431",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "dateUpdated": "2019-10-23 02:49:55.147",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1571791225752_-2045904033",
+      "id": "20191023-024025_180799243",
+      "dateCreated": "2019-10-23 02:40:25.752",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "dateUpdated": "2019-10-23 02:49:55.160",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1571791225538_-564207964",
+      "id": "20191023-024025_2009347242",
+      "dateCreated": "2019-10-23 02:40:25.538",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "dateUpdated": "2019-10-23 02:49:55.167",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1571791225346_-1905710526",
+      "id": "20191023-024025_1836804751",
+      "dateCreated": "2019-10-23 02:40:25.346",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "dateUpdated": "2019-10-23 02:49:55.181",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1571791225156_-842254680",
+      "id": "20191023-024025_1718910540",
+      "dateCreated": "2019-10-23 02:40:25.156",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "dateUpdated": "2019-10-23 02:49:55.203",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1571791224964_2084320506",
+      "id": "20191023-024024_1865412091",
+      "dateCreated": "2019-10-23 02:40:24.964",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "dateUpdated": "2019-10-23 02:49:55.217",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1571791224751_-1191712333",
+      "id": "20191023-024024_364028782",
+      "dateCreated": "2019-10-23 02:40:24.751",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "dateUpdated": "2019-10-23 02:49:55.230",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1571791224136_1555670985",
+      "id": "20191023-024024_1352222999",
+      "dateCreated": "2019-10-23 02:40:24.136",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Untitled Note 1",
+  "id": "2ERCGSDHX",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "python:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

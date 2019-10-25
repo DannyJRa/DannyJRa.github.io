@@ -6,12 +6,12 @@ output: html_document
 
 
 ```{r}
-blog_path="/home/danny/OneDrive/DataScience/42_Website_dannyrasch/01_Blog-Universal"
+blog_path="/home/danny/OneDrive/DataScience/42_Website_dannyrasch/02_Blog-Casper"
 ```
 
 
 ```{r}
-site_path = paste0(blog_path,"/content/blog")
+site_path = paste0(blog_path,"/content/post")
 folder<-"/home/danny/OneDrive/DataScience/41_DannyJRa.github.io"
 filename<-list.files(folder, pattern = "BLOG.md",recursive = TRUE, full.names = TRUE)
 filename
@@ -21,8 +21,8 @@ filename
 
 
 ```{r,eval=F}
-md_path="/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/54_Firebase_Shiny/54_Firebase_Shiny_BLOG.md"
-site_path="/home/danny/OneDrive/DataScience/42_Website_dannyrasch/01_Blog-Universal"
+#md_path="/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/54_Firebase_Shiny/54_Firebase_Shiny_BLOG.md"
+#site_path="/home/danny/OneDrive/DataScience/42_Website_dannyrasch/01_Blog-Casper"
 ```
 
 ### Absolut path
@@ -44,15 +44,15 @@ process_md <- function(md_path, site_path) {
   
 
   
-  input_lines <- gsub(paste0('image: "img/'), 
-                      paste0('banner: "img/banners/'),
-                      input_lines, fixed = TRUE)
+  #input_lines <- gsub(paste0('image: "img/'), 
+   #                   paste0('banner: "img/banners/'),
+    #                  input_lines, fixed = TRUE)
     
 
       input_lines <- gsub(paste0('src="img/'), 
                       paste0('src="/img/'),
                       input_lines, fixed = TRUE)
-  post_path <- file.path(site_path, "content", "blog", file_name)
+  post_path <- file.path(site_path, "content", "post", file_name)
   writeLines(input_lines, post_path)
   # copy asset folder to static/. also assume using / instead of \
  # asset_path <- file.path(dirname(md_path), asset_folder)
@@ -64,7 +64,7 @@ process_md <- function(md_path, site_path) {
 ```{r}
 i=1
 for(i in c(1:length(filename))) {
-  process_md(md_path=filename[i],site_path="/home/danny/OneDrive/DataScience/42_Website_dannyrasch/01_Blog-Universal")
+  process_md(md_path=filename[i],site_path="/home/danny/OneDrive/DataScience/42_Website_dannyrasch/02_Blog-Casper")
   print(i)
   }
 ```
@@ -73,7 +73,7 @@ for(i in c(1:length(filename))) {
 #TODO
 https://www.r-bloggers.com/regular-expressions-every-r-programmer-should-know/
 ```{r}
-site_path = paste0(blog_path,"/static/img/banners")
+site_path = paste0(blog_path,"/static/img/")
 
 filename<-list.files(folder, pattern = "BLOG.png$|BLOG.jpg$|BLOG.gif$",recursive = TRUE, full.names = TRUE)
 filename
@@ -122,10 +122,10 @@ blogdown::hugo_build()
 
 
 ```{bash}
-cd $HOME/OneDrive/DataScience/42_Website_dannyrasch/01_Blog-Universal
+cd $HOME/OneDrive/DataScience/42_Website_dannyrasch/02_Blog-Casper
 
 git add -A
-git commit -m "commit blog 81"
+git commit -m "commit blog X"
 git push
 ```
 ### List all html
@@ -184,6 +184,6 @@ url <- gsub("/home/danny/OneDrive/DataScience/42_Website_dannyrasch",
 data<-strsplit(url, split="/", fixed = FALSE, perl = FALSE, useBytes = FALSE)
 
 
-write.csv(file = "links2.csv",url)
+write.csv(file = "links1.csv",url)
 #write.csv(file = "links2.csv",data)
 ```
