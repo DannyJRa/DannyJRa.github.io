@@ -246,3 +246,6 @@ conda update -c conda-forge jupyterlab
 # Word export
 https://github.com/m-rossi/jupyter-docx-bundler
 conda install -c conda-forge jupyter-docx-bundler
+
+
+conda install "notebook>=5.3" "ipywidgets>=7.2"
