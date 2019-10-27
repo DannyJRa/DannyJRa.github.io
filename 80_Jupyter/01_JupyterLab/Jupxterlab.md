@@ -249,3 +249,6 @@ conda install -c conda-forge jupyter-docx-bundler
 
 
 conda install "notebook>=5.3" "ipywidgets>=7.2"
+
+
+jupyter labextension install jupyterlab_toastify jupyterlab_conda

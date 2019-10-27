@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # ---
 # jupyter:
 #   jupytext:
@@ -64,5 +65,26 @@ b=5
 
 # %%
 e=8
+
+# %%
+df
+
+# %%
+from pivottablejs import pivot_ui
+
+
+
+# %%
+
+pivot_ui(df,outfile_path=’pivottablejs.html’)
+HTML(‘pivottablejs.html’)
+
+# %%
+import qgrid
+
+# %%
+qgrid.show_grid(df.)
+
+# %%
 
 # %%

@@ -150,3 +150,11 @@ pip install papermill
 papermill R_test.ipynb R_test_run.ipynb
 jupyter nbconvert --to markdown R_test_run.ipynb
 jupyter nbconvert --to Rmd R_test_run.ipynb
+
+conda install -c conda-forge jupyter_nbextensions_configurator
+
+
+Tut: https://towardsdatascience.com/two-essential-pandas-add-ons-499c1c9b65de
+conda install -c anaconda pivottablejs
+
+conda install -c anaconda qgrid

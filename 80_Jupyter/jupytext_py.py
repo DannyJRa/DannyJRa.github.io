@@ -17,3 +17,20 @@
 a=2
 
 # %%
+
+executed in 8ms, finished 11:41:42 2019-10-26
+b=3
+b=3
+executed in 7ms, finished 11:48:18 2019-10-26
+b=3
+
+# %%
+import plotly.express as px
+iris = px.data.iris()
+fig = px.scatter(iris, x="sepal_width", y="sepal_length")
+fig.show()
+
+# %%
+
+
+# %%
