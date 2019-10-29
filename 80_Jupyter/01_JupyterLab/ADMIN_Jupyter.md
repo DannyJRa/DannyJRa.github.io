@@ -129,7 +129,7 @@ jupyter labextension install jupyterlab_nbmetadata
 #Jupytext
 https://github.com/mwouts/jupyterlab-jupytext
 jupyter labextension install jupyterlab-jupytext
-
+jupyter labextension install jupyterlab_toastify
 jupytext --set-formats ipynb,python//py:percent --sync *.ipynb
 
 jupytext --set-formats ipynb,R//Rmd --sync R_test.ipynb
