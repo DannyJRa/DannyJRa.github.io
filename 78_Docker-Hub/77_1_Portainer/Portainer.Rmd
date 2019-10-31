@@ -29,6 +29,15 @@ docker run -d -p 8999:8999 --name portainer2 --restart always \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v $HOME/docker/volumes/portainer:/data portainer/portainer
 ```
+Setting a admin password
+
+```bash
+docker run  -d -p 9000:8999 --name portainer3 \
+-v /var/run/docker.sock:/var/run/docker.sock portainer/portainer  \
+--admin-password='password' \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v $HOME/docker/volumes/portainer:/data portainer/portainer
+```
 
 Portainer is now running as a container, check it using the docker ps command.
 
