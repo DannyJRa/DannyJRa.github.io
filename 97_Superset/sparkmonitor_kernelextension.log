@@ -1,0 +1,25 @@
+INFO:  2019-11-01 01:34:02,462 - sparkmonitorkernel - 28218 - MainProcess -         139924195387136 - MainThread
+ Starting Kernel Extension 
+
+INFO:  2019-11-01 01:34:02,464 - sparkmonitorkernel - 28218 - MainProcess -         139924195387136 - MainThread
+ Socket Listening on port 56013 
+
+INFO:  2019-11-01 01:34:02,466 - sparkmonitorkernel - 28218 - MainProcess -         139923488954112 - Thread-4
+ Starting socket thread, going to accept 
+
+INFO:  2019-11-01 01:34:02,466 - sparkmonitorkernel - 28218 - MainProcess -         139924195387136 - MainThread
+ 56013 
+
+INFO:  2019-11-01 01:34:02,467 - sparkmonitorkernel - 28218 - MainProcess -         139924195387136 - MainThread
+ Adding jar from /opt/conda/lib/python3.6/site-packages/sparkmonitor/listener.jar  
+
+INFO:  2019-11-01 01:34:02,555 - sparkmonitorkernel - 28218 - MainProcess -         139924195387136 - MainThread
+ COMM OPENED MESSAGE: 
+ {'header': {'msg_id': '65b1b0c84de748088ededb7cfe9cac48', 'username': 'username', 'session': 'be13304f8c814e6c8c66b83f1e2cd43b', 'msg_type': 'comm_open', 'version': '5.2', 'date': datetime.datetime(2019, 11, 1, 1, 34, 2, 552700, tzinfo=datetime.timezone.utc)}, 'msg_id': '65b1b0c84de748088ededb7cfe9cac48', 'msg_type': 'comm_open', 'parent_header': {}, 'metadata': {}, 'content': {'comm_id': '1aeef7932e794a36975687898ca935dd', 'target_name': 'SparkMonitor', 'data': {'msgtype': 'openfromfrontend'}}, 'buffers': []} 
+ 
+
+INFO:  2019-11-01 01:34:02,575 - sparkmonitorkernel - 28218 - MainProcess -         139924195387136 - MainThread
+ COMM OPENED MESSAGE: 
+ {'header': {'msg_id': 'f64f1154830c487b89e64753f3aed9e3', 'username': 'username', 'session': 'be13304f8c814e6c8c66b83f1e2cd43b', 'msg_type': 'comm_open', 'version': '5.2', 'date': datetime.datetime(2019, 11, 1, 1, 34, 2, 562747, tzinfo=datetime.timezone.utc)}, 'msg_id': 'f64f1154830c487b89e64753f3aed9e3', 'msg_type': 'comm_open', 'parent_header': {}, 'metadata': {}, 'content': {'comm_id': '1ba65f608d264efc89cee880d552b811', 'target_name': 'SparkMonitor', 'data': {'msgtype': 'openfromfrontend'}}, 'buffers': []} 
+ 
+
