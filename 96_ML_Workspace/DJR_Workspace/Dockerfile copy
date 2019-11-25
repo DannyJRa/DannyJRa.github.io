@@ -10,3 +10,9 @@ RUN jupyter nbextension enable zenmode/main
 #    /bin/bash $RESOURCES_PATH/tools/r-studio-server.sh --install && \
     # Cleanup Layer - removes unneccessary cache files
 #    clean-layer.sh
+
+ # Install r-runtime, r-kernel, and r-studio web server from provided install scripts
+#RUN /bin/bash $RESOURCES_PATH/tools/r-runtime.sh --install && \
+#    /bin/bash $RESOURCES_PATH/tools/r-studio-server.sh --install && \
+    # Cleanup Layer - removes unneccessary cache files
+#    clean-layer.sh
