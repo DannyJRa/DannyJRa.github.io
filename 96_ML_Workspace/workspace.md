@@ -2,7 +2,14 @@
 
 https://github.com/ml-tooling/ml-workspace#faq
 
-# 
+# Spark
+
+docker run -d -p 8891:8080 --name "WS_spark3" -v "${PWD}:/workspace" mltooling/ml-workspace-spark:latest
+
+docker stop "WS_spark3"
+
+
+# Add new workspace
 
 docker run -p 8891:8080 mltooling/ml-workspace:latest
 
