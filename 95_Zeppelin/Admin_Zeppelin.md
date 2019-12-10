@@ -10,6 +10,12 @@
     cd zeppelin-0.8.2-bin-all
     sudo bin/zeppelin-daemon.sh start
 
+
+# Run Zeppelin Server
+
+    cd zeppelin-0.8.2-bin-all
+    sudo bin/zeppelin-daemon.sh start
+
 # Features
 
 to be continued
