@@ -5,8 +5,9 @@ output: html_document
 
 
 ```{r}
-site_path = "/home/danny/00_blog/content/post"
-folder<-"/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io/"
+main_path="/home/danny/OneDrive/DataScience/42_Website_dannyrasch/02_Blog-Casper/"
+site_path = paste0(main_path,"content/post")
+folder<-"/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/"
 filename<-list.files(folder, pattern = "BLOG.md",recursive = TRUE, full.names = TRUE)
 filename
 file.copy(filename, site_path, recursive = TRUE)
@@ -17,7 +18,9 @@ file.copy(filename, site_path, recursive = TRUE)
 #TODO
 https://www.r-bloggers.com/regular-expressions-every-r-programmer-should-know/
 ```{r}
-site_path = "/home/danny/00_blog/static/img"
+site_path = paste0(main_path,"/static/img")
+
+
 filename<-list.files(folder, pattern = "BLOG.png$|BLOG.jpg$|BLOG.gif$",recursive = TRUE, full.names = TRUE)
 filename
 files<-basename(filename)
@@ -28,7 +31,7 @@ file.copy(filename, "img/", recursive = TRUE)
 #file.copy(filename, "/mnt/sshftps/floox/images", recursive = TRUE)
 ```
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 site_path = "/home/danny/00_blog/static/img"
 filename<-list.files(folder, pattern = "BLOG.jpg",recursive = TRUE, full.names = TRUE)
 filename
@@ -37,14 +40,14 @@ file.copy(filename, site_path, recursive = TRUE)
 
 
 ```{r}
-setwd("/home/danny/00_blog/")
+setwd(main_path)
 #blogdown::serve_site()
 blogdown::hugo_build()
 ```
 
 
 ```{bash}
-cd $HOME/00_blog
+cd $HOME/OneDrive/DataScience/42_Website_dannyrasch/02_Blog-Casper/
 
 git add -A
 git commit -m "commit blog 73 draft"
@@ -54,14 +57,14 @@ git push
 
 ```{r}
 
-folder<-"/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io/"
+folder<-"/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/"
 filename<-list.files(folder, pattern = "BLOG.html",recursive = TRUE, full.names = TRUE)
 filename
 ```
 
 ```{r}
 
-folder<-"/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io/"
+folder<-"/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/"
 filename<-list.files(folder, pattern = "BLOG.html",recursive = TRUE, full.names = FALSE,include.dirs=F)
 filename
 files<-basename(filename)
@@ -97,7 +100,7 @@ write.xlsx(file = "links.xlsx",data)
 
 
 
-url <- gsub("/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io", 
+url <- gsub("/home/danny/OneDrive/DataScience/41_DannyJRa.github.io", 
                       "https://dannyjra.github.io",
                       filename, fixed = TRUE)
 url
@@ -108,7 +111,7 @@ write.csv(file = "links.csv",url)
 
 
 
-url <- gsub("/home/danny/OneDrive/DataScience/11_GitHub_DannyJRa.github.io", 
+url <- gsub("/home/danny/OneDrive/DataScience/41_DannyJRa.github.io", 
                       "",
                       filename, fixed = TRUE)
 
