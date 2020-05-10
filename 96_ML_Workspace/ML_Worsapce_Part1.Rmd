@@ -1,0 +1,115 @@
+---
+output:
+  html_document:
+    theme: cerulean
+    highlight: tango
+    code_folding: show
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    number_sections: yes
+geometry: margin = 1.2in
+fontsize: 10pt
+always_allow_html: yes
+---
+
+```{r cache, include=FALSE}
+#Caching of all chunks
+knitr::opts_chunk$set(cache=TRUE)
+# Ten things you can do on the Windows Data Science Virtual Machine
+```
+
+
+
+>The Windows Data Science Virtual Machine (DSVM) is a powerful data science development environment that enables you to perform various data exploration and modeling tasks. The environment comes already built and bundled with several popular data analytics tools that make it easy to get started quickly with your analysis for On-premises, Cloud or hybrid deployments. The DSVM works closely with many Azure services and is able to read and process data that is already stored on Azure, in Azure SQL Data Warehouse, Azure Data Lake, Azure Storage, or in Azure Cosmos DB. It can also leverage other analytics tools such as Azure Machine Learning and Azure Data Factory.[^1]
+
+# ML Workspace
+
+https://github.com/ml-tooling/ml-workspace#faq
+
+# Spark
+
+docker run -d -p 8891:8080 --name "WS_spark3" -v "${PWD}:/workspace" mltooling/ml-workspace-spark:latest
+
+docker stop "WS_spark3"
+
+
+# Add new workspace
+
+docker run -p 8891:8080 mltooling/ml-workspace:latest
+
+docker run -d -p 8891:8080 --name "ml-workspace2" -v "${PWD}:/workspace" mltooling/ml-workspace:latest
+
+
+docker build -t workspace .
+
+docker run -d -p 8891:8080 --name "ml-workspace3" -v "${PWD}:/workspace" workspace:latest
+
+docker run -p 8080:8080 mltooling/ml-workspace-spark:latest
+
+docker stop "ml-workspace3"
+
+
+
+# Spark
+
+docker run -d -p 8891:8080 --name "WS_spark3" -v "${PWD}:/workspace" mltooling/ml-workspace-spark:latest
+
+docker stop "WS_spark3"
+
+### Start R server
+
+```{r, eval=F}
+cmd <- paste(ssh, "sudo rstudio-server start")
+(b<-system(cmd, intern=TRUE))
+```
+
+Remove folder if create already
+
+```{r, eval=F}
+cmd <- paste(ssh, "sudo rm -r /home/insider/R")
+cmd
+
+b<-system(cmd, intern=TRUE)
+```
+
+Create folder
+
+```{r, eval=F}
+cmd <- paste(ssh, "sudo mkdir /home/insider/R")
+cmd
+
+b<-system(cmd, intern=TRUE)
+```
+
+Mount drive
+
+```{r, eval=F}
+cmd <- paste(ssh, "sudo mount /dev/sdd /home/insider/R")
+cmd
+
+b<-system(cmd, intern=TRUE)
+```
+
+
+```{r, eval=F}
+browseURL(paste0("http://",ip,":8787"))
+```
+
+
+#2.  Use a Jupyter notebook to experiment
+
+Simply open browser with port 8000 to open Juypter Hub. 
+```{r, eval=F}
+browseURL(paste0("https://",ip,":8000"))
+```
+
+Enter your ID and password and will see ...
+
+![Juypter Hub](img/jupyter_hub_BLOG.png)
+
+
+
+... to be continued
+
+[^1]: Addopted from https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/vm-do-ten-things

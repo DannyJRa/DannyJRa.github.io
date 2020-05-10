@@ -66,6 +66,11 @@ process_md <- function(md_path, site_path) {
   input_lines <- gsub(paste0('src="img/'), 
                       paste0('src="/img/'),
                       input_lines, fixed = TRUE)
+  
+    input_lines <- gsub(paste0('(img/'), 
+                      paste0('(/images/blog/'),
+                      input_lines, fixed = TRUE)
+  
   post_path <- file.path(site_path, "content","english", "blog", file_name)
   writeLines(input_lines, post_path)
   # copy asset folder to static/. also assume using / instead of \
@@ -115,7 +120,7 @@ blogdown::hugo_build()
 cd $HOME/OneDrive/DataScience/42_Website_dannyrasch/02_Blog-Airspace
 
 git add -A
-git commit -m "commit blog 81"
+git commit -m "commit blog 96"
 git push
 ```
 

@@ -1,3 +1,23 @@
 {
-    "python.pythonPath": "/home/danny/anaconda3/bin/python"
+    "python.pythonPath": "/home/danny/anaconda3/bin/python",
+    "sqltools.connections": [
+        {
+            "database": "hassio",
+            "dialect": "PostgreSQL",
+            "name": "postgres",
+            "password": "alfonstini",
+            "port": 5434,
+            "server": "localhost",
+            "username": "postgres"
+        },
+        {
+            "database": "insider_danny",
+            "dialect": "PostgreSQL",
+            "name": "ATLAS_insider_danny",
+            "password": "alfonstini",
+            "port": 5433,
+            "server": "192.168.1.123",
+            "username": "insider_danny"
+        }
+    ]
 }
