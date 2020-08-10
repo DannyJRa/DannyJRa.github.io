@@ -1,13 +1,13 @@
 ---
-title: DataScience Workspace
+title: Key Vault
 author: DannyJRa
-date: '2020-01-15'
+date: '2020-08-09'
 categories:
   - Cloud
 tags:
   - Azure
 hidden: false
-image: "img/07_DSVM_Part1_BLOG.jpg"
+image: "img/hasicorp_vault_BLOG.png"
 share: false
 output:
   html_document:
@@ -37,5 +37,5 @@ ML Workspace ...
 
 
 
-```{r child = 'ML_Worsapce_Part1.Rmd'}
+```{r child = 'vault_admin.Rmd'}
 ```
