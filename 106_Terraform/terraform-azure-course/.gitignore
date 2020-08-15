@@ -1,0 +1,8 @@
+terraform.tfvars
+mykey
+mykey.pub
+*.tfstate
+*.tfstate.backup
+.terraform
+.terraform.tfstate.lock.info
+.DS_Store
