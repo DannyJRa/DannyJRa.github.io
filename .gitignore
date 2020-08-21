@@ -6,3 +6,4 @@
 00_Ignore/
 66_MicrosoftGraph_Django/graph_tutorial/oauth_settings.yml
 *secrets*
+*env*.sh
