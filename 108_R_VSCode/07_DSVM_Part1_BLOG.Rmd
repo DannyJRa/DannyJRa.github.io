@@ -1,0 +1,42 @@
+---
+title: DSVM Part1
+author: DannyJRa
+date: '2018-06-07'
+slug: dsvwpart1
+categories:
+  - Cloud
+tags:
+  - Azure
+hidden: false
+image: "img/07_DSVM_Part1_BLOG.jpg"
+share: false
+output:
+  html_document:
+    keep_md: yes
+    theme: cerulean
+    highlight: tango
+    code_folding: show
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    number_sections: yes
+geometry: margin = 1.2in
+fontsize: 10pt
+always_allow_html: yes
+
+---
+
+```{r setup, include=FALSE}
+#Caching of all chunks
+knitr::opts_chunk$set(cache=TRUE)
+```
+
+
+DSVM Part 1 ...
+ 
+<!--more-->
+
+
+
+```{r child = 'DSVM_Part1.Rmd'}
+```

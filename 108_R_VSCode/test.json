@@ -1,0 +1,42 @@
+[
+  {
+    "virtualMachine": {
+      "name": "adminWorkstation",
+      "network": {
+        "privateIpAddresses": [
+          "10.0.0.4"
+        ],
+        "publicIpAddresses": [
+          {
+            "id": "/subscriptions/9317e370-3c1f-43a8-9ec0-4f1ad769dd53/resourceGroups/ADMIN/providers/Microsoft.Network/publicIPAddresses/adminWorkstation-ip",
+            "ipAddress": "104.40.253.75",
+            "ipAllocationMethod": "Static",
+            "name": "adminWorkstation-ip",
+            "resourceGroup": "ADMIN"
+          }
+        ]
+      },
+      "resourceGroup": "ADMIN"
+    }
+  },
+  {
+    "virtualMachine": {
+      "name": "djrtest3685445209ac",
+      "network": {
+        "privateIpAddresses": [
+          "10.0.0.4"
+        ],
+        "publicIpAddresses": [
+          {
+            "id": "/subscriptions/9317e370-3c1f-43a8-9ec0-4f1ad769dd53/resourceGroups/ml/providers/Microsoft.Network/publicIPAddresses/djrtest3685445209ac",
+            "ipAddress": null,
+            "ipAllocationMethod": "Dynamic",
+            "name": "djrtest3685445209ac",
+            "resourceGroup": "ml"
+          }
+        ]
+      },
+      "resourceGroup": "ml"
+    }
+  }
+]
