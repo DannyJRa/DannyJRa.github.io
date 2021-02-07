@@ -1,0 +1,42 @@
+---
+title: ELT with Databricks & Spark
+author: DannyJRa
+date: '2020-10-12'
+slug: databricks_spark
+categories:
+  - Cloud
+tags:
+  - Engineering
+hidden: false
+image: "img/databricks_spark_BLOG.png"
+share: false
+output:
+  html_document:
+    keep_md: yes
+    theme: cerulean
+    highlight: tango
+    code_folding: show
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    number_sections: yes
+geometry: margin = 1.2in
+fontsize: 10pt
+always_allow_html: yes
+
+---
+
+```{r setup, include=FALSE}
+#Caching of all chunks
+knitr::opts_chunk$set(cache=TRUE)
+```
+
+
+DSVM Part 1 ...
+ 
+<!--more-->
+
+
+
+```{r child = 'Grafana_Part1.Rmd'}
+```

@@ -22,7 +22,7 @@ output:
 geometry: margin = 1.2in
 fontsize: 10pt
 always_allow_html: yes
-
+type: post
 ---
 
 

@@ -32,9 +32,10 @@ docker run -d -p 8999:8999 --name portainer2 --restart always \
 Setting a admin password
 
 ```bash
-docker run  -d -p 9000:8999 --name portainer3 \
--v /var/run/docker.sock:/var/run/docker.sock portainer/portainer  \
+docker run -d -p 9000:8999 --name portainer6 \
 --admin-password='password' \
+-v /var/run/docker.sock:/var/run/docker.sock portainer/portainer  \
+
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v $HOME/docker/volumes/portainer:/data portainer/portainer
 ```
@@ -97,3 +98,10 @@ It is very convinient to have a centralized web-based management and monitoring 
 
 
 [^1]: References ttps://portainer.readthedocs.io/en/stable/
+
+
+
+docker volume create portainer_data
+
+
+docker run -d -p 8000:8000 -p 9000:9000 --name=portainer7 --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce

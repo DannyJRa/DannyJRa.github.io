@@ -1,7 +1,7 @@
 ---
 title: Zeppelin Notebook 
 author: DannyJRa
-date: '2019-08-18'
+date: '2019-08-19'
 slug: zeppelinnotebook
 categories:
   - Cloud

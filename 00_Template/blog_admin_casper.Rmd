@@ -137,7 +137,7 @@ filename<-list.files(folder, pattern = "BLOG.html",recursive = TRUE, full.names 
 filename
 ```
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 
 folder<-"/home/danny/OneDrive/DataScience/41_DannyJRa.github.io/"
 filename<-list.files(folder, pattern = "BLOG.html",recursive = TRUE, full.names = FALSE,include.dirs=F)
@@ -173,7 +173,7 @@ write.xlsx(file = "links.xlsx",data)
 
 # Write Links to csv
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 
 
 
