@@ -1,0 +1,32 @@
+{
+	//"context": "..",
+	//"image": "datathirstltd/dbconnect:8.1.0",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": { 
+			"DBCVER": "8.1.0"
+		}
+	},
+
+	"settings": {
+		"python.pythonPath": "/opt/conda/envs/dbconnect/bin/python",
+		"python.venvPath": "/opt/conda/envs/dbconnect/lib/python3.7/site-packages/pyspark/jars"
+	},
+
+	//  Optional command - could add your own environment.yml file here (you must keep --name the same)
+	// "postCreateCommand": "conda env update --file environment.yml --name dbconnect",
+	
+	// Rather than storing/committing your bearer token here we recommend using a local variable and passing thru "DATABRICKS_API_TOKEN": "${localEnv:DatabricksToken}",
+	// You can manually set these as environment variables if you prefer
+	"containerEnv": {
+		"DATABRICKS_ADDRESS": "https://adb-XXX.1.azuredatabricks.net",
+		"DATABRICKS_API_TOKEN": "XXX",
+		"DATABRICKS_CLUSTER_ID": "0327-155220-camps487",
+		"DATABRICKS_ORG_ID": "XXX",
+		"DATABRICKS_PORT": "8787"
+	},
+	"extensions": [
+		"ms-python.python",
+		"ms-toolsai.jupyter"
+	]
+}  

@@ -7,7 +7,7 @@ categories:
 tags:
   - Azure
 hidden: false
-image: "img/07_DSVM_Part1_BLOG.jpg"
+image: "img/azure_grafana_BLOG.png"
 share: false
 output:
   html_document:

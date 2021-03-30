@@ -1,12 +1,12 @@
 ---
 title: ELT with Databricks & Spark
-author: DannyJRa
+author: DannyJ.R.
 date: '2020-10-12'
 slug: databricks_spark
 categories:
-  - Cloud
-tags:
   - Engineering
+tags:
+  - BigData
 hidden: false
 image: "img/databricks_spark_BLOG.png"
 share: false
@@ -29,7 +29,7 @@ always_allow_html: yes
 
 
 
-DSVM Part 1 ...
+ELT with Databricks and spark ...
  
 <!--more-->
 

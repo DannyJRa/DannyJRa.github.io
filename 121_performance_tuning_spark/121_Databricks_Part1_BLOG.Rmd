@@ -1,12 +1,12 @@
 ---
 title: ELT with Databricks & Spark
-author: DannyJRa
+author: DannyJ.R.
 date: '2020-10-12'
 slug: databricks_spark
 categories:
-  - Cloud
-tags:
   - Engineering
+tags:
+  - BigData
 hidden: false
 image: "img/databricks_spark_BLOG.png"
 share: false
@@ -32,11 +32,11 @@ knitr::opts_chunk$set(cache=TRUE)
 ```
 
 
-DSVM Part 1 ...
+ELT with Databricks and spark ...
  
 <!--more-->
 
 
 
-```{r child = 'Grafana_Part1.Rmd'}
+```{r child = 'databricks_Part1.Rmd'}
 ```
